@@ -1,0 +1,2 @@
+May 28, 2026
+	- Perry and Randy met to discuss project. Created github repository for code. Perry is going to try to convert the unasigned .bam file for 7888 to fastq files (which he thinks he already did, and the file might not have good reads. This could be why the old mapped file seem truncated)
