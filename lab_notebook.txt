@@ -1,3 +1,6 @@
 May 28, 2026
 	- Perry and Randy met to discuss project. Created github repository for code. Perry is going to try to convert the unasigned .bam file for 7888 to fastq files (which he thinks he already did, and the file might not have good reads. This could be why the old mapped file seem truncated)
 	- Started the process of converting 7888's unassigned bam to a fastq file. Using samtools bamtofastq tool.
+
+May 30, 2026
+	-With the 7888 fastq file complete I started the xengsort tool to classify it. Used the standard of k = 25 to match the other classified files that were chosen for use downstream.

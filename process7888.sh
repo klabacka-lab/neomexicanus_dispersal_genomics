@@ -14,6 +14,15 @@ workingdir="/home/vanwper/nobackup/autodelete/neomex"
 bam="/home/vanwper/groups/grp_reptile_genomics/nobackup/archive/raw_neomex_genomic_data/7888/m84100_250712_050951_s4.hifi_reads.bc1030.bam"
 
 module load miniforge3
-mamba activate samtools_env
 
-samtools fastq $bam | bgzip -c > $workingdir/7888/7888.fastq.gz
+#convert unfiltered bam file into a fastq
+#mamba activate samtools_env
+#samtools fastq $bam | bgzip -c > $workingdir/7888/7888.fastq.gz
+
+mamba activate xengsort
+xengsort classify \
+       	--index /home/vanwper/nobackup/autodelete/neomex/xeng_data/k25/neomex.hash \
+       	--fastq /home/vanwper/nobackup/autodelete/neomex/7888/7888.fastq.gz \
+	--prefix /home/vanwper/nobackup/autodelete/neomex/7888/7888 \
+	--mode count \
+	--compression gz
