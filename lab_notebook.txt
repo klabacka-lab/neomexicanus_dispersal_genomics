@@ -7,3 +7,4 @@ May 30, 2026
 
 June 4, 2026
 	- Updated Snakefile to match new location and checked to make sure all jobs would still say complete. Removed unecessary copies from my nobackup dir.
+	- created a script to index the reference fastas for use in variant calling
