@@ -1,6 +1,9 @@
 #define locations for the parent reference fastas
-P1_REF = "reference/BaumannLab/a_arizonae_AspAri2.0.fasta.gz"
-P2_REF = "reference/BaumannLab/a_marmoratus_AspMarm2.0.fasta.gz"
+P1_REF = "{WORKDIR}/reference/BaumannLab/a_arizonae_AspAri2.0.fasta.gz"
+P2_REF = "{WORKDIR}/reference/BaumannLab/a_marmoratus_AspMarm2.0.fasta.gz"
+
+#define working directory for files
+WORKDIR = "/home/vanwper/nobackup/autodelete/neomex"
 
 #sample numbers
 IDS = ["7890","7891","7892","7893","7894","7895","7896","7897"]
@@ -13,16 +16,16 @@ KMER = [20, 23, 25, 28, 30]
 
 rule all:
   input:
-    expand("sample_bams/{sample}/{sample}-host.bam", sample=IDS),
-    expand("sample_bams/{sample}/{sample}-graft.bam", sample=IDS)
+    expand(f"{WORKDIR}/sample_bams/{{sample}}/{{sample}}-host.bam", sample=IDS),
+    expand(f"{WORKDIR}/sample_bams/{{sample}}/{{sample}}-graft.bam", sample=IDS)
 
 rule xengsort_index:
   input:
     host=P1_REF,
     graft=P2_REF
   output:
-      "xeng_data/k{k}/neomex.hash",
-      "xeng_data/k{k}/neomex.info"
+      "{WORKDIR}/xeng_data/k{k}/neomex.hash",
+      "{WORKDIR}xeng_data/k{k}/neomex.info"
   conda:
       "/home/vanwper/.conda/envs/xengsort"
   shell:
@@ -35,10 +38,10 @@ rule xengsort_index:
 
 rule xengsort_classify:
   input:
-      hash_file="xeng_data/k{k}/neomex.hash",
-      fastq="sample_fastqs/{ids}/{ids}.fq"
+      hash_file="{WORKDIR}/xeng_data/k{k}/neomex.hash",
+      fastq="{WORKDIR}/sample_fastqs/{ids}/{ids}.fq"
   output:
-      "xeng_data/k{k}/{ids}/{ids}-{xeng}.fq.gz"
+      "{WORKDIR}/xeng_data/k{k}/{ids}/{ids}-{xeng}.fq.gz"
   params:
       mode="count"
   conda:
@@ -55,9 +58,9 @@ rule xengsort_classify:
 
 rule pbmm2_index:
   input:
-    "reference/BaumannLab/{name}.fasta"
+    "{WORKDIR}/reference/BaumannLab/{name}.fasta"
   output:
-    "reference/BaumannLab/{name}.mmi"
+    "{WORKDIR}/reference/BaumannLab/{name}.mmi"
   conda:
     "/home/vanwper/.conda/envs/pacbioProcessing"
   shell:
@@ -67,10 +70,10 @@ rule pbmm2_index:
 
 rule pbmm2_align_host:
   input:
-    reads="xeng_data/k25/{sample}/{sample}-host.fq.gz",
-    ref="reference/BaumannLab/a_arizonae_AspAri2.0.mmi"
+    reads="{WORKDIR}/xeng_data/k25/{sample}/{sample}-host.fq.gz",
+    ref="{WORKDIR}/reference/BaumannLab/a_arizonae_AspAri2.0.mmi"
   output:
-    "sample_bams/{sample}/{sample}-host.bam"
+    "{WORKDIR}/sample_bams/{sample}/{sample}-host.bam"
   conda:
     "/home/vanwper/.conda/envs/pacbioProcessing"
   shell:
@@ -85,10 +88,10 @@ rule pbmm2_align_host:
 
 rule pbmm2_align_graft:
   input:
-    reads="xeng_data/k25/{sample}/{sample}-graft.fq.gz",
-    ref="reference/BaumannLab/a_marmoratus_AspMarm2.0.mmi"
+    reads="{WORKDIR}/xeng_data/k25/{sample}/{sample}-graft.fq.gz",
+    ref="{WORKDIR}/reference/BaumannLab/a_marmoratus_AspMarm2.0.mmi"
   output:
-    "sample_bams/{sample}/{sample}-graft.bam"
+    "{WORKDIR}/sample_bams/{sample}/{sample}-graft.bam"
   conda:
     "/home/vanwper/.conda/envs/pacbioProcessing"
   shell:

@@ -1,9 +1,9 @@
 #!/bin/bash
 
-#SBATCH --time=8:00:00   # walltime
+#SBATCH --time=24:00:00   # walltime
 #SBATCH --ntasks=1   # number of processor cores (i.e. tasks)
 #SBATCH --nodes=1   # number of nodes
-#SBATCH --mem-per-cpu=16384M   # memory per CPU core
+#SBATCH --mem-per-cpu=32768M  # memory per CPU core
 #SBATCH --output=logs/prcs7888.out
 #SBATCH --error=logs/prcs7888.err
 #SBATCH --mail-user=vanwper@byu.edu   # email address
@@ -31,13 +31,13 @@ module load miniforge3
 #Index for the reference files is already created so just need to align
 #the graft and host files to their respective index
 mamba activate pacbioProcessing
-pbmm2 align \
-	$workingdir/reference/BaumannLab/a_arizonae_AspAri2.0.mmi \
-	$workingdir/7888/7888-host.fq.gz \
-	$workingdir/7888/7888-host.bam \
-	--preset CCS \
-	--sort
-echo "host processing complete"
+#pbmm2 align \
+	#$workingdir/reference/BaumannLab/a_arizonae_AspAri2.0.mmi \
+	#$workingdir/7888/7888-host.fq.gz \
+	#$workingdir/7888/7888-host.bam \
+	#--preset CCS \
+	#--sort
+#echo "host processing complete"
 
 pbmm2 align \
 	$workingdir/reference/BaumannLab/a_marmoratus_AspMarm2.0.mmi \

@@ -3,4 +3,7 @@ May 28, 2026
 	- Started the process of converting 7888's unassigned bam to a fastq file. Using samtools bamtofastq tool.
 
 May 30, 2026
-	-With the 7888 fastq file complete I started the xengsort tool to classify it. Used the standard of k = 25 to match the other classified files that were chosen for use downstream.
+	- With the 7888 fastq file complete I started the xengsort tool to classify it. Used the standard of k = 25 to match the other classified files that were chosen for use downstream.
+
+June 4, 2026
+	- Updated Snakefile to match new location and checked to make sure all jobs would still say complete. Removed unecessary copies from my nobackup dir.
