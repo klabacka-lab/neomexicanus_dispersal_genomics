@@ -1,0 +1,896 @@
+
+***** Intermediate results will be written to /tmp/tmpylcqvvs2 in docker. ****
+
+
+***** Intermediate results will be written to /tmp/tmphbqoc85r in docker. ****
+
+
+***** Running the command:*****
+time seq 0 7 | parallel -q --halt 2 --line-buffer /opt/deepvariant/bin/make_examples --mode calling --ref "/home/vanwper/nobackup/autodelete/neomex/reference/BaumannLab/a_arizonae_AspAri2.0.fasta" --reads "/home/vanwper/nobackup/autodelete/neomex/sample_bams/7892/7892-host.bam" --examples "/tmp/tmpylcqvvs2/make_examples.tfrecord@8.gz" --checkpoint "/opt/models/pacbio" --checkpoint_json "/opt/models/pacbio/model.example_info.json" --output_local_read_phasing "/tmp/tmpylcqvvs2/read-phasing_debug@8.tsv" --output_phase_info --call_small_model_examples --task {}
+
+
+***** Running the command:*****
+time seq 0 7 | parallel -q --halt 2 --line-buffer /opt/deepvariant/bin/make_examples --mode calling --ref "/home/vanwper/nobackup/autodelete/neomex/reference/BaumannLab/a_arizonae_AspAri2.0.fasta" --reads "/home/vanwper/nobackup/autodelete/neomex/sample_bams/7894/7894-host.bam" --examples "/tmp/tmphbqoc85r/make_examples.tfrecord@8.gz" --checkpoint "/opt/models/pacbio" --checkpoint_json "/opt/models/pacbio/model.example_info.json" --output_local_read_phasing "/tmp/tmphbqoc85r/read-phasing_debug@8.tsv" --output_phase_info --call_small_model_examples --task {}
+
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LC_CTYPE = "C.UTF-8",
+	LANG = "en_US.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LC_CTYPE = "C.UTF-8",
+	LANG = "en_US.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+2026-06-04 13:43:16.392574: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2026-06-04 13:43:16.466732: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2026-06-04 13:43:16.382577: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2026-06-04 13:43:16.512489: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2026-06-04 13:43:16.441858: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2026-06-04 13:43:16.494433: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2026-06-04 13:43:16.529016: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2026-06-04 13:43:16.496979: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2026-06-04 13:43:16.538177: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2026-06-04 13:43:16.592878: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2026-06-04 13:43:16.604022: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2026-06-04 13:43:16.532140: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2026-06-04 13:43:16.644349: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2026-06-04 13:43:16.644450: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2026-06-04 13:43:16.704250: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+2026-06-04 13:43:16.975044: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+/tmp/Bazel.runfiles_j3g8a1_o/runfiles/absl_py/absl/flags/_validators.py:233: UserWarning: Flag --mode has a non-None default value; therefore, mark_flag_as_required will pass even if flag is not specified in the command line!
+  mark_flag_as_required(flag_name, flag_values)
+I0604 13:43:22.867405 139946983251968 make_examples_core.py:3855] model.example_info filename: /opt/models/pacbio/model.example_info.json
+I0604 13:43:22.868050 139946983251968 make_examples_core.py:3859] Reading flags_for_calling from /opt/models/pacbio/model.example_info.json
+I0604 13:43:22.868537 139946983251968 make_examples_core.py:3876] Flags for calling:
+alt_aligned_pileup: diff_channels
+call_small_model_examples: True
+keep_supplementary_alignments: True
+max_reads_per_partition: 1500
+min_mapping_quality: 1
+parse_sam_aux_fields: True
+partition_size: 25000
+phase_reads: True
+pileup_image_height: 100
+pileup_image_width: 147
+realign_reads: False
+small_model_indel_gq_threshold: 22
+small_model_snp_gq_threshold: 19
+small_model_vaf_context_window_size: 51
+sort_by_haplotypes: True
+track_ref_reads: True
+trained_small_model_path: /opt/smallmodels/pacbio/model.keras
+trim_reads_for_pileup: True
+vsc_min_indel_fraction_for_small_indels: 0.12
+vsc_min_indel_fraction_for_large_indels: 0.05
+vsc_small_indel_threshold: 1
+vsc_min_fraction_indels: 0.12
+W0604 13:43:22.868638 139946983251968 make_examples_core.py:3890] Flag call_small_model_examples is specified in model.example_info.json [True] but overridden by command line with value [True]
+[E::hts_open_format] Failed to open file "/home/vanwper/nobackup/autodelete/neomex/sample_bams/7894/7894-host.bam" : No such file or directory
+Traceback (most recent call last):
+  File "/tmp/Bazel.runfiles_j3g8a1_o/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 239, in <module>
+    app.run(main)
+  File "/tmp/Bazel.runfiles_j3g8a1_o/runfiles/absl_py/absl/app.py", line 312, in run
+    _run_main(main, args)
+  File "/tmp/Bazel.runfiles_j3g8a1_o/runfiles/absl_py/absl/app.py", line 258, in _run_main
+    sys.exit(main(argv))
+  File "/tmp/Bazel.runfiles_j3g8a1_o/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 225, in main
+    options = default_options(add_flags=True, flags_obj=FLAGS)
+  File "/tmp/Bazel.runfiles_j3g8a1_o/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 162, in default_options
+    samples_in_order, sample_role_to_train = one_sample_from_flags(
+  File "/tmp/Bazel.runfiles_j3g8a1_o/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 111, in one_sample_from_flags
+    sample_name = make_examples_core.assign_sample_name(
+  File "/tmp/Bazel.runfiles_j3g8a1_o/runfiles/com_google_deepvariant/deepvariant/make_examples_core.py", line 207, in assign_sample_name
+    with sam.SamReader(reads_filenames.split(',')[0]) as sam_reader:
+  File "/tmp/Bazel.runfiles_j3g8a1_o/runfiles/com_google_deepvariant/third_party/nucleus/io/genomics_reader.py", line 221, in __init__
+    self._reader = self._native_reader(input_path, **kwargs)
+  File "/tmp/Bazel.runfiles_j3g8a1_o/runfiles/com_google_deepvariant/third_party/nucleus/io/sam.py", line 297, in _native_reader
+    return NativeSamReader(input_path, **kwargs)
+  File "/tmp/Bazel.runfiles_j3g8a1_o/runfiles/com_google_deepvariant/third_party/nucleus/io/sam.py", line 237, in __init__
+    self._reader = sam_reader.SamReader.from_file(
+ValueError: NOT_FOUND: Could not open /home/vanwper/nobackup/autodelete/neomex/sample_bams/7894/7894-host.bam
+/tmp/Bazel.runfiles_w1rh5_vd/runfiles/absl_py/absl/flags/_validators.py:233: UserWarning: Flag --mode has a non-None default value; therefore, mark_flag_as_required will pass even if flag is not specified in the command line!
+  mark_flag_as_required(flag_name, flag_values)
+I0604 13:43:22.866422 140453612871680 make_examples_core.py:3855] model.example_info filename: /opt/models/pacbio/model.example_info.json
+I0604 13:43:22.867009 140453612871680 make_examples_core.py:3859] Reading flags_for_calling from /opt/models/pacbio/model.example_info.json
+I0604 13:43:22.867572 140453612871680 make_examples_core.py:3876] Flags for calling:
+alt_aligned_pileup: diff_channels
+call_small_model_examples: True
+keep_supplementary_alignments: True
+max_reads_per_partition: 1500
+min_mapping_quality: 1
+parse_sam_aux_fields: True
+partition_size: 25000
+phase_reads: True
+pileup_image_height: 100
+pileup_image_width: 147
+realign_reads: False
+small_model_indel_gq_threshold: 22
+small_model_snp_gq_threshold: 19
+small_model_vaf_context_window_size: 51
+sort_by_haplotypes: True
+track_ref_reads: True
+trained_small_model_path: /opt/smallmodels/pacbio/model.keras
+trim_reads_for_pileup: True
+vsc_min_indel_fraction_for_small_indels: 0.12
+vsc_min_indel_fraction_for_large_indels: 0.05
+vsc_small_indel_threshold: 1
+vsc_min_fraction_indels: 0.12
+W0604 13:43:22.867689 140453612871680 make_examples_core.py:3890] Flag call_small_model_examples is specified in model.example_info.json [True] but overridden by command line with value [True]
+[E::hts_open_format] Failed to open file "/home/vanwper/nobackup/autodelete/neomex/sample_bams/7894/7894-host.bam" : No such file or directory
+Traceback (most recent call last):
+  File "/tmp/Bazel.runfiles_w1rh5_vd/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 239, in <module>
+    app.run(main)
+  File "/tmp/Bazel.runfiles_w1rh5_vd/runfiles/absl_py/absl/app.py", line 312, in run
+    _run_main(main, args)
+  File "/tmp/Bazel.runfiles_w1rh5_vd/runfiles/absl_py/absl/app.py", line 258, in _run_main
+    sys.exit(main(argv))
+  File "/tmp/Bazel.runfiles_w1rh5_vd/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 225, in main
+    options = default_options(add_flags=True, flags_obj=FLAGS)
+  File "/tmp/Bazel.runfiles_w1rh5_vd/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 162, in default_options
+    samples_in_order, sample_role_to_train = one_sample_from_flags(
+  File "/tmp/Bazel.runfiles_w1rh5_vd/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 111, in one_sample_from_flags
+    sample_name = make_examples_core.assign_sample_name(
+  File "/tmp/Bazel.runfiles_w1rh5_vd/runfiles/com_google_deepvariant/deepvariant/make_examples_core.py", line 207, in assign_sample_name
+    with sam.SamReader(reads_filenames.split(',')[0]) as sam_reader:
+  File "/tmp/Bazel.runfiles_w1rh5_vd/runfiles/com_google_deepvariant/third_party/nucleus/io/genomics_reader.py", line 221, in __init__
+    self._reader = self._native_reader(input_path, **kwargs)
+  File "/tmp/Bazel.runfiles_w1rh5_vd/runfiles/com_google_deepvariant/third_party/nucleus/io/sam.py", line 297, in _native_reader
+    return NativeSamReader(input_path, **kwargs)
+  File "/tmp/Bazel.runfiles_w1rh5_vd/runfiles/com_google_deepvariant/third_party/nucleus/io/sam.py", line 237, in __init__
+    self._reader = sam_reader.SamReader.from_file(
+ValueError: NOT_FOUND: Could not open /home/vanwper/nobackup/autodelete/neomex/sample_bams/7894/7894-host.bam
+/tmp/Bazel.runfiles_b4v4wfnn/runfiles/absl_py/absl/flags/_validators.py:233: UserWarning: Flag --mode has a non-None default value; therefore, mark_flag_as_required will pass even if flag is not specified in the command line!
+  mark_flag_as_required(flag_name, flag_values)
+I0604 13:43:22.868738 140533285134336 make_examples_core.py:3855] model.example_info filename: /opt/models/pacbio/model.example_info.json
+I0604 13:43:22.869325 140533285134336 make_examples_core.py:3859] Reading flags_for_calling from /opt/models/pacbio/model.example_info.json
+I0604 13:43:22.869891 140533285134336 make_examples_core.py:3876] Flags for calling:
+alt_aligned_pileup: diff_channels
+call_small_model_examples: True
+keep_supplementary_alignments: True
+max_reads_per_partition: 1500
+min_mapping_quality: 1
+parse_sam_aux_fields: True
+partition_size: 25000
+phase_reads: True
+pileup_image_height: 100
+pileup_image_width: 147
+realign_reads: False
+small_model_indel_gq_threshold: 22
+small_model_snp_gq_threshold: 19
+small_model_vaf_context_window_size: 51
+sort_by_haplotypes: True
+track_ref_reads: True
+trained_small_model_path: /opt/smallmodels/pacbio/model.keras
+trim_reads_for_pileup: True
+vsc_min_indel_fraction_for_small_indels: 0.12
+vsc_min_indel_fraction_for_large_indels: 0.05
+vsc_small_indel_threshold: 1
+vsc_min_fraction_indels: 0.12
+W0604 13:43:22.870002 140533285134336 make_examples_core.py:3890] Flag call_small_model_examples is specified in model.example_info.json [True] but overridden by command line with value [True]
+[E::hts_open_format] Failed to open file "/home/vanwper/nobackup/autodelete/neomex/sample_bams/7892/7892-host.bam" : No such file or directory
+Traceback (most recent call last):
+  File "/tmp/Bazel.runfiles_b4v4wfnn/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 239, in <module>
+    app.run(main)
+  File "/tmp/Bazel.runfiles_b4v4wfnn/runfiles/absl_py/absl/app.py", line 312, in run
+    _run_main(main, args)
+  File "/tmp/Bazel.runfiles_b4v4wfnn/runfiles/absl_py/absl/app.py", line 258, in _run_main
+    sys.exit(main(argv))
+  File "/tmp/Bazel.runfiles_b4v4wfnn/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 225, in main
+    options = default_options(add_flags=True, flags_obj=FLAGS)
+  File "/tmp/Bazel.runfiles_b4v4wfnn/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 162, in default_options
+    samples_in_order, sample_role_to_train = one_sample_from_flags(
+  File "/tmp/Bazel.runfiles_b4v4wfnn/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 111, in one_sample_from_flags
+    sample_name = make_examples_core.assign_sample_name(
+  File "/tmp/Bazel.runfiles_b4v4wfnn/runfiles/com_google_deepvariant/deepvariant/make_examples_core.py", line 207, in assign_sample_name
+    with sam.SamReader(reads_filenames.split(',')[0]) as sam_reader:
+  File "/tmp/Bazel.runfiles_b4v4wfnn/runfiles/com_google_deepvariant/third_party/nucleus/io/genomics_reader.py", line 221, in __init__
+    self._reader = self._native_reader(input_path, **kwargs)
+  File "/tmp/Bazel.runfiles_b4v4wfnn/runfiles/com_google_deepvariant/third_party/nucleus/io/sam.py", line 297, in _native_reader
+    return NativeSamReader(input_path, **kwargs)
+  File "/tmp/Bazel.runfiles_b4v4wfnn/runfiles/com_google_deepvariant/third_party/nucleus/io/sam.py", line 237, in __init__
+    self._reader = sam_reader.SamReader.from_file(
+ValueError: NOT_FOUND: Could not open /home/vanwper/nobackup/autodelete/neomex/sample_bams/7892/7892-host.bam
+/tmp/Bazel.runfiles_15m2yjss/runfiles/absl_py/absl/flags/_validators.py:233: UserWarning: Flag --mode has a non-None default value; therefore, mark_flag_as_required will pass even if flag is not specified in the command line!
+  mark_flag_as_required(flag_name, flag_values)
+I0604 13:43:22.874339 140509030608896 make_examples_core.py:3855] model.example_info filename: /opt/models/pacbio/model.example_info.json
+I0604 13:43:22.875138 140509030608896 make_examples_core.py:3859] Reading flags_for_calling from /opt/models/pacbio/model.example_info.json
+I0604 13:43:22.875831 140509030608896 make_examples_core.py:3876] Flags for calling:
+alt_aligned_pileup: diff_channels
+call_small_model_examples: True
+keep_supplementary_alignments: True
+max_reads_per_partition: 1500
+min_mapping_quality: 1
+parse_sam_aux_fields: True
+partition_size: 25000
+phase_reads: True
+pileup_image_height: 100
+pileup_image_width: 147
+realign_reads: False
+small_model_indel_gq_threshold: 22
+small_model_snp_gq_threshold: 19
+small_model_vaf_context_window_size: 51
+sort_by_haplotypes: True
+track_ref_reads: True
+trained_small_model_path: /opt/smallmodels/pacbio/model.keras
+trim_reads_for_pileup: True
+vsc_min_indel_fraction_for_small_indels: 0.12
+vsc_min_indel_fraction_for_large_indels: 0.05
+vsc_small_indel_threshold: 1
+vsc_min_fraction_indels: 0.12
+W0604 13:43:22.875949 140509030608896 make_examples_core.py:3890] Flag call_small_model_examples is specified in model.example_info.json [True] but overridden by command line with value [True]
+[E::hts_open_format] Failed to open file "/home/vanwper/nobackup/autodelete/neomex/sample_bams/7894/7894-host.bam" : No such file or directory
+Traceback (most recent call last):
+  File "/tmp/Bazel.runfiles_15m2yjss/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 239, in <module>
+    app.run(main)
+  File "/tmp/Bazel.runfiles_15m2yjss/runfiles/absl_py/absl/app.py", line 312, in run
+    _run_main(main, args)
+  File "/tmp/Bazel.runfiles_15m2yjss/runfiles/absl_py/absl/app.py", line 258, in _run_main
+    sys.exit(main(argv))
+  File "/tmp/Bazel.runfiles_15m2yjss/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 225, in main
+    options = default_options(add_flags=True, flags_obj=FLAGS)
+  File "/tmp/Bazel.runfiles_15m2yjss/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 162, in default_options
+    samples_in_order, sample_role_to_train = one_sample_from_flags(
+  File "/tmp/Bazel.runfiles_15m2yjss/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 111, in one_sample_from_flags
+    sample_name = make_examples_core.assign_sample_name(
+  File "/tmp/Bazel.runfiles_15m2yjss/runfiles/com_google_deepvariant/deepvariant/make_examples_core.py", line 207, in assign_sample_name
+    with sam.SamReader(reads_filenames.split(',')[0]) as sam_reader:
+  File "/tmp/Bazel.runfiles_15m2yjss/runfiles/com_google_deepvariant/third_party/nucleus/io/genomics_reader.py", line 221, in __init__
+    self._reader = self._native_reader(input_path, **kwargs)
+  File "/tmp/Bazel.runfiles_15m2yjss/runfiles/com_google_deepvariant/third_party/nucleus/io/sam.py", line 297, in _native_reader
+    return NativeSamReader(input_path, **kwargs)
+  File "/tmp/Bazel.runfiles_15m2yjss/runfiles/com_google_deepvariant/third_party/nucleus/io/sam.py", line 237, in __init__
+    self._reader = sam_reader.SamReader.from_file(
+ValueError: NOT_FOUND: Could not open /home/vanwper/nobackup/autodelete/neomex/sample_bams/7894/7894-host.bam
+/tmp/Bazel.runfiles_5piqbc67/runfiles/absl_py/absl/flags/_validators.py:233: UserWarning: Flag --mode has a non-None default value; therefore, mark_flag_as_required will pass even if flag is not specified in the command line!
+  mark_flag_as_required(flag_name, flag_values)
+I0604 13:43:22.872559 139641253429248 make_examples_core.py:3855] model.example_info filename: /opt/models/pacbio/model.example_info.json
+I0604 13:43:22.873398 139641253429248 make_examples_core.py:3859] Reading flags_for_calling from /opt/models/pacbio/model.example_info.json
+I0604 13:43:22.874059 139641253429248 make_examples_core.py:3876] Flags for calling:
+alt_aligned_pileup: diff_channels
+call_small_model_examples: True
+keep_supplementary_alignments: True
+max_reads_per_partition: 1500
+min_mapping_quality: 1
+parse_sam_aux_fields: True
+partition_size: 25000
+phase_reads: True
+pileup_image_height: 100
+pileup_image_width: 147
+realign_reads: False
+small_model_indel_gq_threshold: 22
+small_model_snp_gq_threshold: 19
+small_model_vaf_context_window_size: 51
+sort_by_haplotypes: True
+track_ref_reads: True
+trained_small_model_path: /opt/smallmodels/pacbio/model.keras
+trim_reads_for_pileup: True
+vsc_min_indel_fraction_for_small_indels: 0.12
+vsc_min_indel_fraction_for_large_indels: 0.05
+vsc_small_indel_threshold: 1
+vsc_min_fraction_indels: 0.12
+W0604 13:43:22.874162 139641253429248 make_examples_core.py:3890] Flag call_small_model_examples is specified in model.example_info.json [True] but overridden by command line with value [True]
+[E::hts_open_format] Failed to open file "/home/vanwper/nobackup/autodelete/neomex/sample_bams/7892/7892-host.bam" : No such file or directory
+Traceback (most recent call last):
+  File "/tmp/Bazel.runfiles_5piqbc67/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 239, in <module>
+    app.run(main)
+  File "/tmp/Bazel.runfiles_5piqbc67/runfiles/absl_py/absl/app.py", line 312, in run
+    _run_main(main, args)
+  File "/tmp/Bazel.runfiles_5piqbc67/runfiles/absl_py/absl/app.py", line 258, in _run_main
+    sys.exit(main(argv))
+  File "/tmp/Bazel.runfiles_5piqbc67/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 225, in main
+    options = default_options(add_flags=True, flags_obj=FLAGS)
+  File "/tmp/Bazel.runfiles_5piqbc67/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 162, in default_options
+    samples_in_order, sample_role_to_train = one_sample_from_flags(
+  File "/tmp/Bazel.runfiles_5piqbc67/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 111, in one_sample_from_flags
+    sample_name = make_examples_core.assign_sample_name(
+  File "/tmp/Bazel.runfiles_5piqbc67/runfiles/com_google_deepvariant/deepvariant/make_examples_core.py", line 207, in assign_sample_name
+    with sam.SamReader(reads_filenames.split(',')[0]) as sam_reader:
+  File "/tmp/Bazel.runfiles_5piqbc67/runfiles/com_google_deepvariant/third_party/nucleus/io/genomics_reader.py", line 221, in __init__
+    self._reader = self._native_reader(input_path, **kwargs)
+  File "/tmp/Bazel.runfiles_5piqbc67/runfiles/com_google_deepvariant/third_party/nucleus/io/sam.py", line 297, in _native_reader
+    return NativeSamReader(input_path, **kwargs)
+  File "/tmp/Bazel.runfiles_5piqbc67/runfiles/com_google_deepvariant/third_party/nucleus/io/sam.py", line 237, in __init__
+    self._reader = sam_reader.SamReader.from_file(
+ValueError: NOT_FOUND: Could not open /home/vanwper/nobackup/autodelete/neomex/sample_bams/7892/7892-host.bam
+/tmp/Bazel.runfiles_9fhzscy1/runfiles/absl_py/absl/flags/_validators.py:233: UserWarning: Flag --mode has a non-None default value; therefore, mark_flag_as_required will pass even if flag is not specified in the command line!
+  mark_flag_as_required(flag_name, flag_values)
+I0604 13:43:22.867939 140278325321728 make_examples_core.py:3855] model.example_info filename: /opt/models/pacbio/model.example_info.json
+I0604 13:43:22.868533 140278325321728 make_examples_core.py:3859] Reading flags_for_calling from /opt/models/pacbio/model.example_info.json
+I0604 13:43:22.869037 140278325321728 make_examples_core.py:3876] Flags for calling:
+alt_aligned_pileup: diff_channels
+call_small_model_examples: True
+keep_supplementary_alignments: True
+max_reads_per_partition: 1500
+min_mapping_quality: 1
+parse_sam_aux_fields: True
+partition_size: 25000
+phase_reads: True
+pileup_image_height: 100
+pileup_image_width: 147
+realign_reads: False
+small_model_indel_gq_threshold: 22
+small_model_snp_gq_threshold: 19
+small_model_vaf_context_window_size: 51
+sort_by_haplotypes: True
+track_ref_reads: True
+trained_small_model_path: /opt/smallmodels/pacbio/model.keras
+trim_reads_for_pileup: True
+vsc_min_indel_fraction_for_small_indels: 0.12
+vsc_min_indel_fraction_for_large_indels: 0.05
+vsc_small_indel_threshold: 1
+vsc_min_fraction_indels: 0.12
+W0604 13:43:22.869140 140278325321728 make_examples_core.py:3890] Flag call_small_model_examples is specified in model.example_info.json [True] but overridden by command line with value [True]
+[E::hts_open_format] Failed to open file "/home/vanwper/nobackup/autodelete/neomex/sample_bams/7894/7894-host.bam" : No such file or directory
+Traceback (most recent call last):
+  File "/tmp/Bazel.runfiles_9fhzscy1/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 239, in <module>
+    app.run(main)
+  File "/tmp/Bazel.runfiles_9fhzscy1/runfiles/absl_py/absl/app.py", line 312, in run
+    _run_main(main, args)
+  File "/tmp/Bazel.runfiles_9fhzscy1/runfiles/absl_py/absl/app.py", line 258, in _run_main
+    sys.exit(main(argv))
+  File "/tmp/Bazel.runfiles_9fhzscy1/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 225, in main
+    options = default_options(add_flags=True, flags_obj=FLAGS)
+  File "/tmp/Bazel.runfiles_9fhzscy1/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 162, in default_options
+    samples_in_order, sample_role_to_train = one_sample_from_flags(
+  File "/tmp/Bazel.runfiles_9fhzscy1/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 111, in one_sample_from_flags
+    sample_name = make_examples_core.assign_sample_name(
+  File "/tmp/Bazel.runfiles_9fhzscy1/runfiles/com_google_deepvariant/deepvariant/make_examples_core.py", line 207, in assign_sample_name
+    with sam.SamReader(reads_filenames.split(',')[0]) as sam_reader:
+  File "/tmp/Bazel.runfiles_9fhzscy1/runfiles/com_google_deepvariant/third_party/nucleus/io/genomics_reader.py", line 221, in __init__
+    self._reader = self._native_reader(input_path, **kwargs)
+  File "/tmp/Bazel.runfiles_9fhzscy1/runfiles/com_google_deepvariant/third_party/nucleus/io/sam.py", line 297, in _native_reader
+    return NativeSamReader(input_path, **kwargs)
+  File "/tmp/Bazel.runfiles_9fhzscy1/runfiles/com_google_deepvariant/third_party/nucleus/io/sam.py", line 237, in __init__
+    self._reader = sam_reader.SamReader.from_file(
+ValueError: NOT_FOUND: Could not open /home/vanwper/nobackup/autodelete/neomex/sample_bams/7894/7894-host.bam
+/tmp/Bazel.runfiles_4u8tefur/runfiles/absl_py/absl/flags/_validators.py:233: UserWarning: Flag --mode has a non-None default value; therefore, mark_flag_as_required will pass even if flag is not specified in the command line!
+  mark_flag_as_required(flag_name, flag_values)
+I0604 13:43:22.866427 139747865907200 make_examples_core.py:3855] model.example_info filename: /opt/models/pacbio/model.example_info.json
+I0604 13:43:22.867497 139747865907200 make_examples_core.py:3859] Reading flags_for_calling from /opt/models/pacbio/model.example_info.json
+I0604 13:43:22.868133 139747865907200 make_examples_core.py:3876] Flags for calling:
+alt_aligned_pileup: diff_channels
+call_small_model_examples: True
+keep_supplementary_alignments: True
+max_reads_per_partition: 1500
+min_mapping_quality: 1
+parse_sam_aux_fields: True
+partition_size: 25000
+phase_reads: True
+pileup_image_height: 100
+pileup_image_width: 147
+realign_reads: False
+small_model_indel_gq_threshold: 22
+small_model_snp_gq_threshold: 19
+small_model_vaf_context_window_size: 51
+sort_by_haplotypes: True
+track_ref_reads: True
+trained_small_model_path: /opt/smallmodels/pacbio/model.keras
+trim_reads_for_pileup: True
+vsc_min_indel_fraction_for_small_indels: 0.12
+vsc_min_indel_fraction_for_large_indels: 0.05
+vsc_small_indel_threshold: 1
+vsc_min_fraction_indels: 0.12
+W0604 13:43:22.868239 139747865907200 make_examples_core.py:3890] Flag call_small_model_examples is specified in model.example_info.json [True] but overridden by command line with value [True]
+[E::hts_open_format] Failed to open file "/home/vanwper/nobackup/autodelete/neomex/sample_bams/7894/7894-host.bam" : No such file or directory
+Traceback (most recent call last):
+  File "/tmp/Bazel.runfiles_4u8tefur/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 239, in <module>
+    app.run(main)
+  File "/tmp/Bazel.runfiles_4u8tefur/runfiles/absl_py/absl/app.py", line 312, in run
+    _run_main(main, args)
+  File "/tmp/Bazel.runfiles_4u8tefur/runfiles/absl_py/absl/app.py", line 258, in _run_main
+    sys.exit(main(argv))
+  File "/tmp/Bazel.runfiles_4u8tefur/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 225, in main
+    options = default_options(add_flags=True, flags_obj=FLAGS)
+  File "/tmp/Bazel.runfiles_4u8tefur/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 162, in default_options
+    samples_in_order, sample_role_to_train = one_sample_from_flags(
+  File "/tmp/Bazel.runfiles_4u8tefur/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 111, in one_sample_from_flags
+    sample_name = make_examples_core.assign_sample_name(
+  File "/tmp/Bazel.runfiles_4u8tefur/runfiles/com_google_deepvariant/deepvariant/make_examples_core.py", line 207, in assign_sample_name
+    with sam.SamReader(reads_filenames.split(',')[0]) as sam_reader:
+  File "/tmp/Bazel.runfiles_4u8tefur/runfiles/com_google_deepvariant/third_party/nucleus/io/genomics_reader.py", line 221, in __init__
+    self._reader = self._native_reader(input_path, **kwargs)
+  File "/tmp/Bazel.runfiles_4u8tefur/runfiles/com_google_deepvariant/third_party/nucleus/io/sam.py", line 297, in _native_reader
+    return NativeSamReader(input_path, **kwargs)
+  File "/tmp/Bazel.runfiles_4u8tefur/runfiles/com_google_deepvariant/third_party/nucleus/io/sam.py", line 237, in __init__
+    self._reader = sam_reader.SamReader.from_file(
+ValueError: NOT_FOUND: Could not open /home/vanwper/nobackup/autodelete/neomex/sample_bams/7894/7894-host.bam
+/tmp/Bazel.runfiles_fwldzjp2/runfiles/absl_py/absl/flags/_validators.py:233: UserWarning: Flag --mode has a non-None default value; therefore, mark_flag_as_required will pass even if flag is not specified in the command line!
+  mark_flag_as_required(flag_name, flag_values)
+I0604 13:43:22.866492 140028212453376 make_examples_core.py:3855] model.example_info filename: /opt/models/pacbio/model.example_info.json
+I0604 13:43:22.867142 140028212453376 make_examples_core.py:3859] Reading flags_for_calling from /opt/models/pacbio/model.example_info.json
+I0604 13:43:22.867633 140028212453376 make_examples_core.py:3876] Flags for calling:
+alt_aligned_pileup: diff_channels
+call_small_model_examples: True
+keep_supplementary_alignments: True
+max_reads_per_partition: 1500
+min_mapping_quality: 1
+parse_sam_aux_fields: True
+partition_size: 25000
+phase_reads: True
+pileup_image_height: 100
+pileup_image_width: 147
+realign_reads: False
+small_model_indel_gq_threshold: 22
+small_model_snp_gq_threshold: 19
+small_model_vaf_context_window_size: 51
+sort_by_haplotypes: True
+track_ref_reads: True
+trained_small_model_path: /opt/smallmodels/pacbio/model.keras
+trim_reads_for_pileup: True
+vsc_min_indel_fraction_for_small_indels: 0.12
+vsc_min_indel_fraction_for_large_indels: 0.05
+vsc_small_indel_threshold: 1
+vsc_min_fraction_indels: 0.12
+W0604 13:43:22.867734 140028212453376 make_examples_core.py:3890] Flag call_small_model_examples is specified in model.example_info.json [True] but overridden by command line with value [True]
+[E::hts_open_format] Failed to open file "/home/vanwper/nobackup/autodelete/neomex/sample_bams/7894/7894-host.bam" : No such file or directory
+Traceback (most recent call last):
+  File "/tmp/Bazel.runfiles_fwldzjp2/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 239, in <module>
+    app.run(main)
+  File "/tmp/Bazel.runfiles_fwldzjp2/runfiles/absl_py/absl/app.py", line 312, in run
+    _run_main(main, args)
+  File "/tmp/Bazel.runfiles_fwldzjp2/runfiles/absl_py/absl/app.py", line 258, in _run_main
+    sys.exit(main(argv))
+  File "/tmp/Bazel.runfiles_fwldzjp2/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 225, in main
+    options = default_options(add_flags=True, flags_obj=FLAGS)
+  File "/tmp/Bazel.runfiles_fwldzjp2/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 162, in default_options
+    samples_in_order, sample_role_to_train = one_sample_from_flags(
+  File "/tmp/Bazel.runfiles_fwldzjp2/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 111, in one_sample_from_flags
+    sample_name = make_examples_core.assign_sample_name(
+  File "/tmp/Bazel.runfiles_fwldzjp2/runfiles/com_google_deepvariant/deepvariant/make_examples_core.py", line 207, in assign_sample_name
+    with sam.SamReader(reads_filenames.split(',')[0]) as sam_reader:
+  File "/tmp/Bazel.runfiles_fwldzjp2/runfiles/com_google_deepvariant/third_party/nucleus/io/genomics_reader.py", line 221, in __init__
+    self._reader = self._native_reader(input_path, **kwargs)
+  File "/tmp/Bazel.runfiles_fwldzjp2/runfiles/com_google_deepvariant/third_party/nucleus/io/sam.py", line 297, in _native_reader
+    return NativeSamReader(input_path, **kwargs)
+  File "/tmp/Bazel.runfiles_fwldzjp2/runfiles/com_google_deepvariant/third_party/nucleus/io/sam.py", line 237, in __init__
+    self._reader = sam_reader.SamReader.from_file(
+ValueError: NOT_FOUND: Could not open /home/vanwper/nobackup/autodelete/neomex/sample_bams/7894/7894-host.bam
+/tmp/Bazel.runfiles_zsd9r710/runfiles/absl_py/absl/flags/_validators.py:233: UserWarning: Flag --mode has a non-None default value; therefore, mark_flag_as_required will pass even if flag is not specified in the command line!
+  mark_flag_as_required(flag_name, flag_values)
+I0604 13:43:22.878858 140004044771328 make_examples_core.py:3855] model.example_info filename: /opt/models/pacbio/model.example_info.json
+I0604 13:43:22.879745 140004044771328 make_examples_core.py:3859] Reading flags_for_calling from /opt/models/pacbio/model.example_info.json
+I0604 13:43:22.880531 140004044771328 make_examples_core.py:3876] Flags for calling:
+alt_aligned_pileup: diff_channels
+call_small_model_examples: True
+keep_supplementary_alignments: True
+max_reads_per_partition: 1500
+min_mapping_quality: 1
+parse_sam_aux_fields: True
+partition_size: 25000
+phase_reads: True
+pileup_image_height: 100
+pileup_image_width: 147
+realign_reads: False
+small_model_indel_gq_threshold: 22
+small_model_snp_gq_threshold: 19
+small_model_vaf_context_window_size: 51
+sort_by_haplotypes: True
+track_ref_reads: True
+trained_small_model_path: /opt/smallmodels/pacbio/model.keras
+trim_reads_for_pileup: True
+vsc_min_indel_fraction_for_small_indels: 0.12
+vsc_min_indel_fraction_for_large_indels: 0.05
+vsc_small_indel_threshold: 1
+vsc_min_fraction_indels: 0.12
+W0604 13:43:22.880646 140004044771328 make_examples_core.py:3890] Flag call_small_model_examples is specified in model.example_info.json [True] but overridden by command line with value [True]
+[E::hts_open_format] Failed to open file "/home/vanwper/nobackup/autodelete/neomex/sample_bams/7892/7892-host.bam" : No such file or directory
+Traceback (most recent call last):
+  File "/tmp/Bazel.runfiles_zsd9r710/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 239, in <module>
+    app.run(main)
+  File "/tmp/Bazel.runfiles_zsd9r710/runfiles/absl_py/absl/app.py", line 312, in run
+    _run_main(main, args)
+  File "/tmp/Bazel.runfiles_zsd9r710/runfiles/absl_py/absl/app.py", line 258, in _run_main
+    sys.exit(main(argv))
+  File "/tmp/Bazel.runfiles_zsd9r710/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 225, in main
+    options = default_options(add_flags=True, flags_obj=FLAGS)
+  File "/tmp/Bazel.runfiles_zsd9r710/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 162, in default_options
+    samples_in_order, sample_role_to_train = one_sample_from_flags(
+  File "/tmp/Bazel.runfiles_zsd9r710/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 111, in one_sample_from_flags
+    sample_name = make_examples_core.assign_sample_name(
+  File "/tmp/Bazel.runfiles_zsd9r710/runfiles/com_google_deepvariant/deepvariant/make_examples_core.py", line 207, in assign_sample_name
+    with sam.SamReader(reads_filenames.split(',')[0]) as sam_reader:
+  File "/tmp/Bazel.runfiles_zsd9r710/runfiles/com_google_deepvariant/third_party/nucleus/io/genomics_reader.py", line 221, in __init__
+    self._reader = self._native_reader(input_path, **kwargs)
+  File "/tmp/Bazel.runfiles_zsd9r710/runfiles/com_google_deepvariant/third_party/nucleus/io/sam.py", line 297, in _native_reader
+    return NativeSamReader(input_path, **kwargs)
+  File "/tmp/Bazel.runfiles_zsd9r710/runfiles/com_google_deepvariant/third_party/nucleus/io/sam.py", line 237, in __init__
+    self._reader = sam_reader.SamReader.from_file(
+ValueError: NOT_FOUND: Could not open /home/vanwper/nobackup/autodelete/neomex/sample_bams/7892/7892-host.bam
+/tmp/Bazel.runfiles_6qg8tg01/runfiles/absl_py/absl/flags/_validators.py:233: UserWarning: Flag --mode has a non-None default value; therefore, mark_flag_as_required will pass even if flag is not specified in the command line!
+  mark_flag_as_required(flag_name, flag_values)
+I0604 13:43:22.875118 140344663527424 make_examples_core.py:3855] model.example_info filename: /opt/models/pacbio/model.example_info.json
+I0604 13:43:22.875753 140344663527424 make_examples_core.py:3859] Reading flags_for_calling from /opt/models/pacbio/model.example_info.json
+I0604 13:43:22.876358 140344663527424 make_examples_core.py:3876] Flags for calling:
+alt_aligned_pileup: diff_channels
+call_small_model_examples: True
+keep_supplementary_alignments: True
+max_reads_per_partition: 1500
+min_mapping_quality: 1
+parse_sam_aux_fields: True
+partition_size: 25000
+phase_reads: True
+pileup_image_height: 100
+pileup_image_width: 147
+realign_reads: False
+small_model_indel_gq_threshold: 22
+small_model_snp_gq_threshold: 19
+small_model_vaf_context_window_size: 51
+sort_by_haplotypes: True
+track_ref_reads: True
+trained_small_model_path: /opt/smallmodels/pacbio/model.keras
+trim_reads_for_pileup: True
+vsc_min_indel_fraction_for_small_indels: 0.12
+vsc_min_indel_fraction_for_large_indels: 0.05
+vsc_small_indel_threshold: 1
+vsc_min_fraction_indels: 0.12
+W0604 13:43:22.876472 140344663527424 make_examples_core.py:3890] Flag call_small_model_examples is specified in model.example_info.json [True] but overridden by command line with value [True]
+[E::hts_open_format] Failed to open file "/home/vanwper/nobackup/autodelete/neomex/sample_bams/7894/7894-host.bam" : No such file or directory
+Traceback (most recent call last):
+  File "/tmp/Bazel.runfiles_6qg8tg01/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 239, in <module>
+    app.run(main)
+  File "/tmp/Bazel.runfiles_6qg8tg01/runfiles/absl_py/absl/app.py", line 312, in run
+    _run_main(main, args)
+  File "/tmp/Bazel.runfiles_6qg8tg01/runfiles/absl_py/absl/app.py", line 258, in _run_main
+    sys.exit(main(argv))
+  File "/tmp/Bazel.runfiles_6qg8tg01/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 225, in main
+    options = default_options(add_flags=True, flags_obj=FLAGS)
+  File "/tmp/Bazel.runfiles_6qg8tg01/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 162, in default_options
+    samples_in_order, sample_role_to_train = one_sample_from_flags(
+  File "/tmp/Bazel.runfiles_6qg8tg01/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 111, in one_sample_from_flags
+    sample_name = make_examples_core.assign_sample_name(
+  File "/tmp/Bazel.runfiles_6qg8tg01/runfiles/com_google_deepvariant/deepvariant/make_examples_core.py", line 207, in assign_sample_name
+    with sam.SamReader(reads_filenames.split(',')[0]) as sam_reader:
+  File "/tmp/Bazel.runfiles_6qg8tg01/runfiles/com_google_deepvariant/third_party/nucleus/io/genomics_reader.py", line 221, in __init__
+    self._reader = self._native_reader(input_path, **kwargs)
+  File "/tmp/Bazel.runfiles_6qg8tg01/runfiles/com_google_deepvariant/third_party/nucleus/io/sam.py", line 297, in _native_reader
+    return NativeSamReader(input_path, **kwargs)
+  File "/tmp/Bazel.runfiles_6qg8tg01/runfiles/com_google_deepvariant/third_party/nucleus/io/sam.py", line 237, in __init__
+    self._reader = sam_reader.SamReader.from_file(
+ValueError: NOT_FOUND: Could not open /home/vanwper/nobackup/autodelete/neomex/sample_bams/7894/7894-host.bam
+/tmp/Bazel.runfiles_91qgcxpe/runfiles/absl_py/absl/flags/_validators.py:233: UserWarning: Flag --mode has a non-None default value; therefore, mark_flag_as_required will pass even if flag is not specified in the command line!
+  mark_flag_as_required(flag_name, flag_values)
+I0604 13:43:22.866095 140160429846528 make_examples_core.py:3855] model.example_info filename: /opt/models/pacbio/model.example_info.json
+I0604 13:43:22.866430 140160429846528 make_examples_core.py:3859] Reading flags_for_calling from /opt/models/pacbio/model.example_info.json
+I0604 13:43:22.866813 140160429846528 make_examples_core.py:3876] Flags for calling:
+alt_aligned_pileup: diff_channels
+call_small_model_examples: True
+keep_supplementary_alignments: True
+max_reads_per_partition: 1500
+min_mapping_quality: 1
+parse_sam_aux_fields: True
+partition_size: 25000
+phase_reads: True
+pileup_image_height: 100
+pileup_image_width: 147
+realign_reads: False
+small_model_indel_gq_threshold: 22
+small_model_snp_gq_threshold: 19
+small_model_vaf_context_window_size: 51
+sort_by_haplotypes: True
+track_ref_reads: True
+trained_small_model_path: /opt/smallmodels/pacbio/model.keras
+trim_reads_for_pileup: True
+vsc_min_indel_fraction_for_small_indels: 0.12
+vsc_min_indel_fraction_for_large_indels: 0.05
+vsc_small_indel_threshold: 1
+vsc_min_fraction_indels: 0.12
+W0604 13:43:22.866909 140160429846528 make_examples_core.py:3890] Flag call_small_model_examples is specified in model.example_info.json [True] but overridden by command line with value [True]
+[E::hts_open_format] Failed to open file "/home/vanwper/nobackup/autodelete/neomex/sample_bams/7892/7892-host.bam" : No such file or directory
+Traceback (most recent call last):
+  File "/tmp/Bazel.runfiles_91qgcxpe/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 239, in <module>
+    app.run(main)
+  File "/tmp/Bazel.runfiles_91qgcxpe/runfiles/absl_py/absl/app.py", line 312, in run
+    _run_main(main, args)
+  File "/tmp/Bazel.runfiles_91qgcxpe/runfiles/absl_py/absl/app.py", line 258, in _run_main
+    sys.exit(main(argv))
+  File "/tmp/Bazel.runfiles_91qgcxpe/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 225, in main
+    options = default_options(add_flags=True, flags_obj=FLAGS)
+  File "/tmp/Bazel.runfiles_91qgcxpe/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 162, in default_options
+    samples_in_order, sample_role_to_train = one_sample_from_flags(
+  File "/tmp/Bazel.runfiles_91qgcxpe/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 111, in one_sample_from_flags
+    sample_name = make_examples_core.assign_sample_name(
+  File "/tmp/Bazel.runfiles_91qgcxpe/runfiles/com_google_deepvariant/deepvariant/make_examples_core.py", line 207, in assign_sample_name
+    with sam.SamReader(reads_filenames.split(',')[0]) as sam_reader:
+  File "/tmp/Bazel.runfiles_91qgcxpe/runfiles/com_google_deepvariant/third_party/nucleus/io/genomics_reader.py", line 221, in __init__
+    self._reader = self._native_reader(input_path, **kwargs)
+  File "/tmp/Bazel.runfiles_91qgcxpe/runfiles/com_google_deepvariant/third_party/nucleus/io/sam.py", line 297, in _native_reader
+    return NativeSamReader(input_path, **kwargs)
+  File "/tmp/Bazel.runfiles_91qgcxpe/runfiles/com_google_deepvariant/third_party/nucleus/io/sam.py", line 237, in __init__
+    self._reader = sam_reader.SamReader.from_file(
+ValueError: NOT_FOUND: Could not open /home/vanwper/nobackup/autodelete/neomex/sample_bams/7892/7892-host.bam
+/tmp/Bazel.runfiles_nx62xeco/runfiles/absl_py/absl/flags/_validators.py:233: UserWarning: Flag --mode has a non-None default value; therefore, mark_flag_as_required will pass even if flag is not specified in the command line!
+  mark_flag_as_required(flag_name, flag_values)
+I0604 13:43:22.894059 139907423707136 make_examples_core.py:3855] model.example_info filename: /opt/models/pacbio/model.example_info.json
+I0604 13:43:22.894805 139907423707136 make_examples_core.py:3859] Reading flags_for_calling from /opt/models/pacbio/model.example_info.json
+I0604 13:43:22.895310 139907423707136 make_examples_core.py:3876] Flags for calling:
+alt_aligned_pileup: diff_channels
+call_small_model_examples: True
+keep_supplementary_alignments: True
+max_reads_per_partition: 1500
+min_mapping_quality: 1
+parse_sam_aux_fields: True
+partition_size: 25000
+phase_reads: True
+pileup_image_height: 100
+pileup_image_width: 147
+realign_reads: False
+small_model_indel_gq_threshold: 22
+small_model_snp_gq_threshold: 19
+small_model_vaf_context_window_size: 51
+sort_by_haplotypes: True
+track_ref_reads: True
+trained_small_model_path: /opt/smallmodels/pacbio/model.keras
+trim_reads_for_pileup: True
+vsc_min_indel_fraction_for_small_indels: 0.12
+vsc_min_indel_fraction_for_large_indels: 0.05
+vsc_small_indel_threshold: 1
+vsc_min_fraction_indels: 0.12
+W0604 13:43:22.895414 139907423707136 make_examples_core.py:3890] Flag call_small_model_examples is specified in model.example_info.json [True] but overridden by command line with value [True]
+[E::hts_open_format] Failed to open file "/home/vanwper/nobackup/autodelete/neomex/sample_bams/7894/7894-host.bam" : No such file or directory
+Traceback (most recent call last):
+  File "/tmp/Bazel.runfiles_nx62xeco/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 239, in <module>
+    app.run(main)
+  File "/tmp/Bazel.runfiles_nx62xeco/runfiles/absl_py/absl/app.py", line 312, in run
+    _run_main(main, args)
+  File "/tmp/Bazel.runfiles_nx62xeco/runfiles/absl_py/absl/app.py", line 258, in _run_main
+    sys.exit(main(argv))
+  File "/tmp/Bazel.runfiles_nx62xeco/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 225, in main
+    options = default_options(add_flags=True, flags_obj=FLAGS)
+  File "/tmp/Bazel.runfiles_nx62xeco/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 162, in default_options
+    samples_in_order, sample_role_to_train = one_sample_from_flags(
+  File "/tmp/Bazel.runfiles_nx62xeco/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 111, in one_sample_from_flags
+    sample_name = make_examples_core.assign_sample_name(
+  File "/tmp/Bazel.runfiles_nx62xeco/runfiles/com_google_deepvariant/deepvariant/make_examples_core.py", line 207, in assign_sample_name
+    with sam.SamReader(reads_filenames.split(',')[0]) as sam_reader:
+  File "/tmp/Bazel.runfiles_nx62xeco/runfiles/com_google_deepvariant/third_party/nucleus/io/genomics_reader.py", line 221, in __init__
+    self._reader = self._native_reader(input_path, **kwargs)
+  File "/tmp/Bazel.runfiles_nx62xeco/runfiles/com_google_deepvariant/third_party/nucleus/io/sam.py", line 297, in _native_reader
+    return NativeSamReader(input_path, **kwargs)
+  File "/tmp/Bazel.runfiles_nx62xeco/runfiles/com_google_deepvariant/third_party/nucleus/io/sam.py", line 237, in __init__
+    self._reader = sam_reader.SamReader.from_file(
+ValueError: NOT_FOUND: Could not open /home/vanwper/nobackup/autodelete/neomex/sample_bams/7894/7894-host.bam
+/tmp/Bazel.runfiles_s1cfj4_g/runfiles/absl_py/absl/flags/_validators.py:233: UserWarning: Flag --mode has a non-None default value; therefore, mark_flag_as_required will pass even if flag is not specified in the command line!
+  mark_flag_as_required(flag_name, flag_values)
+I0604 13:43:23.029847 140545631846400 make_examples_core.py:3855] model.example_info filename: /opt/models/pacbio/model.example_info.json
+I0604 13:43:23.030500 140545631846400 make_examples_core.py:3859] Reading flags_for_calling from /opt/models/pacbio/model.example_info.json
+I0604 13:43:23.031076 140545631846400 make_examples_core.py:3876] Flags for calling:
+alt_aligned_pileup: diff_channels
+call_small_model_examples: True
+keep_supplementary_alignments: True
+max_reads_per_partition: 1500
+min_mapping_quality: 1
+parse_sam_aux_fields: True
+partition_size: 25000
+phase_reads: True
+pileup_image_height: 100
+pileup_image_width: 147
+realign_reads: False
+small_model_indel_gq_threshold: 22
+small_model_snp_gq_threshold: 19
+small_model_vaf_context_window_size: 51
+sort_by_haplotypes: True
+track_ref_reads: True
+trained_small_model_path: /opt/smallmodels/pacbio/model.keras
+trim_reads_for_pileup: True
+vsc_min_indel_fraction_for_small_indels: 0.12
+vsc_min_indel_fraction_for_large_indels: 0.05
+vsc_small_indel_threshold: 1
+vsc_min_fraction_indels: 0.12
+W0604 13:43:23.031178 140545631846400 make_examples_core.py:3890] Flag call_small_model_examples is specified in model.example_info.json [True] but overridden by command line with value [True]
+[E::hts_open_format] Failed to open file "/home/vanwper/nobackup/autodelete/neomex/sample_bams/7892/7892-host.bam" : No such file or directory
+Traceback (most recent call last):
+  File "/tmp/Bazel.runfiles_s1cfj4_g/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 239, in <module>
+    app.run(main)
+  File "/tmp/Bazel.runfiles_s1cfj4_g/runfiles/absl_py/absl/app.py", line 312, in run
+    _run_main(main, args)
+  File "/tmp/Bazel.runfiles_s1cfj4_g/runfiles/absl_py/absl/app.py", line 258, in _run_main
+    sys.exit(main(argv))
+  File "/tmp/Bazel.runfiles_s1cfj4_g/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 225, in main
+    options = default_options(add_flags=True, flags_obj=FLAGS)
+  File "/tmp/Bazel.runfiles_s1cfj4_g/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 162, in default_options
+    samples_in_order, sample_role_to_train = one_sample_from_flags(
+  File "/tmp/Bazel.runfiles_s1cfj4_g/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 111, in one_sample_from_flags
+    sample_name = make_examples_core.assign_sample_name(
+  File "/tmp/Bazel.runfiles_s1cfj4_g/runfiles/com_google_deepvariant/deepvariant/make_examples_core.py", line 207, in assign_sample_name
+    with sam.SamReader(reads_filenames.split(',')[0]) as sam_reader:
+  File "/tmp/Bazel.runfiles_s1cfj4_g/runfiles/com_google_deepvariant/third_party/nucleus/io/genomics_reader.py", line 221, in __init__
+    self._reader = self._native_reader(input_path, **kwargs)
+  File "/tmp/Bazel.runfiles_s1cfj4_g/runfiles/com_google_deepvariant/third_party/nucleus/io/sam.py", line 297, in _native_reader
+    return NativeSamReader(input_path, **kwargs)
+  File "/tmp/Bazel.runfiles_s1cfj4_g/runfiles/com_google_deepvariant/third_party/nucleus/io/sam.py", line 237, in __init__
+    self._reader = sam_reader.SamReader.from_file(
+ValueError: NOT_FOUND: Could not open /home/vanwper/nobackup/autodelete/neomex/sample_bams/7892/7892-host.bam
+/tmp/Bazel.runfiles_r36_edoe/runfiles/absl_py/absl/flags/_validators.py:233: UserWarning: Flag --mode has a non-None default value; therefore, mark_flag_as_required will pass even if flag is not specified in the command line!
+  mark_flag_as_required(flag_name, flag_values)
+I0604 13:43:23.117250 140428962299904 make_examples_core.py:3855] model.example_info filename: /opt/models/pacbio/model.example_info.json
+I0604 13:43:23.117786 140428962299904 make_examples_core.py:3859] Reading flags_for_calling from /opt/models/pacbio/model.example_info.json
+I0604 13:43:23.118318 140428962299904 make_examples_core.py:3876] Flags for calling:
+alt_aligned_pileup: diff_channels
+call_small_model_examples: True
+keep_supplementary_alignments: True
+max_reads_per_partition: 1500
+min_mapping_quality: 1
+parse_sam_aux_fields: True
+partition_size: 25000
+phase_reads: True
+pileup_image_height: 100
+pileup_image_width: 147
+realign_reads: False
+small_model_indel_gq_threshold: 22
+small_model_snp_gq_threshold: 19
+small_model_vaf_context_window_size: 51
+sort_by_haplotypes: True
+track_ref_reads: True
+trained_small_model_path: /opt/smallmodels/pacbio/model.keras
+trim_reads_for_pileup: True
+vsc_min_indel_fraction_for_small_indels: 0.12
+vsc_min_indel_fraction_for_large_indels: 0.05
+vsc_small_indel_threshold: 1
+vsc_min_fraction_indels: 0.12
+W0604 13:43:23.118421 140428962299904 make_examples_core.py:3890] Flag call_small_model_examples is specified in model.example_info.json [True] but overridden by command line with value [True]
+[E::hts_open_format] Failed to open file "/home/vanwper/nobackup/autodelete/neomex/sample_bams/7892/7892-host.bam" : No such file or directory
+Traceback (most recent call last):
+  File "/tmp/Bazel.runfiles_r36_edoe/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 239, in <module>
+    app.run(main)
+  File "/tmp/Bazel.runfiles_r36_edoe/runfiles/absl_py/absl/app.py", line 312, in run
+    _run_main(main, args)
+  File "/tmp/Bazel.runfiles_r36_edoe/runfiles/absl_py/absl/app.py", line 258, in _run_main
+    sys.exit(main(argv))
+  File "/tmp/Bazel.runfiles_r36_edoe/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 225, in main
+    options = default_options(add_flags=True, flags_obj=FLAGS)
+  File "/tmp/Bazel.runfiles_r36_edoe/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 162, in default_options
+    samples_in_order, sample_role_to_train = one_sample_from_flags(
+  File "/tmp/Bazel.runfiles_r36_edoe/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 111, in one_sample_from_flags
+    sample_name = make_examples_core.assign_sample_name(
+  File "/tmp/Bazel.runfiles_r36_edoe/runfiles/com_google_deepvariant/deepvariant/make_examples_core.py", line 207, in assign_sample_name
+    with sam.SamReader(reads_filenames.split(',')[0]) as sam_reader:
+  File "/tmp/Bazel.runfiles_r36_edoe/runfiles/com_google_deepvariant/third_party/nucleus/io/genomics_reader.py", line 221, in __init__
+    self._reader = self._native_reader(input_path, **kwargs)
+  File "/tmp/Bazel.runfiles_r36_edoe/runfiles/com_google_deepvariant/third_party/nucleus/io/sam.py", line 297, in _native_reader
+    return NativeSamReader(input_path, **kwargs)
+  File "/tmp/Bazel.runfiles_r36_edoe/runfiles/com_google_deepvariant/third_party/nucleus/io/sam.py", line 237, in __init__
+    self._reader = sam_reader.SamReader.from_file(
+ValueError: NOT_FOUND: Could not open /home/vanwper/nobackup/autodelete/neomex/sample_bams/7892/7892-host.bam
+/tmp/Bazel.runfiles_noageih_/runfiles/absl_py/absl/flags/_validators.py:233: UserWarning: Flag --mode has a non-None default value; therefore, mark_flag_as_required will pass even if flag is not specified in the command line!
+  mark_flag_as_required(flag_name, flag_values)
+I0604 13:43:23.060291 140154848759808 make_examples_core.py:3855] model.example_info filename: /opt/models/pacbio/model.example_info.json
+I0604 13:43:23.061074 140154848759808 make_examples_core.py:3859] Reading flags_for_calling from /opt/models/pacbio/model.example_info.json
+I0604 13:43:23.061719 140154848759808 make_examples_core.py:3876] Flags for calling:
+alt_aligned_pileup: diff_channels
+call_small_model_examples: True
+keep_supplementary_alignments: True
+max_reads_per_partition: 1500
+min_mapping_quality: 1
+parse_sam_aux_fields: True
+partition_size: 25000
+phase_reads: True
+pileup_image_height: 100
+pileup_image_width: 147
+realign_reads: False
+small_model_indel_gq_threshold: 22
+small_model_snp_gq_threshold: 19
+small_model_vaf_context_window_size: 51
+sort_by_haplotypes: True
+track_ref_reads: True
+trained_small_model_path: /opt/smallmodels/pacbio/model.keras
+trim_reads_for_pileup: True
+vsc_min_indel_fraction_for_small_indels: 0.12
+vsc_min_indel_fraction_for_large_indels: 0.05
+vsc_small_indel_threshold: 1
+vsc_min_fraction_indels: 0.12
+W0604 13:43:23.061826 140154848759808 make_examples_core.py:3890] Flag call_small_model_examples is specified in model.example_info.json [True] but overridden by command line with value [True]
+[E::hts_open_format] Failed to open file "/home/vanwper/nobackup/autodelete/neomex/sample_bams/7892/7892-host.bam" : No such file or directory
+Traceback (most recent call last):
+  File "/tmp/Bazel.runfiles_noageih_/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 239, in <module>
+    app.run(main)
+  File "/tmp/Bazel.runfiles_noageih_/runfiles/absl_py/absl/app.py", line 312, in run
+    _run_main(main, args)
+  File "/tmp/Bazel.runfiles_noageih_/runfiles/absl_py/absl/app.py", line 258, in _run_main
+    sys.exit(main(argv))
+  File "/tmp/Bazel.runfiles_noageih_/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 225, in main
+    options = default_options(add_flags=True, flags_obj=FLAGS)
+  File "/tmp/Bazel.runfiles_noageih_/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 162, in default_options
+    samples_in_order, sample_role_to_train = one_sample_from_flags(
+  File "/tmp/Bazel.runfiles_noageih_/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 111, in one_sample_from_flags
+    sample_name = make_examples_core.assign_sample_name(
+  File "/tmp/Bazel.runfiles_noageih_/runfiles/com_google_deepvariant/deepvariant/make_examples_core.py", line 207, in assign_sample_name
+    with sam.SamReader(reads_filenames.split(',')[0]) as sam_reader:
+  File "/tmp/Bazel.runfiles_noageih_/runfiles/com_google_deepvariant/third_party/nucleus/io/genomics_reader.py", line 221, in __init__
+    self._reader = self._native_reader(input_path, **kwargs)
+  File "/tmp/Bazel.runfiles_noageih_/runfiles/com_google_deepvariant/third_party/nucleus/io/sam.py", line 297, in _native_reader
+    return NativeSamReader(input_path, **kwargs)
+  File "/tmp/Bazel.runfiles_noageih_/runfiles/com_google_deepvariant/third_party/nucleus/io/sam.py", line 237, in __init__
+    self._reader = sam_reader.SamReader.from_file(
+ValueError: NOT_FOUND: Could not open /home/vanwper/nobackup/autodelete/neomex/sample_bams/7892/7892-host.bam
+/tmp/Bazel.runfiles_i6h8i1qy/runfiles/absl_py/absl/flags/_validators.py:233: UserWarning: Flag --mode has a non-None default value; therefore, mark_flag_as_required will pass even if flag is not specified in the command line!
+  mark_flag_as_required(flag_name, flag_values)
+I0604 13:43:23.176513 139843690971136 make_examples_core.py:3855] model.example_info filename: /opt/models/pacbio/model.example_info.json
+I0604 13:43:23.177290 139843690971136 make_examples_core.py:3859] Reading flags_for_calling from /opt/models/pacbio/model.example_info.json
+I0604 13:43:23.177856 139843690971136 make_examples_core.py:3876] Flags for calling:
+alt_aligned_pileup: diff_channels
+call_small_model_examples: True
+keep_supplementary_alignments: True
+max_reads_per_partition: 1500
+min_mapping_quality: 1
+parse_sam_aux_fields: True
+partition_size: 25000
+phase_reads: True
+pileup_image_height: 100
+pileup_image_width: 147
+realign_reads: False
+small_model_indel_gq_threshold: 22
+small_model_snp_gq_threshold: 19
+small_model_vaf_context_window_size: 51
+sort_by_haplotypes: True
+track_ref_reads: True
+trained_small_model_path: /opt/smallmodels/pacbio/model.keras
+trim_reads_for_pileup: True
+vsc_min_indel_fraction_for_small_indels: 0.12
+vsc_min_indel_fraction_for_large_indels: 0.05
+vsc_small_indel_threshold: 1
+vsc_min_fraction_indels: 0.12
+W0604 13:43:23.177972 139843690971136 make_examples_core.py:3890] Flag call_small_model_examples is specified in model.example_info.json [True] but overridden by command line with value [True]
+[E::hts_open_format] Failed to open file "/home/vanwper/nobackup/autodelete/neomex/sample_bams/7892/7892-host.bam" : No such file or directory
+Traceback (most recent call last):
+  File "/tmp/Bazel.runfiles_i6h8i1qy/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 239, in <module>
+    app.run(main)
+  File "/tmp/Bazel.runfiles_i6h8i1qy/runfiles/absl_py/absl/app.py", line 312, in run
+    _run_main(main, args)
+  File "/tmp/Bazel.runfiles_i6h8i1qy/runfiles/absl_py/absl/app.py", line 258, in _run_main
+    sys.exit(main(argv))
+  File "/tmp/Bazel.runfiles_i6h8i1qy/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 225, in main
+    options = default_options(add_flags=True, flags_obj=FLAGS)
+  File "/tmp/Bazel.runfiles_i6h8i1qy/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 162, in default_options
+    samples_in_order, sample_role_to_train = one_sample_from_flags(
+  File "/tmp/Bazel.runfiles_i6h8i1qy/runfiles/com_google_deepvariant/deepvariant/make_examples.py", line 111, in one_sample_from_flags
+    sample_name = make_examples_core.assign_sample_name(
+  File "/tmp/Bazel.runfiles_i6h8i1qy/runfiles/com_google_deepvariant/deepvariant/make_examples_core.py", line 207, in assign_sample_name
+    with sam.SamReader(reads_filenames.split(',')[0]) as sam_reader:
+  File "/tmp/Bazel.runfiles_i6h8i1qy/runfiles/com_google_deepvariant/third_party/nucleus/io/genomics_reader.py", line 221, in __init__
+    self._reader = self._native_reader(input_path, **kwargs)
+  File "/tmp/Bazel.runfiles_i6h8i1qy/runfiles/com_google_deepvariant/third_party/nucleus/io/sam.py", line 297, in _native_reader
+    return NativeSamReader(input_path, **kwargs)
+  File "/tmp/Bazel.runfiles_i6h8i1qy/runfiles/com_google_deepvariant/third_party/nucleus/io/sam.py", line 237, in __init__
+    self._reader = sam_reader.SamReader.from_file(
+ValueError: NOT_FOUND: Could not open /home/vanwper/nobackup/autodelete/neomex/sample_bams/7892/7892-host.bam
+parallel: This job failed:
+/opt/deepvariant/bin/make_examples --mode calling --ref /home/vanwper/nobackup/autodelete/neomex/reference/BaumannLab/a_arizonae_AspAri2.0.fasta --reads /home/vanwper/nobackup/autodelete/neomex/sample_bams/7892/7892-host.bam --examples '/tmp/tmpylcqvvs2/make_examples.tfrecord@8.gz' --checkpoint /opt/models/pacbio --checkpoint_json /opt/models/pacbio/model.example_info.json --output_local_read_phasing '/tmp/tmpylcqvvs2/read-phasing_debug@8.tsv' --output_phase_info --call_small_model_examples --task 0
+parallel: This job failed:
+/opt/deepvariant/bin/make_examples --mode calling --ref /home/vanwper/nobackup/autodelete/neomex/reference/BaumannLab/a_arizonae_AspAri2.0.fasta --reads /home/vanwper/nobackup/autodelete/neomex/sample_bams/7892/7892-host.bam --examples '/tmp/tmpylcqvvs2/make_examples.tfrecord@8.gz' --checkpoint /opt/models/pacbio --checkpoint_json /opt/models/pacbio/model.example_info.json --output_local_read_phasing '/tmp/tmpylcqvvs2/read-phasing_debug@8.tsv' --output_phase_info --call_small_model_examples --task 1
+parallel: This job failed:
+/opt/deepvariant/bin/make_examples --mode calling --ref /home/vanwper/nobackup/autodelete/neomex/reference/BaumannLab/a_arizonae_AspAri2.0.fasta --reads /home/vanwper/nobackup/autodelete/neomex/sample_bams/7892/7892-host.bam --examples '/tmp/tmpylcqvvs2/make_examples.tfrecord@8.gz' --checkpoint /opt/models/pacbio --checkpoint_json /opt/models/pacbio/model.example_info.json --output_local_read_phasing '/tmp/tmpylcqvvs2/read-phasing_debug@8.tsv' --output_phase_info --call_small_model_examples --task 2
+parallel: This job failed:
+/opt/deepvariant/bin/make_examples --mode calling --ref /home/vanwper/nobackup/autodelete/neomex/reference/BaumannLab/a_arizonae_AspAri2.0.fasta --reads /home/vanwper/nobackup/autodelete/neomex/sample_bams/7892/7892-host.bam --examples '/tmp/tmpylcqvvs2/make_examples.tfrecord@8.gz' --checkpoint /opt/models/pacbio --checkpoint_json /opt/models/pacbio/model.example_info.json --output_local_read_phasing '/tmp/tmpylcqvvs2/read-phasing_debug@8.tsv' --output_phase_info --call_small_model_examples --task 4
+parallel: This job failed:
+/opt/deepvariant/bin/make_examples --mode calling --ref /home/vanwper/nobackup/autodelete/neomex/reference/BaumannLab/a_arizonae_AspAri2.0.fasta --reads /home/vanwper/nobackup/autodelete/neomex/sample_bams/7892/7892-host.bam --examples '/tmp/tmpylcqvvs2/make_examples.tfrecord@8.gz' --checkpoint /opt/models/pacbio --checkpoint_json /opt/models/pacbio/model.example_info.json --output_local_read_phasing '/tmp/tmpylcqvvs2/read-phasing_debug@8.tsv' --output_phase_info --call_small_model_examples --task 6
+parallel: This job failed:
+/opt/deepvariant/bin/make_examples --mode calling --ref /home/vanwper/nobackup/autodelete/neomex/reference/BaumannLab/a_arizonae_AspAri2.0.fasta --reads /home/vanwper/nobackup/autodelete/neomex/sample_bams/7894/7894-host.bam --examples '/tmp/tmphbqoc85r/make_examples.tfrecord@8.gz' --checkpoint /opt/models/pacbio --checkpoint_json /opt/models/pacbio/model.example_info.json --output_local_read_phasing '/tmp/tmphbqoc85r/read-phasing_debug@8.tsv' --output_phase_info --call_small_model_examples --task 0
+
+real	0m12.850s
+user	0m38.956s
+sys	0m5.856s
+parallel: This job failed:
+/opt/deepvariant/bin/make_examples --mode calling --ref /home/vanwper/nobackup/autodelete/neomex/reference/BaumannLab/a_arizonae_AspAri2.0.fasta --reads /home/vanwper/nobackup/autodelete/neomex/sample_bams/7894/7894-host.bam --examples '/tmp/tmphbqoc85r/make_examples.tfrecord@8.gz' --checkpoint /opt/models/pacbio --checkpoint_json /opt/models/pacbio/model.example_info.json --output_local_read_phasing '/tmp/tmphbqoc85r/read-phasing_debug@8.tsv' --output_phase_info --call_small_model_examples --task 1
+parallel: This job failed:
+/opt/deepvariant/bin/make_examples --mode calling --ref /home/vanwper/nobackup/autodelete/neomex/reference/BaumannLab/a_arizonae_AspAri2.0.fasta --reads /home/vanwper/nobackup/autodelete/neomex/sample_bams/7894/7894-host.bam --examples '/tmp/tmphbqoc85r/make_examples.tfrecord@8.gz' --checkpoint /opt/models/pacbio --checkpoint_json /opt/models/pacbio/model.example_info.json --output_local_read_phasing '/tmp/tmphbqoc85r/read-phasing_debug@8.tsv' --output_phase_info --call_small_model_examples --task 2
+parallel: This job failed:
+/opt/deepvariant/bin/make_examples --mode calling --ref /home/vanwper/nobackup/autodelete/neomex/reference/BaumannLab/a_arizonae_AspAri2.0.fasta --reads /home/vanwper/nobackup/autodelete/neomex/sample_bams/7894/7894-host.bam --examples '/tmp/tmphbqoc85r/make_examples.tfrecord@8.gz' --checkpoint /opt/models/pacbio --checkpoint_json /opt/models/pacbio/model.example_info.json --output_local_read_phasing '/tmp/tmphbqoc85r/read-phasing_debug@8.tsv' --output_phase_info --call_small_model_examples --task 3
+parallel: This job failed:
+/opt/deepvariant/bin/make_examples --mode calling --ref /home/vanwper/nobackup/autodelete/neomex/reference/BaumannLab/a_arizonae_AspAri2.0.fasta --reads /home/vanwper/nobackup/autodelete/neomex/sample_bams/7894/7894-host.bam --examples '/tmp/tmphbqoc85r/make_examples.tfrecord@8.gz' --checkpoint /opt/models/pacbio --checkpoint_json /opt/models/pacbio/model.example_info.json --output_local_read_phasing '/tmp/tmphbqoc85r/read-phasing_debug@8.tsv' --output_phase_info --call_small_model_examples --task 4
+parallel: This job failed:
+/opt/deepvariant/bin/make_examples --mode calling --ref /home/vanwper/nobackup/autodelete/neomex/reference/BaumannLab/a_arizonae_AspAri2.0.fasta --reads /home/vanwper/nobackup/autodelete/neomex/sample_bams/7894/7894-host.bam --examples '/tmp/tmphbqoc85r/make_examples.tfrecord@8.gz' --checkpoint /opt/models/pacbio --checkpoint_json /opt/models/pacbio/model.example_info.json --output_local_read_phasing '/tmp/tmphbqoc85r/read-phasing_debug@8.tsv' --output_phase_info --call_small_model_examples --task 5
+parallel: This job failed:
+/opt/deepvariant/bin/make_examples --mode calling --ref /home/vanwper/nobackup/autodelete/neomex/reference/BaumannLab/a_arizonae_AspAri2.0.fasta --reads /home/vanwper/nobackup/autodelete/neomex/sample_bams/7894/7894-host.bam --examples '/tmp/tmphbqoc85r/make_examples.tfrecord@8.gz' --checkpoint /opt/models/pacbio --checkpoint_json /opt/models/pacbio/model.example_info.json --output_local_read_phasing '/tmp/tmphbqoc85r/read-phasing_debug@8.tsv' --output_phase_info --call_small_model_examples --task 6
+parallel: This job failed:
+/opt/deepvariant/bin/make_examples --mode calling --ref /home/vanwper/nobackup/autodelete/neomex/reference/BaumannLab/a_arizonae_AspAri2.0.fasta --reads /home/vanwper/nobackup/autodelete/neomex/sample_bams/7894/7894-host.bam --examples '/tmp/tmphbqoc85r/make_examples.tfrecord@8.gz' --checkpoint /opt/models/pacbio --checkpoint_json /opt/models/pacbio/model.example_info.json --output_local_read_phasing '/tmp/tmphbqoc85r/read-phasing_debug@8.tsv' --output_phase_info --call_small_model_examples --task 7
+
+real	0m12.915s
+user	1m4.280s
+sys	0m9.105s

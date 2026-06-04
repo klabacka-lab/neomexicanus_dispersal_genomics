@@ -115,7 +115,9 @@ rule variant_call_host:
     vcf=f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-host.vcf.gz"
   shell:
     """
-    apptainer exec docker://google/deepvariant:latest \
+    apptainer exec \
+      --bind /home/vanwper:/home/vanwper \
+      ./docker/deepvariant.sif \
       run_deepvariant \
         --model_type=PACBIO \
         --ref={input.ref} \
@@ -133,7 +135,9 @@ rule variant_call_graft:
     vcf=f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-graft.vcf.gz"
   shell:
     """
-    apptainer exec docker://google/deepvariant:latest \
+    apptainer exec \
+      --bind /home/vanwper:/home/vanwper \
+      ./docker/deepvariant.sif \
       run_deepvariant \
         --model_type=PACBIO \
         --ref={input.ref} \
