@@ -6,7 +6,9 @@ P2_REF = "{WORKDIR}/reference/BaumannLab/a_marmoratus_AspMarm2.0.fasta.gz"
 WORKDIR = "/home/vanwper/nobackup/autodelete/neomex"
 
 #sample numbers
-IDS = ["7890","7891","7892","7893","7894","7895","7896","7897"]
+IDS = ["7891","7892","7893","7894","7895","7896","7897"]
+#sample numbers including the updated 7888
+IDSP = ["7888", "7891","7892","7893","7894","7895","7896","7897"]
 
 #xengsort classify output types
 XENG_CLASS = ["host", "graft", "both", "neither", "ambiguous"]
@@ -16,8 +18,8 @@ KMER = [20, 23, 25, 28, 30]
 
 rule all:
   input:
-    expand(f"{WORKDIR}/sample_bams/{{sample}}/{{sample}}-host.bam", sample=IDS),
-    expand(f"{WORKDIR}/sample_bams/{{sample}}/{{sample}}-graft.bam", sample=IDS)
+    expand(f"{WORKDIR}/sample_vcfs/{{id}}/{{id}}-host.vcf.gz", id=IDSP),
+    expand(f"{WORKDIR}/sample_vcfs/{{id}}/{{id}}-graft.vcf.gz", id=IDSP)
 
 rule xengsort_index:
   input:
@@ -102,4 +104,40 @@ rule pbmm2_align_graft:
       {output} \
       --preset CCS \
       --sort
+    """
+
+rule variant_call_host:
+  input:
+    bam=f"{WORKDIR}/sample_bams/{{sample}}/{{sample}}-host.bam",
+    ref=f"{WORKDIR}/reference/BaumannLab/a_arizonae_AspAri2.0.fasta"
+  threads: 8
+  output:
+    vcf=f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-host.vcf.gz"
+  shell:
+    """
+    apptainer exec docker://google/deepvariant:latest \
+      run_deepvariant \
+        --model_type=PACBIO \
+        --ref={input.ref} \
+        --reads={input.bam} \
+        --output_vcf={output.vcf} \
+        --num_shards={threads}
+    """
+
+rule variant_call_graft:
+  input:
+    bam=f"{WORKDIR}/sample_bams/{{sample}}/{{sample}}-graft.bam",
+    ref=f"{WORKDIR}/reference/BaumannLab/a_marmoratus_AspMarm2.0.fasta"
+  threads: 8
+  output:
+    vcf=f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-graft.vcf.gz"
+  shell:
+    """
+    apptainer exec docker://google/deepvariant:latest \
+      run_deepvariant \
+        --model_type=PACBIO \
+        --ref={input.ref} \
+        --reads={input.bam} \
+        --output_vcf={output.vcf} \
+        --num_shards={threads}
     """

@@ -1,9 +1,7 @@
 #!/bin/bash
 
 #SBATCH --time=72:00:00   # walltime
-#SBATCH --ntasks=1
-#SBATCH --cpus-per-task=1
-#SBATCH --nodes=1
+#SBATCH --cpus-per-task=16
 #SBATCH --mem=64G
 #SBATCH -J "neomex_snakemake"
 #SBATCH --output=logs/snakemake.out
@@ -14,11 +12,12 @@
 
 #load miniforge and then activate the correct mamba environment for this project
 module load miniforge3
+module load apptainer
 mamba activate snakemake
 
 #run the Snakefile
-snakemake --jobs 1 \
+snakemake --jobs 2 \
   --use-conda \
   --latency-wait 60 \
-  --cores 1 \
+  --cores 16 \
   --rerun-incomplete
