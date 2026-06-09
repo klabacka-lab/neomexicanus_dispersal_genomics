@@ -28,3 +28,5 @@ June 9, 2026
 	- After filtration, we need to look at all vcfs and identify the Variant Sites
 	- Use those combined Variant Sites to shrink the .bam files OR see if there is a way for deepvariant to take specific loci
 	- Re-call variants from shrunken .bam files using deepvariant, but this time generate gvcfs
+
+	- created new rules for each filter step in the Snakefile. Each step has also been designed to produce a new index file. This should result in a new vcf file for each filter step for both the host and graft files in each sample.

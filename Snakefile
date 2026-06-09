@@ -18,8 +18,7 @@ KMER = [20, 23, 25, 28, 30]
 
 rule all:
   input:
-    expand(f"{WORKDIR}/sample_vcfs/{{id}}/{{id}}-host.vcf.gz", id=IDSP),
-    expand(f"{WORKDIR}/sample_vcfs/{{id}}/{{id}}-graft.vcf.gz", id=IDSP)
+    expand(f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-{{xeng}}.step3.dp.vcf.gz", sample=IDSP, xeng=["graft", "host"])
 
 rule xengsort_index:
   input:
@@ -146,4 +145,64 @@ rule variant_call_graft:
         --reads={input.bam} \
         --output_vcf={output.vcf} \
         --num_shards={threads}
+    """
+
+#filters vcf files by QUAL score
+rule variant_filtration_step1:
+  input:
+    vcf=f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-{{xeng}}.vcf.gz"
+  output:
+    vcf=f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-{{xeng}}.step1.qual.vcf.gz"
+  params:
+    qual=20
+  conda:
+    "/home/vanwper/.conda/envs/bcftools"
+  shell:
+    """
+    bcftools view \
+      -e 'QUAL<={params.qual}' \
+      {input.vcf} \
+      -Oz -o {output.vcf}
+
+    bcftools index -t {output.vcf}
+    """
+
+#filters the existing QUAL filtered vcf files by GQ score
+rule variant_filtration_step2:
+  input:
+    vcf=f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-{{xeng}}.step1.qual.vcf.gz"
+  output:
+    vcf=f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-{{xeng}}.step2.gq.vcf.gz"
+  params:
+    gq=20
+  conda:
+    "/home/vanwper/.conda/envs/bcftools"
+  shell:
+    """
+    bcftools view \
+      -i 'FMT/GQ>={params.gq}' \
+      {input.vcf} \
+      -Oz -o {output.vcf}
+
+    bcftools index {output.vcf}
+    """
+
+#filters GQ filtered files by read depth
+rule variant_filtration_step3:
+  input:
+    vcf=f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-{{xeng}}.step2.gq.vcf.gz"
+  output:
+    vcf=f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-{{xeng}}.step3.dp.vcf.gz"
+  params:
+    dp=10
+  conda:
+    "/home/vanwper/.conda/envs/bcftools"
+  shell:
+    """
+    bcftools view \
+      -i 'INFO/DP>={params.dp}' \
+      {input.vcf} \
+      -Oz -o {output.vcf}
+
+    bcftools index {output.vcf}
     """
