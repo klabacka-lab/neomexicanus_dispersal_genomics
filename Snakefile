@@ -116,7 +116,8 @@ rule variant_call_host:
   shell:
     """
     apptainer exec \
-      --bind /home/vanwper:/home/vanwper \
+      --cleanenv \
+      --bind /grphome,/nobackup \
       ./docker/deepvariant.sif \
       run_deepvariant \
         --model_type=PACBIO \
@@ -136,7 +137,8 @@ rule variant_call_graft:
   shell:
     """
     apptainer exec \
-      --bind /home/vanwper:/home/vanwper \
+      --cleanenv \
+      --bind /grphome,/nobackup \
       ./docker/deepvariant.sif \
       run_deepvariant \
         --model_type=PACBIO \

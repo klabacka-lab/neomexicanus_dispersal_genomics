@@ -15,7 +15,8 @@ module load miniforge3
 module load apptainer
 mamba activate snakemake
 
-#run the Snakefile
+
+run the Snakefile
 snakemake --jobs 2 \
   --use-conda \
   --latency-wait 60 \

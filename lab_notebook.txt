@@ -8,3 +8,7 @@ May 30, 2026
 June 4, 2026
 	- Updated Snakefile to match new location and checked to make sure all jobs would still say complete. Removed unecessary copies from my nobackup dir.
 	- created a script to index the reference fastas for use in variant calling
+
+June 5, 2026
+	- created new snakefile job to run the deepvariant tool for variant calling using the pacbio preset.
+	- ran into docker errors but solved after reading documentation on the byu office of research computing
