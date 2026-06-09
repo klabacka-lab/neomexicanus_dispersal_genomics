@@ -12,3 +12,19 @@ June 4, 2026
 June 5, 2026
 	- created new snakefile job to run the deepvariant tool for variant calling using the pacbio preset.
 	- ran into docker errors but solved after reading documentation on the byu office of research computing
+
+June 9, 2026
+	- Perry and Randy met to discuss variant filtration. Here are some thoughts:
+		1. Remove low-quality variants
+			bcftools view -O z -o filtered.vcf.gz -e 'QUAL<=20' in.vcf.gz
+			# https://www.htslib.org/workflow/filter.html
+		2. Remove low-quality genotypes
+			vcftools --vcf <name_of_vcf>.vcf --out <name_of_new_vcf>_HardFilterStep1 --minGQ 20 --recode --recode-INFO-all
+			mv <name_of_new_vcf>_HardFilterStep1.recode.vcf <name_of_new_vcf>_HardFilterStep1.vcf
+			# Check if this removes the variants or just converts the genotypes to './.' genotypes
+		3. Remove './.' genotypes
+		4. Get rid of low-depth variants
+			vcftools --vcf "$2"_HardFilterStep1.vcf --out "$2"_HardFilterStep2 --minDP 10 --recode --recode-INFO-all
+	- After filtration, we need to look at all vcfs and identify the Variant Sites
+	- Use those combined Variant Sites to shrink the .bam files OR see if there is a way for deepvariant to take specific loci
+	- Re-call variants from shrunken .bam files using deepvariant, but this time generate gvcfs
