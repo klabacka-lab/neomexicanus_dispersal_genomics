@@ -19,11 +19,11 @@ KMER = [20, 23, 25, 28, 30]
 rule all:
   input:
     expand(
-      f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-host.g.vcf.gz",
-      sample=IDPS
+      f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-host.sites.g.vcf.gz",
+      sample=IDSP
     ),
     expand(
-      f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-graft.g.vcf.gz",
+      f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-graft.sites.g.vcf.gz",
       sample=IDSP
     )
 
@@ -214,11 +214,29 @@ rule variant_filtration_step3:
     bcftools index {output.vcf}
     """
 
+#filters GT data
+rule variant_filtration_step4:
+  input:
+    vcf=f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-{{xeng}}.step3.dp.vcf.gz"
+  output:
+    vcf=f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-{{xeng}}.step4.gt.vcf.gz"
+  conda:
+    "/home/vanwper/.conda/envs/bcftools"
+  shell:
+    """
+    bcftools view \
+      -i 'GT="1/1"' \
+      {input.vcf} \
+      -Oz -o {output.vcf}
+  
+    bcftools index {output.vcf}
+    """
+
 #creates a bed file to determine the sites of interest
 rule union_sites_host:
   input:
     expand(
-      f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-host.step3.dp.vcf.gz",
+      f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-host.step4.gt.vcf.gz",
       sample=IDSP
     )
   output:
@@ -236,7 +254,7 @@ rule union_sites_host:
 rule union_sites_graft:
   input:
     expand(
-      f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-graft.step3.dp.vcf.gz",
+      f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-graft.step4.gt.vcf.gz",
       sample=IDSP
     )
   output:
@@ -259,7 +277,8 @@ rule site_specific_variant_call_host:
     sites=f"{WORKDIR}/analysis/union_sites_host.bed"
   threads: 8
   output:
-    gvcf=f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-host.g.vcf.gz"
+    vcf=f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-host.sites.vcf.gz",
+    gvcf=f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-host.sites.g.vcf.gz"
   shell:
     """
     apptainer exec \
@@ -270,6 +289,7 @@ rule site_specific_variant_call_host:
         --model_type=PACBIO \
         --ref={input.ref} \
         --reads={input.bam} \
+        --output_vcf={output.vcf} \
         --output_gvcf={output.gvcf} \
         --regions={input.sites} \
         --num_shards={threads}
@@ -277,12 +297,13 @@ rule site_specific_variant_call_host:
 
 rule site_specific_variant_call_graft:
   input:
-    bam=f"{WORKDIR}/sample_bams/{{sample}}/{{sample}}-host.bam",
+    bam=f"{WORKDIR}/sample_bams/{{sample}}/{{sample}}-graft.bam",
     ref=f"{WORKDIR}/reference/BaumannLab/a_marmoratus_AspMarm2.0.fasta",
     sites=f"{WORKDIR}/analysis/union_sites_graft.bed"
   threads: 8
   output:
-    gvcf=f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-graft.g.vcf.gz"
+    vcf=f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-graft.sites.vcf.gz",
+    gvcf=f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-graft.sites.g.vcf.gz"
   shell:
     """
     apptainer exec \
@@ -293,6 +314,7 @@ rule site_specific_variant_call_graft:
         --model_type=PACBIO \
         --ref={input.ref} \
         --reads={input.bam} \
+        --output_vcf={output.vcf} \
         --output_gvcf={output.gvcf} \
         --regions={input.sites} \
         --num_shards={threads}

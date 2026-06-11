@@ -1,56 +1,327 @@
-/var/spool/slurmd/job12292643/slurm_script: line 19: run: command not found
+/var/spool/slurmd/job12293796/slurm_script: line 19: run: command not found
 Assuming unrestricted shared filesystem usage.
-host: m8-18-6
+host: m9-12-2
 Building DAG of jobs...
 Using shell: /usr/local/bin/bash
-Provided cores: 1 (use --cores to define parallelism)
+Provided cores: 16
 Rules claiming more threads will be scaled down.
 Job stats:
-job                  count
------------------  -------
-union_sites_graft        1
-union_sites_host         1
-all                      1
-total                    3
+job                                 count
+--------------------------------  -------
+variant_filtration_step4               16
+union_sites_graft                       1
+union_sites_host                        1
+site_specific_variant_call_graft        8
+site_specific_variant_call_host         8
+all                                     1
+total                                  35
 
 Select jobs to execute...
+Execute 2 jobs...
+
+[Thu Jun 11 14:18:58 2026]
+localrule variant_filtration_step4:
+    input: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7892/7892-graft.step3.dp.vcf.gz
+    output: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7892/7892-graft.step4.gt.vcf.gz
+    jobid: 83
+    reason: Code has changed since last execution
+    wildcards: sample=7892, xeng=graft
+    resources: tmpdir=/tmp
+Activating conda environment: ../../.conda/envs/bcftools
+
+[Thu Jun 11 14:19:05 2026]
+localrule variant_filtration_step4:
+    input: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7896/7896-host.step3.dp.vcf.gz
+    output: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7896/7896-host.step4.gt.vcf.gz
+    jobid: 46
+    reason: Code has changed since last execution
+    wildcards: sample=7896, xeng=host
+    resources: tmpdir=/tmp
+Activating conda environment: ../../.conda/envs/bcftools
+Select jobs to execute...
+[Thu Jun 11 14:19:27 2026]
+Finished jobid: 83 (Rule: variant_filtration_step4)
+1 of 35 steps (3%) done
 Execute 1 jobs...
 
-[Thu Jun 11 12:33:49 2026]
+[Thu Jun 11 14:19:28 2026]
+localrule variant_filtration_step4:
+    input: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7888/7888-graft.step3.dp.vcf.gz
+    output: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7888/7888-graft.step4.gt.vcf.gz
+    jobid: 71
+    reason: Code has changed since last execution
+    wildcards: sample=7888, xeng=graft
+    resources: tmpdir=/tmp
+Activating conda environment: ../../.conda/envs/bcftools
+Select jobs to execute...
+[Thu Jun 11 14:19:30 2026]
+Finished jobid: 46 (Rule: variant_filtration_step4)
+2 of 35 steps (6%) done
+Execute 1 jobs...
+
+[Thu Jun 11 14:19:31 2026]
+localrule variant_filtration_step4:
+    input: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7896/7896-graft.step3.dp.vcf.gz
+    output: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7896/7896-graft.step4.gt.vcf.gz
+    jobid: 111
+    reason: Code has changed since last execution
+    wildcards: sample=7896, xeng=graft
+    resources: tmpdir=/tmp
+Activating conda environment: ../../.conda/envs/bcftools
+Select jobs to execute...
+[Thu Jun 11 14:19:47 2026]
+Finished jobid: 71 (Rule: variant_filtration_step4)
+3 of 35 steps (9%) done
+Execute 1 jobs...
+
+[Thu Jun 11 14:19:47 2026]
+localrule variant_filtration_step4:
+    input: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7888/7888-host.step3.dp.vcf.gz
+    output: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7888/7888-host.step4.gt.vcf.gz
+    jobid: 6
+    reason: Code has changed since last execution
+    wildcards: sample=7888, xeng=host
+    resources: tmpdir=/tmp
+Activating conda environment: ../../.conda/envs/bcftools
+Select jobs to execute...
+[Thu Jun 11 14:19:49 2026]
+Finished jobid: 111 (Rule: variant_filtration_step4)
+4 of 35 steps (11%) done
+Execute 1 jobs...
+
+[Thu Jun 11 14:19:49 2026]
+localrule variant_filtration_step4:
+    input: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7894/7894-graft.step3.dp.vcf.gz
+    output: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7894/7894-graft.step4.gt.vcf.gz
+    jobid: 97
+    reason: Code has changed since last execution
+    wildcards: sample=7894, xeng=graft
+    resources: tmpdir=/tmp
+Activating conda environment: ../../.conda/envs/bcftools
+Select jobs to execute...
+[Thu Jun 11 14:20:08 2026]
+Finished jobid: 97 (Rule: variant_filtration_step4)
+5 of 35 steps (14%) done
+Execute 1 jobs...
+
+[Thu Jun 11 14:20:08 2026]
+localrule variant_filtration_step4:
+    input: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7894/7894-host.step3.dp.vcf.gz
+    output: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7894/7894-host.step4.gt.vcf.gz
+    jobid: 32
+    reason: Code has changed since last execution
+    wildcards: sample=7894, xeng=host
+    resources: tmpdir=/tmp
+Activating conda environment: ../../.conda/envs/bcftools
+Select jobs to execute...
+[Thu Jun 11 14:20:14 2026]
+Finished jobid: 6 (Rule: variant_filtration_step4)
+6 of 35 steps (17%) done
+Execute 1 jobs...
+
+[Thu Jun 11 14:20:14 2026]
+localrule variant_filtration_step4:
+    input: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7892/7892-host.step3.dp.vcf.gz
+    output: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7892/7892-host.step4.gt.vcf.gz
+    jobid: 18
+    reason: Code has changed since last execution
+    wildcards: sample=7892, xeng=host
+    resources: tmpdir=/tmp
+Activating conda environment: ../../.conda/envs/bcftools
+Select jobs to execute...
+[Thu Jun 11 14:20:39 2026]
+Finished jobid: 32 (Rule: variant_filtration_step4)
+7 of 35 steps (20%) done
+Execute 1 jobs...
+
+[Thu Jun 11 14:20:39 2026]
+localrule variant_filtration_step4:
+    input: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7897/7897-host.step3.dp.vcf.gz
+    output: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7897/7897-host.step4.gt.vcf.gz
+    jobid: 53
+    reason: Code has changed since last execution
+    wildcards: sample=7897, xeng=host
+    resources: tmpdir=/tmp
+Activating conda environment: ../../.conda/envs/bcftools
+Select jobs to execute...
+[Thu Jun 11 14:20:42 2026]
+Finished jobid: 18 (Rule: variant_filtration_step4)
+8 of 35 steps (23%) done
+Execute 1 jobs...
+
+[Thu Jun 11 14:20:42 2026]
+localrule variant_filtration_step4:
+    input: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7897/7897-graft.step3.dp.vcf.gz
+    output: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7897/7897-graft.step4.gt.vcf.gz
+    jobid: 118
+    reason: Code has changed since last execution
+    wildcards: sample=7897, xeng=graft
+    resources: tmpdir=/tmp
+Activating conda environment: ../../.conda/envs/bcftools
+Select jobs to execute...
+[Thu Jun 11 14:21:02 2026]
+Finished jobid: 118 (Rule: variant_filtration_step4)
+9 of 35 steps (26%) done
+Execute 1 jobs...
+
+[Thu Jun 11 14:21:02 2026]
+localrule variant_filtration_step4:
+    input: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7895/7895-host.step3.dp.vcf.gz
+    output: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7895/7895-host.step4.gt.vcf.gz
+    jobid: 39
+    reason: Code has changed since last execution
+    wildcards: sample=7895, xeng=host
+    resources: tmpdir=/tmp
+Activating conda environment: ../../.conda/envs/bcftools
+Select jobs to execute...
+[Thu Jun 11 14:21:07 2026]
+Finished jobid: 53 (Rule: variant_filtration_step4)
+10 of 35 steps (29%) done
+Execute 1 jobs...
+
+[Thu Jun 11 14:21:07 2026]
+localrule variant_filtration_step4:
+    input: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7895/7895-graft.step3.dp.vcf.gz
+    output: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7895/7895-graft.step4.gt.vcf.gz
+    jobid: 104
+    reason: Code has changed since last execution
+    wildcards: sample=7895, xeng=graft
+    resources: tmpdir=/tmp
+Activating conda environment: ../../.conda/envs/bcftools
+Select jobs to execute...
+[Thu Jun 11 14:21:28 2026]
+Finished jobid: 104 (Rule: variant_filtration_step4)
+11 of 35 steps (31%) done
+Execute 1 jobs...
+
+[Thu Jun 11 14:21:28 2026]
+localrule variant_filtration_step4:
+    input: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7893/7893-host.step3.dp.vcf.gz
+    output: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7893/7893-host.step4.gt.vcf.gz
+    jobid: 25
+    reason: Code has changed since last execution
+    wildcards: sample=7893, xeng=host
+    resources: tmpdir=/tmp
+Activating conda environment: ../../.conda/envs/bcftools
+Select jobs to execute...
+[Thu Jun 11 14:21:30 2026]
+Finished jobid: 39 (Rule: variant_filtration_step4)
+12 of 35 steps (34%) done
+Execute 1 jobs...
+
+[Thu Jun 11 14:21:30 2026]
+localrule variant_filtration_step4:
+    input: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7891/7891-host.step3.dp.vcf.gz
+    output: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7891/7891-host.step4.gt.vcf.gz
+    jobid: 11
+    reason: Code has changed since last execution
+    wildcards: sample=7891, xeng=host
+    resources: tmpdir=/tmp
+Activating conda environment: ../../.conda/envs/bcftools
+Select jobs to execute...
+[Thu Jun 11 14:21:56 2026]
+Finished jobid: 25 (Rule: variant_filtration_step4)
+13 of 35 steps (37%) done
+Execute 1 jobs...
+
+[Thu Jun 11 14:21:56 2026]
+localrule variant_filtration_step4:
+    input: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7891/7891-graft.step3.dp.vcf.gz
+    output: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7891/7891-graft.step4.gt.vcf.gz
+    jobid: 76
+    reason: Code has changed since last execution
+    wildcards: sample=7891, xeng=graft
+    resources: tmpdir=/tmp
+Activating conda environment: ../../.conda/envs/bcftools
+Select jobs to execute...
+[Thu Jun 11 14:21:57 2026]
+Finished jobid: 11 (Rule: variant_filtration_step4)
+14 of 35 steps (40%) done
+Execute 1 jobs...
+
+[Thu Jun 11 14:21:57 2026]
+localrule variant_filtration_step4:
+    input: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7893/7893-graft.step3.dp.vcf.gz
+    output: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7893/7893-graft.step4.gt.vcf.gz
+    jobid: 90
+    reason: Code has changed since last execution
+    wildcards: sample=7893, xeng=graft
+    resources: tmpdir=/tmp
+Activating conda environment: ../../.conda/envs/bcftools
+Select jobs to execute...
+[Thu Jun 11 14:22:13 2026]
+Finished jobid: 76 (Rule: variant_filtration_step4)
+15 of 35 steps (43%) done
+Execute 1 jobs...
+
+[Thu Jun 11 14:22:13 2026]
 localrule union_sites_host:
-    input: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7888/7888-host.step3.dp.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7891/7891-host.step3.dp.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7892/7892-host.step3.dp.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7893/7893-host.step3.dp.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7894/7894-host.step3.dp.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7895/7895-host.step3.dp.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7896/7896-host.step3.dp.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7897/7897-host.step3.dp.vcf.gz
+    input: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7888/7888-host.step4.gt.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7891/7891-host.step4.gt.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7892/7892-host.step4.gt.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7893/7893-host.step4.gt.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7894/7894-host.step4.gt.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7895/7895-host.step4.gt.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7896/7896-host.step4.gt.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7897/7897-host.step4.gt.vcf.gz
     output: /home/vanwper/nobackup/autodelete/neomex/analysis/union_sites_host.bed
-    jobid: 1
-    reason: Missing output files: /home/vanwper/nobackup/autodelete/neomex/analysis/union_sites_host.bed
+    jobid: 5
+    reason: Input files updated by another job: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7894/7894-host.step4.gt.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7896/7896-host.step4.gt.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7893/7893-host.step4.gt.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7895/7895-host.step4.gt.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7892/7892-host.step4.gt.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7891/7891-host.step4.gt.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7888/7888-host.step4.gt.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7897/7897-host.step4.gt.vcf.gz
     resources: tmpdir=/tmp
 Activating conda environment: ../../.conda/envs/bcftools
+[Thu Jun 11 14:22:17 2026]
+Finished jobid: 90 (Rule: variant_filtration_step4)
+16 of 35 steps (46%) done
 Select jobs to execute...
-[Thu Jun 11 12:37:09 2026]
-Finished jobid: 1 (Rule: union_sites_host)
-1 of 3 steps (33%) done
 Execute 1 jobs...
 
-[Thu Jun 11 12:37:09 2026]
+[Thu Jun 11 14:22:17 2026]
 localrule union_sites_graft:
-    input: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7888/7888-graft.step3.dp.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7891/7891-graft.step3.dp.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7892/7892-graft.step3.dp.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7893/7893-graft.step3.dp.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7894/7894-graft.step3.dp.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7895/7895-graft.step3.dp.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7896/7896-graft.step3.dp.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7897/7897-graft.step3.dp.vcf.gz
+    input: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7888/7888-graft.step4.gt.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7891/7891-graft.step4.gt.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7892/7892-graft.step4.gt.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7893/7893-graft.step4.gt.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7894/7894-graft.step4.gt.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7895/7895-graft.step4.gt.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7896/7896-graft.step4.gt.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7897/7897-graft.step4.gt.vcf.gz
     output: /home/vanwper/nobackup/autodelete/neomex/analysis/union_sites_graft.bed
-    jobid: 51
-    reason: Missing output files: /home/vanwper/nobackup/autodelete/neomex/analysis/union_sites_graft.bed
+    jobid: 70
+    reason: Input files updated by another job: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7895/7895-graft.step4.gt.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7896/7896-graft.step4.gt.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7893/7893-graft.step4.gt.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7891/7891-graft.step4.gt.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7897/7897-graft.step4.gt.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7892/7892-graft.step4.gt.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7894/7894-graft.step4.gt.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7888/7888-graft.step4.gt.vcf.gz
     resources: tmpdir=/tmp
 Activating conda environment: ../../.conda/envs/bcftools
-[Thu Jun 11 12:39:06 2026]
-Finished jobid: 51 (Rule: union_sites_graft)
-2 of 3 steps (67%) done
+[Thu Jun 11 14:24:54 2026]
+Finished jobid: 70 (Rule: union_sites_graft)
+17 of 35 steps (49%) done
 Select jobs to execute...
 Execute 1 jobs...
 
-[Thu Jun 11 12:39:06 2026]
-localrule all:
-    input: /home/vanwper/nobackup/autodelete/neomex/analysis/union_sites_host.bed, /home/vanwper/nobackup/autodelete/neomex/analysis/union_sites_graft.bed
-    jobid: 0
-    reason: Input files updated by another job: /home/vanwper/nobackup/autodelete/neomex/analysis/union_sites_host.bed, /home/vanwper/nobackup/autodelete/neomex/analysis/union_sites_graft.bed
+[Thu Jun 11 14:24:54 2026]
+localrule site_specific_variant_call_graft:
+    input: /home/vanwper/nobackup/autodelete/neomex/sample_bams/7891/7891-graft.bam, /home/vanwper/nobackup/autodelete/neomex/reference/BaumannLab/a_marmoratus_AspMarm2.0.fasta, /home/vanwper/nobackup/autodelete/neomex/analysis/union_sites_graft.bed
+    output: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7891/7891-graft.sites.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7891/7891-graft.sites.g.vcf.gz
+    jobid: 125
+    reason: Missing output files: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7891/7891-graft.sites.g.vcf.gz; Input files updated by another job: /home/vanwper/nobackup/autodelete/neomex/analysis/union_sites_graft.bed
+    wildcards: sample=7891
+    threads: 8
     resources: tmpdir=/tmp
-[Thu Jun 11 12:39:06 2026]
-Finished jobid: 0 (Rule: all)
-3 of 3 steps (100%) done
-Complete log(s): /home/vanwper/projects/neomexicanus_dispersal_genomics/.snakemake/log/2026-06-11T123345.515357.snakemake.log
+Select jobs to execute...
+2026-06-11 14:24:59.008337: I external/local_tsl/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-06-11 14:24:59.529106: I external/local_tsl/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-06-11 14:25:01.028982: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+/usr/local/lib/python3.10/dist-packages/google/api_core/_python_version_support.py:275: FutureWarning: You are using a Python version (3.10.12) which Google will stop supporting in new releases of google.api_core once it reaches its end of life (2026-10-04). Please upgrade to the latest Python version, or at least Python 3.11, to continue receiving updates for google.api_core past that date.
+  warnings.warn(message, FutureWarning)
+2026-06-11 14:25:06.495658: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+I0611 14:25:15.304683 140029520109568 run_deepvariant.py:629] Re-using the directory for intermediate results in /tmp/tmpxgmov1vr
+I0611 14:25:15.314562 140029520109568 run_deepvariant.py:894] env = {'SINGULARITY_NAME': 'deepvariant.sif', 'SINGULARITY_ENVIRONMENT': '/.singularity.d/env/91-environment.sh', 'PWD': '/home/vanwper/projects/neomexicanus_dispersal_genomics', 'APPTAINER_ENVIRONMENT': '/.singularity.d/env/91-environment.sh', 'APPTAINER_APPNAME': '', 'HOME': '/home/vanwper', 'LANG': 'C', 'APPTAINER_COMMAND': 'exec', 'SINGULARITY_CONTAINER': '/home/vanwper/projects/neomexicanus_dispersal_genomics/docker/deepvariant.sif', 'PROMPT_COMMAND': 'PS1="Apptainer> "; unset PROMPT_COMMAND', 'DV_BIN_PATH': '/opt/deepvariant/bin', 'TF_USE_LEGACY_KERAS': '1', 'APPTAINER_CONTAINER': '/home/vanwper/projects/neomexicanus_dispersal_genomics/docker/deepvariant.sif', 'TERM': 'xterm-256color', 'SHLVL': '1', 'APPTAINER_NAME': 'deepvariant.sif', 'SINGULARITY_BIND': '/grphome,/nobackup', 'APPTAINER_BIND': '/grphome,/nobackup', 'LD_LIBRARY_PATH': '/.singularity.d/libs', 'PATH': '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/deepvariant/bin:/opt/conda/envs/bio/bin', '_': '/usr/bin/python3', 'LC_CTYPE': 'C.UTF-8', 'TF2_BEHAVIOR': '1', 'TPU_ML_PLATFORM': 'Tensorflow', 'TF_CPP_MIN_LOG_LEVEL': '1'}
+[Thu Jun 11 14:26:26 2026]
+Finished jobid: 5 (Rule: union_sites_host)
+18 of 35 steps (51%) done
+Execute 1 jobs...
+
+[Thu Jun 11 14:26:26 2026]
+localrule site_specific_variant_call_host:
+    input: /home/vanwper/nobackup/autodelete/neomex/sample_bams/7894/7894-host.bam, /home/vanwper/nobackup/autodelete/neomex/reference/BaumannLab/a_arizonae_AspAri2.0.fasta, /home/vanwper/nobackup/autodelete/neomex/analysis/union_sites_host.bed
+    output: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7894/7894-host.sites.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7894/7894-host.sites.g.vcf.gz
+    jobid: 63
+    reason: Missing output files: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7894/7894-host.sites.g.vcf.gz; Input files updated by another job: /home/vanwper/nobackup/autodelete/neomex/analysis/union_sites_host.bed
+    wildcards: sample=7894
+    threads: 8
+    resources: tmpdir=/tmp
+Select jobs to execute...
+2026-06-11 14:26:29.820128: I external/local_tsl/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-06-11 14:26:30.214015: I external/local_tsl/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
+2026-06-11 14:26:31.396216: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+/usr/local/lib/python3.10/dist-packages/google/api_core/_python_version_support.py:275: FutureWarning: You are using a Python version (3.10.12) which Google will stop supporting in new releases of google.api_core once it reaches its end of life (2026-10-04). Please upgrade to the latest Python version, or at least Python 3.11, to continue receiving updates for google.api_core past that date.
+  warnings.warn(message, FutureWarning)
+2026-06-11 14:26:35.798124: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+I0611 14:26:42.764898 140031622590464 run_deepvariant.py:629] Re-using the directory for intermediate results in /tmp/tmp26r7rgf2
+I0611 14:26:42.772317 140031622590464 run_deepvariant.py:894] env = {'SINGULARITY_NAME': 'deepvariant.sif', 'SINGULARITY_ENVIRONMENT': '/.singularity.d/env/91-environment.sh', 'PWD': '/home/vanwper/projects/neomexicanus_dispersal_genomics', 'APPTAINER_ENVIRONMENT': '/.singularity.d/env/91-environment.sh', 'APPTAINER_APPNAME': '', 'HOME': '/home/vanwper', 'LANG': 'C', 'APPTAINER_COMMAND': 'exec', 'SINGULARITY_CONTAINER': '/home/vanwper/projects/neomexicanus_dispersal_genomics/docker/deepvariant.sif', 'PROMPT_COMMAND': 'PS1="Apptainer> "; unset PROMPT_COMMAND', 'DV_BIN_PATH': '/opt/deepvariant/bin', 'TF_USE_LEGACY_KERAS': '1', 'APPTAINER_CONTAINER': '/home/vanwper/projects/neomexicanus_dispersal_genomics/docker/deepvariant.sif', 'TERM': 'xterm-256color', 'SHLVL': '1', 'APPTAINER_NAME': 'deepvariant.sif', 'SINGULARITY_BIND': '/grphome,/nobackup', 'APPTAINER_BIND': '/grphome,/nobackup', 'LD_LIBRARY_PATH': '/.singularity.d/libs', 'PATH': '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/deepvariant/bin:/opt/conda/envs/bio/bin', '_': '/usr/bin/python3', 'LC_CTYPE': 'C.UTF-8', 'TF2_BEHAVIOR': '1', 'TPU_ML_PLATFORM': 'Tensorflow', 'TF_CPP_MIN_LOG_LEVEL': '1'}

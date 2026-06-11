@@ -1,8 +1,8 @@
 #!/bin/bash
 
-#SBATCH --time=24:00:00   # walltime
-#SBATCH --cpus-per-task=1
-#SBATCH --mem=16G
+#SBATCH --time=48:00:00   # walltime
+#SBATCH --cpus-per-task=16
+#SBATCH --mem=64G
 #SBATCH -J "neomex_snakemake"
 #SBATCH --output=logs/snakemake.out
 #SBATCH --error=logs/snakemake.err
@@ -17,7 +17,8 @@ mamba activate snakemake
 
 
 run the Snakefile
-snakemake --jobs 1 \
+snakemake --jobs 2 \
   --use-conda \
   --latency-wait 60 \
+  --cores 16 \
   --rerun-incomplete
