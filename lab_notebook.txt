@@ -30,3 +30,7 @@ June 9, 2026
 	- Re-call variants from shrunken .bam files using deepvariant, but this time generate gvcfs
 
 	- created new rules for each filter step in the Snakefile. Each step has also been designed to produce a new index file. This should result in a new vcf file for each filter step for both the host and graft files in each sample.
+
+June 11, 2026
+	- added new rule to generate a bed file for both the graft and host vcfs that contains all loci of interest.
+	-adding rule to re-call the variants using the specified locis found in the bed files.

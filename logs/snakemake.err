@@ -1,51 +1,56 @@
-/var/spool/slurmd/job12140883/slurm_script: line 19: run: command not found
+/var/spool/slurmd/job12292643/slurm_script: line 19: run: command not found
 Assuming unrestricted shared filesystem usage.
-host: m8-17-9
+host: m8-18-6
 Building DAG of jobs...
 Using shell: /usr/local/bin/bash
-Provided cores: 16
+Provided cores: 1 (use --cores to define parallelism)
 Rules claiming more threads will be scaled down.
 Job stats:
-job                   count
-------------------  -------
-variant_call_graft        1
-all                       1
-total                     2
+job                  count
+-----------------  -------
+union_sites_graft        1
+union_sites_host         1
+all                      1
+total                    3
 
 Select jobs to execute...
 Execute 1 jobs...
 
-[Sat Jun  6 10:26:19 2026]
-localrule variant_call_graft:
-    input: /home/vanwper/nobackup/autodelete/neomex/sample_bams/7891/7891-graft.bam, /home/vanwper/nobackup/autodelete/neomex/reference/BaumannLab/a_marmoratus_AspMarm2.0.fasta
-    output: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7891/7891-graft.vcf.gz
-    jobid: 29
-    reason: Missing output files: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7891/7891-graft.vcf.gz
-    wildcards: sample=7891
-    threads: 8
+[Thu Jun 11 12:33:49 2026]
+localrule union_sites_host:
+    input: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7888/7888-host.step3.dp.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7891/7891-host.step3.dp.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7892/7892-host.step3.dp.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7893/7893-host.step3.dp.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7894/7894-host.step3.dp.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7895/7895-host.step3.dp.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7896/7896-host.step3.dp.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7897/7897-host.step3.dp.vcf.gz
+    output: /home/vanwper/nobackup/autodelete/neomex/analysis/union_sites_host.bed
+    jobid: 1
+    reason: Missing output files: /home/vanwper/nobackup/autodelete/neomex/analysis/union_sites_host.bed
     resources: tmpdir=/tmp
-2026-06-06 10:26:33.361470: I external/local_tsl/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
-2026-06-06 10:26:33.932553: I external/local_tsl/tsl/cuda/cudart_stub.cc:32] Could not find cuda drivers on your machine, GPU will not be used.
-2026-06-06 10:26:35.227923: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
-To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
-/usr/local/lib/python3.10/dist-packages/google/api_core/_python_version_support.py:275: FutureWarning: You are using a Python version (3.10.12) which Google will stop supporting in new releases of google.api_core once it reaches its end of life (2026-10-04). Please upgrade to the latest Python version, or at least Python 3.11, to continue receiving updates for google.api_core past that date.
-  warnings.warn(message, FutureWarning)
-2026-06-06 10:26:38.443921: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
-I0606 10:26:43.684242 140128632520704 run_deepvariant.py:629] Re-using the directory for intermediate results in /tmp/tmps6xkuccb
-I0606 10:26:43.694707 140128632520704 run_deepvariant.py:894] env = {'SINGULARITY_NAME': 'deepvariant.sif', 'SINGULARITY_ENVIRONMENT': '/.singularity.d/env/91-environment.sh', 'PWD': '/home/vanwper/projects/neomexicanus_dispersal_genomics', 'APPTAINER_ENVIRONMENT': '/.singularity.d/env/91-environment.sh', 'APPTAINER_APPNAME': '', 'HOME': '/home/vanwper', 'LANG': 'C', 'APPTAINER_COMMAND': 'exec', 'SINGULARITY_CONTAINER': '/home/vanwper/projects/neomexicanus_dispersal_genomics/docker/deepvariant.sif', 'PROMPT_COMMAND': 'PS1="Apptainer> "; unset PROMPT_COMMAND', 'DV_BIN_PATH': '/opt/deepvariant/bin', 'TF_USE_LEGACY_KERAS': '1', 'APPTAINER_CONTAINER': '/home/vanwper/projects/neomexicanus_dispersal_genomics/docker/deepvariant.sif', 'TERM': 'xterm-256color', 'SHLVL': '1', 'APPTAINER_NAME': 'deepvariant.sif', 'SINGULARITY_BIND': '/grphome,/nobackup', 'APPTAINER_BIND': '/grphome,/nobackup', 'LD_LIBRARY_PATH': '/.singularity.d/libs', 'PATH': '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/deepvariant/bin:/opt/conda/envs/bio/bin', '_': '/usr/bin/python3', 'LC_CTYPE': 'C.UTF-8', 'TF2_BEHAVIOR': '1', 'TPU_ML_PLATFORM': 'Tensorflow', 'TF_CPP_MIN_LOG_LEVEL': '1'}
-[Sat Jun  6 12:52:04 2026]
-Finished jobid: 29 (Rule: variant_call_graft)
-1 of 2 steps (50%) done
+Activating conda environment: ../../.conda/envs/bcftools
+Select jobs to execute...
+[Thu Jun 11 12:37:09 2026]
+Finished jobid: 1 (Rule: union_sites_host)
+1 of 3 steps (33%) done
+Execute 1 jobs...
+
+[Thu Jun 11 12:37:09 2026]
+localrule union_sites_graft:
+    input: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7888/7888-graft.step3.dp.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7891/7891-graft.step3.dp.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7892/7892-graft.step3.dp.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7893/7893-graft.step3.dp.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7894/7894-graft.step3.dp.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7895/7895-graft.step3.dp.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7896/7896-graft.step3.dp.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7897/7897-graft.step3.dp.vcf.gz
+    output: /home/vanwper/nobackup/autodelete/neomex/analysis/union_sites_graft.bed
+    jobid: 51
+    reason: Missing output files: /home/vanwper/nobackup/autodelete/neomex/analysis/union_sites_graft.bed
+    resources: tmpdir=/tmp
+Activating conda environment: ../../.conda/envs/bcftools
+[Thu Jun 11 12:39:06 2026]
+Finished jobid: 51 (Rule: union_sites_graft)
+2 of 3 steps (67%) done
 Select jobs to execute...
 Execute 1 jobs...
 
-[Sat Jun  6 12:52:04 2026]
+[Thu Jun 11 12:39:06 2026]
 localrule all:
-    input: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7888/7888-host.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7891/7891-host.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7892/7892-host.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7893/7893-host.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7894/7894-host.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7895/7895-host.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7896/7896-host.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7897/7897-host.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7888/7888-graft.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7891/7891-graft.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7892/7892-graft.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7893/7893-graft.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7894/7894-graft.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7895/7895-graft.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7896/7896-graft.vcf.gz, /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7897/7897-graft.vcf.gz
+    input: /home/vanwper/nobackup/autodelete/neomex/analysis/union_sites_host.bed, /home/vanwper/nobackup/autodelete/neomex/analysis/union_sites_graft.bed
     jobid: 0
-    reason: Input files updated by another job: /home/vanwper/nobackup/autodelete/neomex/sample_vcfs/7891/7891-graft.vcf.gz
+    reason: Input files updated by another job: /home/vanwper/nobackup/autodelete/neomex/analysis/union_sites_host.bed, /home/vanwper/nobackup/autodelete/neomex/analysis/union_sites_graft.bed
     resources: tmpdir=/tmp
-[Sat Jun  6 12:52:04 2026]
+[Thu Jun 11 12:39:06 2026]
 Finished jobid: 0 (Rule: all)
-2 of 2 steps (100%) done
-Complete log(s): /home/vanwper/projects/neomexicanus_dispersal_genomics/.snakemake/log/2026-06-06T102615.397279.snakemake.log
+3 of 3 steps (100%) done
+Complete log(s): /home/vanwper/projects/neomexicanus_dispersal_genomics/.snakemake/log/2026-06-11T123345.515357.snakemake.log

@@ -18,7 +18,14 @@ KMER = [20, 23, 25, 28, 30]
 
 rule all:
   input:
-    expand(f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-{{xeng}}.step3.dp.vcf.gz", sample=IDSP, xeng=["graft", "host"])
+    expand(
+      f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-host.g.vcf.gz",
+      sample=IDPS
+    ),
+    expand(
+      f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-graft.g.vcf.gz",
+      sample=IDSP
+    )
 
 rule xengsort_index:
   input:
@@ -200,9 +207,93 @@ rule variant_filtration_step3:
   shell:
     """
     bcftools view \
-      -i 'INFO/DP>={params.dp}' \
+      -i 'FMT/DP>={params.dp}' \
       {input.vcf} \
       -Oz -o {output.vcf}
 
     bcftools index {output.vcf}
+    """
+
+#creates a bed file to determine the sites of interest
+rule union_sites_host:
+  input:
+    expand(
+      f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-host.step3.dp.vcf.gz",
+      sample=IDSP
+    )
+  output:
+    f"{WORKDIR}/analysis/union_sites_host.bed"
+  conda:
+    "/home/vanwper/.conda/envs/bcftools"
+  shell:
+    """
+    bcftools query -f '%CHROM\\t%POS0\\t%POS\\n' {input} \
+    | sort -k1,1 -k2,2n \
+    | bedtools merge \
+    > {output}
+    """
+
+rule union_sites_graft:
+  input:
+    expand(
+      f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-graft.step3.dp.vcf.gz",
+      sample=IDSP
+    )
+  output:
+    f"{WORKDIR}/analysis/union_sites_graft.bed"
+  conda:
+    "/home/vanwper/.conda/envs/bcftools"
+  shell:
+    """
+    bcftools query -f '%CHROM\\t%POS0\\t%POS\\n' {input} \
+    | sort -k1,1 -k2,2n \
+    | bedtools merge \
+    > {output}
+    """
+
+#create gvcf "prefiltered" files using known and filtered sites of interest
+rule site_specific_variant_call_host:
+  input:
+    bam=f"{WORKDIR}/sample_bams/{{sample}}/{{sample}}-host.bam",
+    ref=f"{WORKDIR}/reference/BaumannLab/a_arizonae_AspAri2.0.fasta",
+    sites=f"{WORKDIR}/analysis/union_sites_host.bed"
+  threads: 8
+  output:
+    gvcf=f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-host.g.vcf.gz"
+  shell:
+    """
+    apptainer exec \
+      --cleanenv \
+      --bind /grphome,/nobackup \
+      ./docker/deepvariant.sif \
+      run_deepvariant \
+        --model_type=PACBIO \
+        --ref={input.ref} \
+        --reads={input.bam} \
+        --output_gvcf={output.gvcf} \
+        --regions={input.sites} \
+        --num_shards={threads}
+    """
+
+rule site_specific_variant_call_graft:
+  input:
+    bam=f"{WORKDIR}/sample_bams/{{sample}}/{{sample}}-host.bam",
+    ref=f"{WORKDIR}/reference/BaumannLab/a_marmoratus_AspMarm2.0.fasta",
+    sites=f"{WORKDIR}/analysis/union_sites_graft.bed"
+  threads: 8
+  output:
+    gvcf=f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-graft.g.vcf.gz"
+  shell:
+    """
+    apptainer exec \
+      --cleanenv \
+      --bind /grphome,/nobackup \
+      ./docker/deepvariant.sif \
+      run_deepvariant \
+        --model_type=PACBIO \
+        --ref={input.ref} \
+        --reads={input.bam} \
+        --output_gvcf={output.gvcf} \
+        --regions={input.sites} \
+        --num_shards={threads}
     """
