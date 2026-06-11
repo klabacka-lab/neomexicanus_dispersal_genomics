@@ -34,3 +34,10 @@ June 9, 2026
 June 11, 2026
 	- added new rule to generate a bed file for both the graft and host vcfs that contains all loci of interest.
 	-adding rule to re-call the variants using the specified locis found in the bed files.
+
+  * Meeting between Randy and Perry
+	- Perry is currently running the script to do some additional filtering and call variants anew using reduced regions. 
+	- After the new gVCFs are created, one filtering can be done as follows:
+	    1. Get rid of sites with lots of missing data
+		> vcftools --max-missing 0.3 --vcf <name_of_vcf>.vcf --recode --recode-INFO-all --out <name_of_new_vcf>
+		> mv <name_of_new_vcf>.recode.vcf <name_of_new_vcf>.vcf
