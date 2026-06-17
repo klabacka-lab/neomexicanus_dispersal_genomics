@@ -269,16 +269,15 @@ rule union_sites_graft:
     > {output}
     """
 
-#create gvcf "prefiltered" files using known and filtered sites of interest
+#create gvcf to determine if data is missing
 rule site_specific_variant_call_host:
   input:
     bam=f"{WORKDIR}/sample_bams/{{sample}}/{{sample}}-host.bam",
-    ref=f"{WORKDIR}/reference/BaumannLab/a_arizonae_AspAri2.0.fasta",
-    sites=f"{WORKDIR}/analysis/union_sites_host.bed"
-  threads: 8
+    ref=f"{WORKDIR}/reference/BaumannLab/a_arizonae_AspAri2.0.fasta"
+  threads: 64
   output:
-    vcf=f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-host.sites.vcf.gz",
-    gvcf=f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-host.sites.g.vcf.gz"
+    vcf=f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-host.dupe.vcf.gz",
+    gvcf=f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-host.g.vcf.gz"
   shell:
     """
     apptainer exec \
@@ -291,19 +290,17 @@ rule site_specific_variant_call_host:
         --reads={input.bam} \
         --output_vcf={output.vcf} \
         --output_gvcf={output.gvcf} \
-        --regions={input.sites} \
         --num_shards={threads}
     """
 
 rule site_specific_variant_call_graft:
   input:
     bam=f"{WORKDIR}/sample_bams/{{sample}}/{{sample}}-graft.bam",
-    ref=f"{WORKDIR}/reference/BaumannLab/a_marmoratus_AspMarm2.0.fasta",
-    sites=f"{WORKDIR}/analysis/union_sites_graft.bed"
-  threads: 8
+    ref=f"{WORKDIR}/reference/BaumannLab/a_marmoratus_AspMarm2.0.fasta"
+  threads: 64
   output:
-    vcf=f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-graft.sites.vcf.gz",
-    gvcf=f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-graft.sites.g.vcf.gz"
+    vcf=f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-graft.dupe.vcf.gz",
+    gvcf=f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-graft.g.vcf.gz"
   shell:
     """
     apptainer exec \
@@ -316,6 +313,5 @@ rule site_specific_variant_call_graft:
         --reads={input.bam} \
         --output_vcf={output.vcf} \
         --output_gvcf={output.gvcf} \
-        --regions={input.sites} \
         --num_shards={threads}
     """
