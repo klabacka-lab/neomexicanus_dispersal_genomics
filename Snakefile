@@ -18,14 +18,8 @@ KMER = [20, 23, 25, 28, 30]
 
 rule all:
   input:
-    expand(
-      f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-host.sites.g.vcf.gz",
-      sample=IDSP
-    ),
-    expand(
-      f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-graft.sites.g.vcf.gz",
-      sample=IDSP
-    )
+    f"{WORKDIR}/analysis/merged-host.vcf.gz",
+    f"{WORKDIR}/analysis/merged-graft.vcf.gz"
 
 rule xengsort_index:
   input:
@@ -314,4 +308,38 @@ rule site_specific_variant_call_graft:
         --output_vcf={output.vcf} \
         --output_gvcf={output.gvcf} \
         --num_shards={threads}
+    """
+
+rule merge_host_gvcf:
+  input:
+    expand(f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-host.g.vcf.gz", sample=IDSP)
+  output:
+    vcf=f"{WORKDIR}/analysis/merged-host.vcf.gz"
+  conda:
+    "/home/vanwper/.conda/envs/pacbioProcessing"
+  shell:
+    """
+    glnexus_cli \
+      --config DeepVariant \
+      {input} \
+    | bcftools view -Oz -o {output.vcf}
+
+    bcftools index -t {output.vcf}
+    """
+
+rule merge_graft_gvcf:
+  input:
+    expand(f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-graft.g.vcf.gz", sample=IDSP)
+  output:
+    vcf=f"{WORKDIR}/analysis/merged-graft.vcf.gz"
+  conda:
+    "/home/vanwper/.conda/envs/pacbioProcessing"
+  shell:
+    """
+    glnexus_cli \
+      --config DeepVariant \
+      {input} \
+    | bcftools view -Oz -o {output.vcf}
+
+    bcftools index -t {output.vcf}
     """

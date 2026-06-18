@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #SBATCH --time=72:00:00   # walltime
-#SBATCH --cpus-per-task=64
-#SBATCH --mem=128G
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=32G
 #SBATCH -J "neomex_snakemake"
 #SBATCH --output=logs/snakemake.out
 #SBATCH --error=logs/snakemake.err
@@ -22,5 +22,5 @@ snakemake --unlock
 snakemake --jobs 1 \
   --use-conda \
   --latency-wait 60 \
-  --cores 64 \
+  --cores 8 \
   --rerun-incomplete

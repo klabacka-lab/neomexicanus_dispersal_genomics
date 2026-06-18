@@ -34,3 +34,7 @@ June 9, 2026
 June 11, 2026
 	- added new rule to generate a bed file for both the graft and host vcfs that contains all loci of interest.
 	-adding rule to re-call the variants using the specified locis found in the bed files.
+
+June 18, 2026
+	- met to discuss how to move forward with newly generated gvcf files
+	- created rules to merge the gvcf for each sample. need to check to make sure it still gives 0/0 or ./. at locations where the snp is unique to a few individuals.
