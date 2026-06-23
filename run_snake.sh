@@ -1,8 +1,8 @@
 #!/bin/bash
 
-#SBATCH --time=72:00:00   # walltime
+#SBATCH --time=24:00:00   # walltime
 #SBATCH --cpus-per-task=8
-#SBATCH --mem=32G
+#SBATCH --mem=64G
 #SBATCH -J "neomex_snakemake"
 #SBATCH --output=logs/snakemake.out
 #SBATCH --error=logs/snakemake.err

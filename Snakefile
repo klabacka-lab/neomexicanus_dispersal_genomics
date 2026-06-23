@@ -18,8 +18,7 @@ KMER = [20, 23, 25, 28, 30]
 
 rule all:
   input:
-    f"{WORKDIR}/analysis/merged-host.vcf.gz",
-    f"{WORKDIR}/analysis/merged-graft.vcf.gz"
+    f"{WORKDIR}/analysis/merged-graft.bcf"
 
 rule xengsort_index:
   input:
@@ -310,36 +309,74 @@ rule site_specific_variant_call_graft:
         --num_shards={threads}
     """
 
+rule name_samples:
+  input:
+    gvcf=f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-{{xeng}}.g.vcf.gz"
+  output:
+    gvcf=f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-{{xeng}}.fixed.g.vcf.gz",
+    tbi=f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-{{xeng}}.fixed.g.vcf.gz.tbi"
+  params:
+    sample=lambda wildcards: wildcards.sample
+  conda:
+    "/home/vanwper/.conda/envs/bcftools"
+  shell:
+    """
+    sample_file=$(mktemp)
+
+    echo "{params.sample}" > "$sample_file"
+
+    bcftools reheader \
+      -s "$sample_file" \
+      {input.gvcf} | \
+    bcftools view -Oz -o {output.gvcf}
+
+    bcftools index -f -t {output.gvcf}
+
+    rm -f "$sample_file"
+    """
+
 rule merge_host_gvcf:
   input:
-    expand(f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-host.g.vcf.gz", sample=IDSP)
+    gvcfs=expand(f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-host.fixed.g.vcf.gz", sample=IDSP)
   output:
-    vcf=f"{WORKDIR}/analysis/merged-host.vcf.gz"
+    bcf=f"{WORKDIR}/analysis/merged-host.bcf"
   conda:
     "/home/vanwper/.conda/envs/pacbioProcessing"
   shell:
     """
-    glnexus_cli \
-      --config DeepVariant \
-      {input} \
-    | bcftools view -Oz -o {output.vcf}
+    rm -rf GLnexus.DB
 
-    bcftools index -t {output.vcf}
+    apptainer exec \
+      --cleanenv \
+      --bind /grphome,/nobackup \
+      ./docker/glnexus.sif \
+      glnexus_cli \
+        --config DeepVariant \
+        --threads 4 \
+        --mem-gbytes 48 \
+        {input.gvcfs} \
+        > {output.bcf}
     """
 
 rule merge_graft_gvcf:
   input:
-    expand(f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-graft.g.vcf.gz", sample=IDSP)
+    gvcfs=expand(f"{WORKDIR}/sample_vcfs/{{sample}}/{{sample}}-graft.fixed.g.vcf.gz", sample=IDSP)
   output:
-    vcf=f"{WORKDIR}/analysis/merged-graft.vcf.gz"
+    bcf=f"{WORKDIR}/analysis/merged-graft.bcf"
   conda:
     "/home/vanwper/.conda/envs/pacbioProcessing"
   shell:
     """
-    glnexus_cli \
-      --config DeepVariant \
-      {input} \
-    | bcftools view -Oz -o {output.vcf}
+    rm -rf GLnexus.DB
 
-    bcftools index -t {output.vcf}
+    apptainer exec \
+      --cleanenv \
+      --bind /grphome,/nobackup \
+      ./docker/glnexus.sif \
+      glnexus_cli \
+        --config DeepVariant \
+        --threads 4 \
+        --mem-gbytes 48 \
+        {input.gvcfs} \
+        > {output.bcf}
     """

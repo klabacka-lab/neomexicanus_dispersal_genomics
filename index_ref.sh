@@ -15,10 +15,18 @@ workingdir="/home/vanwper/nobackup/autodelete/neomex/reference/BaumannLab"
 module load miniforge3
 
 #use samtools to index the reference fastas
-mamba activate samtools_env
+#mamba activate samtools_env
 
-samtools faidx $workingdir/a_arizonae_AspAri2.0.fasta
-echo "arizonae complete"
+#samtools faidx $workingdir/a_arizonae_AspAri2.0.fasta
+#echo "arizonae complete"
 
-samtools faidx $workingdir/a_marmoratus_AspMarm2.0.fasta
-echo "marmoratus complete"
+#samtools faidx $workingdir/a_marmoratus_AspMarm2.0.fasta
+#echo "marmoratus complete"
+
+mamba activate pacbioProcessing
+
+gatk CreateSequenceDictionary \
+	-R $workingdir/a_arizonae_AspAri2.0.fasta
+
+gatk CreateSequenceDictionary \
+	-R $workingdir/a_marmoratus_AspMarm2.0.fasta

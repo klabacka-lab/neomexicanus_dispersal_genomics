@@ -38,3 +38,11 @@ June 11, 2026
 June 18, 2026
 	- met to discuss how to move forward with newly generated gvcf files
 	- created rules to merge the gvcf for each sample. need to check to make sure it still gives 0/0 or ./. at locations where the snp is unique to a few individuals.
+
+June 20-22, 2026
+	- kept running into problems with the version of GLnexus I had. Learned that program kept crashing because individual gvcf files didn't have a sample name in the header. Used reheader to create names for them.
+	- swapped to GATK to see if it would fix my problems with merging them. No luck, deepvariant uses <*> instead of <non-ref> and GATK hates that.
+	- swapped back to GLnexus but used a apptainer version and learned that it will grab memory past what you allocate unless you specify in the options.
+
+June 23, 2026
+	- merged .bcf files are generated, begining to write new rules to index, sort by loci, and create a PCA plot.
