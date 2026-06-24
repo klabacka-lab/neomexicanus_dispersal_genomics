@@ -46,3 +46,4 @@ June 20-22, 2026
 
 June 23, 2026
 	- merged .bcf files are generated, begining to write new rules to index, sort by loci, and create a PCA plot.
+	- bcf files were filtered to just SNPs and were converted to eigen files for construction of a PCA. PCAs have been generated for PC1 PC2

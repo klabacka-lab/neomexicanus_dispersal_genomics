@@ -18,7 +18,8 @@ KMER = [20, 23, 25, 28, 30]
 
 rule all:
   input:
-    f"{WORKDIR}/analysis/merged-graft.bcf"
+    f"{WORKDIR}/analysis/PCA/graft.pca.png",
+    f"{WORKDIR}/analysis/PCA/host.pca.png"
 
 rule xengsort_index:
   input:
@@ -380,3 +381,147 @@ rule merge_graft_gvcf:
         {input.gvcfs} \
         > {output.bcf}
     """
+
+rule joint_host_loci:
+  input:
+    bcf=f"{WORKDIR}/analysis/merged-host.bcf",
+    bed=f"{WORKDIR}/analysis/union_sites_host.bed"
+  output:
+    bcf=f"{WORKDIR}/analysis/merged-filtered-host.bcf"
+  conda:
+    "/home/vanwper/.conda/envs/pacbioProcessing"
+  shell:
+    """
+    bcftools index -f {input.bcf}
+
+    bcftools view \
+      -R {input.bed} \
+      -Ob \
+      -o {output.bcf} \
+      {input.bcf}
+    """
+
+rule joint_graft_loci:
+  input:
+    bcf=f"{WORKDIR}/analysis/merged-graft.bcf",
+    bed=f"{WORKDIR}/analysis/union_sites_graft.bed"
+  output:
+    bcf=f"{WORKDIR}/analysis/merged-filtered-graft.bcf"
+  conda:
+    "/home/vanwper/.conda/envs/pacbioProcessing"
+  shell:
+    """
+    bcftools index -f {input.bcf}
+
+    bcftools view \
+      -R {input.bed} \
+      -Ob \
+      -o {output.bcf} \
+      {input.bcf}
+    """
+
+rule filter_by_missing:
+  input:
+    bcf=f"{WORKDIR}/analysis/merged-filtered-{{xeng}}.bcf"
+  output:
+    bcf=f"{WORKDIR}/analysis/{{xeng}}-final.bcf"
+  conda:
+    "/home/vanwper/.conda/envs/pacbioProcessing"
+  shell:
+    """
+    bcftools view \
+      -i 'F_MISSING<0.25' \
+      {input.bcf} \
+      -Ob \
+      -o {output.bcf}
+
+    bcftools index -f {output.bcf}
+    """
+
+rule filter_to_SNPs:
+  input:
+    bcf=f"{WORKDIR}/analysis/{{xeng}}-final.bcf"
+  output:
+    bcf=f"{WORKDIR}/analysis/{{xeng}}-final-SNPs.bcf"
+  conda:
+    "/home/vanwper/.conda/envs/pacbioProcessing"
+  shell:
+    """
+    bcftools view \
+      -m2 -M2 \
+      -v snps \
+      -Ob \
+      -o {output.bcf} \
+      {input.bcf}
+
+    bcftools index -f {output.bcf}
+    """
+
+rule plink:
+  input:
+    bcf=f"{WORKDIR}/analysis/{{xeng}}-final-SNPs.bcf"
+  output:
+    bed=f"{WORKDIR}/analysis/PCA/{{xeng}}.bed",
+    bim=f"{WORKDIR}/analysis/PCA/{{xeng}}.bim",
+    fam=f"{WORKDIR}/analysis/PCA/{{xeng}}.fam"
+  conda:
+    "/home/vanwper/.conda/envs/pacbioProcessing"
+  shell:
+    """
+    plink \
+      --bcf {input.bcf} \
+      --make-bed \
+      --allow-extra-chr \
+      --out {WORKDIR}/analysis/PCA/{wildcards.xeng} \
+    """
+
+rule ld_pruning:
+  input:
+    bed=f"{WORKDIR}/analysis/PCA/{{xeng}}.bed",
+    bim=f"{WORKDIR}/analysis/PCA/{{xeng}}.bim",
+    fam=f"{WORKDIR}/analysis/PCA/{{xeng}}.fam"
+  output:
+    prune_in=f"{WORKDIR}/analysis/PCA/{{xeng}}.prune.in",
+    prune_out=f"{WORKDIR}/analysis/PCA/{{xeng}}.prune.out"
+  conda:
+    "/home/vanwper/.conda/envs/pacbioProcessing"
+  shell:
+    """
+    plink \
+      --bfile {WORKDIR}/analysis/PCA/{wildcards.xeng} \
+      --allow-extra-chr \
+      --indep-pairwise 50 5 0.2 \
+      --out {WORKDIR}/analysis/PCA/{wildcards.xeng}
+    """ 
+
+rule pca:
+  input:
+    bed=f"{WORKDIR}/analysis/PCA/{{xeng}}.bed",
+    bim=f"{WORKDIR}/analysis/PCA/{{xeng}}.bim",
+    fam=f"{WORKDIR}/analysis/PCA/{{xeng}}.fam",
+    prune_in=f"{WORKDIR}/analysis/PCA/{{xeng}}.prune.in"
+  output:
+    eigenvec=f"{WORKDIR}/analysis/PCA/{{xeng}}.pca.eigenvec",
+    eigenval=f"{WORKDIR}/analysis/PCA/{{xeng}}.pca.eigenval"
+  conda:
+    "/home/vanwper/.conda/envs/pacbioProcessing"
+  shell:
+    """
+    plink \
+      --bfile {WORKDIR}/analysis/PCA/{wildcards.xeng} \
+      --allow-extra-chr \
+      --extract {input.prune_in} \
+      --pca 10 \
+      --out {WORKDIR}/analysis/PCA/{wildcards.xeng}.pca 
+    """
+
+rule plot_pca:
+  input:
+    eigenvec=f"{WORKDIR}/analysis/PCA/{{xeng}}.pca.eigenvec",
+    eigenval=f"{WORKDIR}/analysis/PCA/{{xeng}}.pca.eigenval"
+  output:
+    png=f"{WORKDIR}/analysis/PCA/{{xeng}}.pca.png"
+  conda:
+    "/home/vanwper/.conda/envs/pacbioProcessing"
+  script:
+    "plot_pca.py"
