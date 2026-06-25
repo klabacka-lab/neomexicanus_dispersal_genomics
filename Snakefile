@@ -18,8 +18,10 @@ KMER = [20, 23, 25, 28, 30]
 
 rule all:
   input:
-    f"{WORKDIR}/analysis/PCA/graft.pca.png",
-    f"{WORKDIR}/analysis/PCA/host.pca.png"
+    f"{WORKDIR}/analysis/phylogeny/host-snps_tree.treefile",
+    f"{WORKDIR}/analysis/phylogeny/host-snps_tree.iqtree",
+    f"{WORKDIR}/analysis/phylogeny/graft-snps_tree.treefile",
+    f"{WORKDIR}/analysis/phylogeny/graft-snps_tree.iqtree"
 
 rule xengsort_index:
   input:
@@ -525,3 +527,51 @@ rule plot_pca:
     "/home/vanwper/.conda/envs/pacbioProcessing"
   script:
     "plot_pca.py"
+
+rule bcf_to_vcf:
+  input:
+    bcf=f"{WORKDIR}/analysis/{{xeng}}-final-SNPs.bcf"
+  output:
+    vcf=f"{WORKDIR}/analysis/{{xeng}}-final-SNPs.vcf.gz"
+  conda:
+    "/home/vanwper/.conda/envs/bcftools"
+  shell:
+    """
+    bcftools view -Oz -o {output.vcf} {input.bcf}
+    bcftools index -t {output.vcf}
+    """
+
+rule bcf_to_fasta:
+  input:
+    vcf=f"{WORKDIR}/analysis/{{xeng}}-final-SNPs.vcf.gz"
+  output:
+    fasta=f"{WORKDIR}/analysis/phylogeny/{{xeng}}-SNPs.min4.fasta"
+  conda:
+    "/home/vanwper/.conda/envs/python"
+  shell:
+    """
+    python vcf2phylip.py \
+      -i {input.vcf} \
+      --output-folder "{WORKDIR}/analysis/phylogeny" \
+      --output-prefix "{wildcards.xeng}-SNPs" \
+      --fasta
+    """
+
+rule generate_phylogeny:
+  input:
+    fasta=f"{WORKDIR}/analysis/phylogeny/{{xeng}}-SNPs.min4.fasta"
+  output:
+    tree=f"{WORKDIR}/analysis/phylogeny/{{xeng}}-snps_tree.treefile",
+    report=f"{WORKDIR}/analysis/phylogeny/{{xeng}}-snps_tree.iqtree",
+  conda:
+    "/home/vanwper/.conda/envs/pacbioProcessing"
+  shell:
+    """
+    iqtree3 \
+      -s {input.fasta} \
+      -m MFP \
+      -bb 1000 \
+      -bnni \
+      -T AUTO \
+      -pre "{WORKDIR}/analysis/phylogeny/{wildcards.xeng}-snps_tree"
+    """

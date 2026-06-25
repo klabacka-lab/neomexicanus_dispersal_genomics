@@ -1,59 +1,73 @@
 Unlocked working directory.
 Assuming unrestricted shared filesystem usage.
-host: m9-40-2
+host: m9-35-3
 Building DAG of jobs...
 Using shell: /usr/local/bin/bash
 Provided cores: 4
 Rules claiming more threads will be scaled down.
 Job stats:
-job         count
---------  -------
-plot_pca        2
-all             1
-total           3
+job                   count
+------------------  -------
+bcf_to_fasta              1
+generate_phylogeny        2
+all                       1
+total                     4
 
 Select jobs to execute...
 Execute 1 jobs...
 
-[Tue Jun 23 18:18:38 2026]
-localrule plot_pca:
-    input: /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/host.pca.eigenvec, /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/host.pca.eigenval
-    output: /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/host.pca.png
-    jobid: 83
-    reason: Missing output files: /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/host.pca.png
+[Wed Jun 24 14:25:00 2026]
+localrule bcf_to_fasta:
+    input: /home/vanwper/nobackup/autodelete/neomex/analysis/host-final-SNPs.vcf.gz
+    output: /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/host-SNPs.min4.fasta
+    jobid: 2
+    reason: Missing output files: /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/host-SNPs.min4.fasta; Code has changed since last execution
     wildcards: xeng=host
     resources: tmpdir=/tmp
+Activating conda environment: ../../.conda/envs/python
 Select jobs to execute...
-Activating conda environment: ../../.conda/envs/pacbioProcessing
-Activating conda environment: ../../.conda/envs/pacbioProcessing
-[Tue Jun 23 18:19:21 2026]
-Finished jobid: 83 (Rule: plot_pca)
-1 of 3 steps (33%) done
+[Wed Jun 24 14:26:31 2026]
+Finished jobid: 2 (Rule: bcf_to_fasta)
+1 of 4 steps (25%) done
 Execute 1 jobs...
 
-[Tue Jun 23 18:19:21 2026]
-localrule plot_pca:
-    input: /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/graft.pca.eigenvec, /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/graft.pca.eigenval
-    output: /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/graft.pca.png
-    jobid: 1
-    reason: Missing output files: /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/graft.pca.png
+[Wed Jun 24 14:26:31 2026]
+localrule generate_phylogeny:
+    input: /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/graft-SNPs.min4.fasta
+    output: /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/graft-snps_tree.treefile, /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/graft-snps_tree.iqtree
+    jobid: 82
+    reason: Missing output files: /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/graft-snps_tree.treefile, /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/graft-snps_tree.iqtree; Code has changed since last execution
     wildcards: xeng=graft
     resources: tmpdir=/tmp
 Activating conda environment: ../../.conda/envs/pacbioProcessing
+Select jobs to execute...
+[Wed Jun 24 14:35:45 2026]
+Finished jobid: 82 (Rule: generate_phylogeny)
+2 of 4 steps (50%) done
+Execute 1 jobs...
+
+[Wed Jun 24 14:35:45 2026]
+localrule generate_phylogeny:
+    input: /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/host-SNPs.min4.fasta
+    output: /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/host-snps_tree.treefile, /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/host-snps_tree.iqtree
+    jobid: 1
+    reason: Missing output files: /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/host-snps_tree.iqtree, /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/host-snps_tree.treefile; Input files updated by another job: /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/host-SNPs.min4.fasta
+    wildcards: xeng=host
+    resources: tmpdir=/tmp
 Activating conda environment: ../../.conda/envs/pacbioProcessing
-[Tue Jun 23 18:19:32 2026]
-Finished jobid: 1 (Rule: plot_pca)
-2 of 3 steps (67%) done
+[Wed Jun 24 14:51:04 2026]
+Finished jobid: 1 (Rule: generate_phylogeny)
+3 of 4 steps (75%) done
 Select jobs to execute...
 Execute 1 jobs...
 
-[Tue Jun 23 18:19:32 2026]
+[Wed Jun 24 14:51:04 2026]
 localrule all:
-    input: /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/graft.pca.png, /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/host.pca.png
+    input: /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/host-snps_tree.treefile, /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/host-snps_tree.iqtree, /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/graft-snps_tree.treefile, /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/graft-snps_tree.iqtree
     jobid: 0
-    reason: Input files updated by another job: /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/graft.pca.png, /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/host.pca.png
+    reason: Input files updated by another job: /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/graft-snps_tree.treefile, /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/graft-snps_tree.iqtree, /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/host-snps_tree.iqtree, /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/host-snps_tree.treefile
     resources: tmpdir=/tmp
-[Tue Jun 23 18:19:32 2026]
+[Wed Jun 24 14:51:04 2026]
 Finished jobid: 0 (Rule: all)
-3 of 3 steps (100%) done
-Complete log(s): /home/vanwper/projects/neomexicanus_dispersal_genomics/.snakemake/log/2026-06-23T181833.310234.snakemake.log
+4 of 4 steps (100%) done
+Complete log(s): /home/vanwper/projects/neomexicanus_dispersal_genomics/.snakemake/log/2026-06-24T142455.500668.snakemake.log

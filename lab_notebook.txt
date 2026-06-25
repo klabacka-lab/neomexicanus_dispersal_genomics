@@ -47,3 +47,9 @@ June 20-22, 2026
 June 23, 2026
 	- merged .bcf files are generated, begining to write new rules to index, sort by loci, and create a PCA plot.
 	- bcf files were filtered to just SNPs and were converted to eigen files for construction of a PCA. PCAs have been generated for PC1 PC2
+
+June 24, 2026
+	- generated estimated phylogenies using iqtree. Wanted to do SNP only (ASC setting) but even though my merged vcf was SNPs only it didn't like that so I had to do it without that setting.
+
+June 25, 2026
+	- grabbed .treefiles locally to make nice graphed versions using interactive tree of life.
