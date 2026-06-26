@@ -1,0 +1,10 @@
+RLK303 - Lizard 1 - 7891 - Salt Lake County
+RLK236 - Lizard 2 - 7893 - Utah County
+RLK298 - Lizard 3 - 7888 - Washington County
+RLK253 - Lizard 4 - 7897 - San Juan County
+RLK264 - Lizard 5 - 7896 - Bernalillo County
+RLK273 - Lizard 6 - 7895 - Socorro County
+RLK283 - Lizard 7 - 7894 - Dona Ana County
+RLK290 - Lizard 8 - 7892 - El Paso County
+RLK242 - Lizard 9 - 7890 - Navajo County
+BARLEY - Chihuahu - 7889 - A. exsanguis
