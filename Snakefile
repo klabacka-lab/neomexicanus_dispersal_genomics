@@ -620,6 +620,7 @@ rule merge_bcfs:
     bcftools concat \
       {input.graft} \
       {input.host} \
+      -a \
       -Ob \
       -o {output.bcf}
 
@@ -693,4 +694,4 @@ rule plot_merged_pca:
   conda:
     "/home/vanwper/.conda/envs/python"
   script:
-    "plot_pca.py"
+    "plot_merged_pca.py"
