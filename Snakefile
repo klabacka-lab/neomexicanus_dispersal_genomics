@@ -8,7 +8,7 @@ WORKDIR = "/home/vanwper/nobackup/autodelete/neomex"
 #sample numbers
 IDS = ["7891","7892","7893","7894","7895","7896","7897"]
 #sample numbers including the updated 7888
-IDSP = ["7888", "7891","7892","7893","7894","7895","7896","7897"]
+IDSP = ["7888", "7890", "7891","7892","7893","7894","7895","7896","7897"]
 
 #xengsort classify output types
 XENG_CLASS = ["host", "graft", "both", "neither", "ambiguous"]
@@ -391,7 +391,7 @@ rule joint_host_loci:
   output:
     bcf=f"{WORKDIR}/analysis/merged-filtered-host.bcf"
   conda:
-    "/home/vanwper/.conda/envs/pacbioProcessing"
+    "/home/vanwper/.conda/envs/bcftools"
   shell:
     """
     bcftools index -f {input.bcf}
@@ -410,7 +410,7 @@ rule joint_graft_loci:
   output:
     bcf=f"{WORKDIR}/analysis/merged-filtered-graft.bcf"
   conda:
-    "/home/vanwper/.conda/envs/pacbioProcessing"
+    "/home/vanwper/.conda/envs/bcftools"
   shell:
     """
     bcftools index -f {input.bcf}
@@ -428,7 +428,7 @@ rule filter_by_missing:
   output:
     bcf=f"{WORKDIR}/analysis/{{xeng}}-final.bcf"
   conda:
-    "/home/vanwper/.conda/envs/pacbioProcessing"
+    "/home/vanwper/.conda/envs/bcftools"
   shell:
     """
     bcftools view \
@@ -446,7 +446,7 @@ rule filter_to_SNPs:
   output:
     bcf=f"{WORKDIR}/analysis/{{xeng}}-final-SNPs.bcf"
   conda:
-    "/home/vanwper/.conda/envs/pacbioProcessing"
+    "/home/vanwper/.conda/envs/bcftools"
   shell:
     """
     bcftools view \
@@ -524,7 +524,7 @@ rule plot_pca:
   output:
     png=f"{WORKDIR}/analysis/PCA/{{xeng}}.pca.png"
   conda:
-    "/home/vanwper/.conda/envs/pacbioProcessing"
+    "/home/vanwper/.conda/envs/python"
   script:
     "plot_pca.py"
 
@@ -573,5 +573,6 @@ rule generate_phylogeny:
       -bb 1000 \
       -bnni \
       -T AUTO \
+      --redo \
       -pre "{WORKDIR}/analysis/phylogeny/{wildcards.xeng}-snps_tree"
     """

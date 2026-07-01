@@ -1,8 +1,0 @@
-| 20260626 16:36:30.510 | WARN | Input is FASTQ. Output BAM file cannot be used for polishing with GenomicConsensus!
-samtools sort: failed to create "/home/vanwper/nobackup/autodelete/neomex/sample_bams/7890/7890-host.bam": No such file or directory
-terminate called after throwing an instance of 'PacBio::Utility::AlarmException'
-/var/spool/slurmd/job12423686/slurm_script: line 23: 265119 Aborted                 (core dumped) pbmm2 align "$WORKDIR/xeng_data/k25/7890/7890-host.fq.gz" "$WORKDIR/reference/BaumannLab/a_arizonae_AspAri2.0.mmi" "$WORKDIR/sample_bams/7890/7890-host.bam" --preset CCS --sort
-| 20260626 18:09:08.599 | WARN | Input is FASTQ. Output BAM file cannot be used for polishing with GenomicConsensus!
-samtools sort: failed to create "/home/vanwper/nobackup/autodelete/neomex/sample_bams/7890/7890-graft.bam": No such file or directory
-terminate called after throwing an instance of 'PacBio::Utility::AlarmException'
-/var/spool/slurmd/job12423686/slurm_script: line 31: 359639 Aborted                 (core dumped) pbmm2 align "$WORKDIR/xeng_data/k25/7890/7890-graft.fq.gz" "$WORKDIR/reference/BaumannLab/a_marmoratus_AspMarm2.0.mmi" "$WORKDIR/sample_bams/7890/7890-graft.bam" --preset CCS --sort
