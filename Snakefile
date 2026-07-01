@@ -18,10 +18,9 @@ KMER = [20, 23, 25, 28, 30]
 
 rule all:
   input:
-    f"{WORKDIR}/analysis/phylogeny/host-snps_tree.treefile",
-    f"{WORKDIR}/analysis/phylogeny/host-snps_tree.iqtree",
-    f"{WORKDIR}/analysis/phylogeny/graft-snps_tree.treefile",
-    f"{WORKDIR}/analysis/phylogeny/graft-snps_tree.iqtree"
+    f"{WORKDIR}/analysis/PCA/merged.pca.png",
+    f"{WORKDIR}/analysis/PCA/host.pca.png",
+    f"{WORKDIR}/analysis/PCA/graft.pca.png"
 
 rule xengsort_index:
   input:
@@ -576,3 +575,122 @@ rule generate_phylogeny:
       --redo \
       -pre "{WORKDIR}/analysis/phylogeny/{wildcards.xeng}-snps_tree"
     """
+
+rule merge_fastas:
+  input:
+    host=f"{WORKDIR}/analysis/phylogeny/host-SNPs.min4.fasta",
+    graft=f"{WORKDIR}/analysis/phylogeny/graft-SNPs.min4.fasta"
+  output:
+    fasta=f"{WORKDIR}/analysis/phylogeny/merged-SNPs.min4.fasta"
+  conda:
+    "/home/vanwper/.conda/envs/python"
+  script:
+    "merge_fastas.py"
+
+rule generate_merged_phylogeny:
+  input:
+    fasta=f"{WORKDIR}/analysis/phylogeny/merged-SNPs.min4.fasta"
+  output:
+    tree=f"{WORKDIR}/analysis/phylogeny/merged-snps_tree.treefile",
+    report=f"{WORKDIR}/analysis/phylogeny/merged-snps_tree.iqtree"
+  conda:
+    "/home/vanwper/.conda/envs/pacbioProcessing"
+  shell:
+    """
+    iqtree3 \
+      -s {input.fasta} \
+      -m MFP \
+      -bb 1000 \
+      -bnni \
+      -T AUTO \
+      --redo \
+      -pre "{WORKDIR}/analysis/phylogeny/merged-snps_tree"
+    """
+
+rule merge_bcfs:
+  input:
+    host=f"{WORKDIR}/analysis/host-final-SNPs.bcf",
+    graft=f"{WORKDIR}/analysis/graft-final-SNPs.bcf"
+  output:
+    bcf=f"{WORKDIR}/analysis/merged-final-SNPs.bcf"
+  conda:
+    "/home/vanwper/.conda/envs/bcftools"
+  shell:
+    """
+    bcftools concat \
+      {input.graft} \
+      {input.host} \
+      -Ob \
+      -o {output.bcf}
+
+    bcftools index {output.bcf}
+    """
+
+rule merged_plink:
+  input:
+    bcf=f"{WORKDIR}/analysis/merged-final-SNPs.bcf"
+  output:
+    bed=f"{WORKDIR}/analysis/PCA/merged.bed",
+    bim=f"{WORKDIR}/analysis/PCA/merged.bim",
+    fam=f"{WORKDIR}/analysis/PCA/merged.fam"
+  conda:
+    "/home/vanwper/.conda/envs/pacbioProcessing"
+  shell:
+    """
+    plink \
+      --bcf {input.bcf} \
+      --make-bed \
+      --allow-extra-chr \
+      --out {WORKDIR}/analysis/PCA/merged 
+    """
+
+rule merged_LD_pruning:
+  input:
+    bed=f"{WORKDIR}/analysis/PCA/merged.bed",
+    bim=f"{WORKDIR}/analysis/PCA/merged.bim",
+    fam=f"{WORKDIR}/analysis/PCA/merged.fam"
+  output:
+    prune_in=f"{WORKDIR}/analysis/PCA/merged.prune.in",
+    prune_out=f"{WORKDIR}/analysis/PCA/merged.prune.out"
+  conda:
+    "/home/vanwper/.conda/envs/pacbioProcessing"
+  shell:
+    """
+    plink \
+      --bfile {WORKDIR}/analysis/PCA/merged \
+      --allow-extra-chr \
+      --indep-pairwise 50 5 0.2 \
+      --out {WORKDIR}/analysis/PCA/merged
+    """
+
+rule generate_merged_pca:
+  input:
+    bed=f"{WORKDIR}/analysis/PCA/merged.bed",
+    bim=f"{WORKDIR}/analysis/PCA/merged.bim",
+    fam=f"{WORKDIR}/analysis/PCA/merged.fam",
+    prune_in=f"{WORKDIR}/analysis/PCA/merged.prune.in"
+  output:
+    eigenvec=f"{WORKDIR}/analysis/PCA/merged.pca.eigenvec",
+    eigenval=f"{WORKDIR}/analysis/PCA/merged.pca.eigenval"
+  conda:
+    "/home/vanwper/.conda/envs/pacbioProcessing"
+  shell:
+    """
+    plink \
+      --bfile {WORKDIR}/analysis/PCA/merged \
+      --allow-extra-chr \
+      --extract {input.prune_in} \
+      --pca 10 \
+      --out {WORKDIR}/analysis/PCA/merged.pca
+    """
+
+rule plot_merged_pca:
+  input:
+    eigenvec=f"{WORKDIR}/analysis/PCA/merged.pca.eigenvec",
+    eigenval=f"{WORKDIR}/analysis/PCA/merged.pca.eigenval"
+  output:
+    png=f"{WORKDIR}/analysis/PCA/merged.pca.png"
+  conda:
+    "/home/vanwper/.conda/envs/python"
+  script:
+    "plot_pca.py"

@@ -32,4 +32,4 @@ for sample in sorted(host.keys()):
 
 SeqIO.write(combined_records, output_fasta, "fasta")
 
-print(fastas merged)
+print("fastas merged")

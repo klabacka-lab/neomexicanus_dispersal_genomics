@@ -1,136 +1,41 @@
 Unlocked working directory.
 Assuming unrestricted shared filesystem usage.
-host: m8-18-5
+host: m8-18-6
 Building DAG of jobs...
 Using shell: /usr/local/bin/bash
 Provided cores: 8
 Rules claiming more threads will be scaled down.
 Job stats:
-job                   count
-------------------  -------
-generate_phylogeny        2
-joint_graft_loci          1
-filter_by_missing         1
-filter_to_SNPs            1
-bcf_to_vcf                1
-bcf_to_fasta              1
-all                       1
-total                     8
+job                          count
+-------------------------  -------
+generate_merged_phylogeny        1
+all                              1
+total                            2
 
 Select jobs to execute...
 Execute 1 jobs...
 
-[Mon Jun 29 13:50:33 2026]
-localrule generate_phylogeny:
-    input: /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/host-SNPs.min4.fasta
-    output: /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/host-snps_tree.treefile, /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/host-snps_tree.iqtree
+[Tue Jun 30 20:41:34 2026]
+localrule generate_merged_phylogeny:
+    input: /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/merged-SNPs.min4.fasta
+    output: /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/merged-snps_tree.treefile, /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/merged-snps_tree.iqtree
     jobid: 1
-    reason: Missing output files: /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/host-snps_tree.iqtree, /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/host-snps_tree.treefile; Code has changed since last execution
-    wildcards: xeng=host
+    reason: Missing output files: /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/merged-snps_tree.treefile, /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/merged-snps_tree.iqtree
     resources: tmpdir=/tmp
 Activating conda environment: ../../.conda/envs/pacbioProcessing
-Select jobs to execute...
-[Mon Jun 29 14:06:55 2026]
-Finished jobid: 1 (Rule: generate_phylogeny)
-1 of 8 steps (12%) done
-Execute 1 jobs...
-
-[Mon Jun 29 14:06:55 2026]
-localrule joint_graft_loci:
-    input: /home/vanwper/nobackup/autodelete/neomex/analysis/merged-graft.bcf, /home/vanwper/nobackup/autodelete/neomex/analysis/union_sites_graft.bed
-    output: /home/vanwper/nobackup/autodelete/neomex/analysis/merged-filtered-graft.bcf
-    jobid: 96
-    reason: Updated input files: /home/vanwper/nobackup/autodelete/neomex/analysis/union_sites_graft.bed, /home/vanwper/nobackup/autodelete/neomex/analysis/merged-graft.bcf
-    resources: tmpdir=/tmp
-Activating conda environment: ../../.conda/envs/bcftools
-[Mon Jun 29 14:18:56 2026]
-Finished jobid: 96 (Rule: joint_graft_loci)
-2 of 8 steps (25%) done
+[Tue Jun 30 21:07:40 2026]
+Finished jobid: 1 (Rule: generate_merged_phylogeny)
+1 of 2 steps (50%) done
 Select jobs to execute...
 Execute 1 jobs...
 
-[Mon Jun 29 14:18:56 2026]
-localrule filter_by_missing:
-    input: /home/vanwper/nobackup/autodelete/neomex/analysis/merged-filtered-graft.bcf
-    output: /home/vanwper/nobackup/autodelete/neomex/analysis/graft-final.bcf
-    jobid: 95
-    reason: Input files updated by another job: /home/vanwper/nobackup/autodelete/neomex/analysis/merged-filtered-graft.bcf
-    wildcards: xeng=graft
-    resources: tmpdir=/tmp
-Activating conda environment: ../../.conda/envs/bcftools
-[Mon Jun 29 14:19:18 2026]
-Finished jobid: 95 (Rule: filter_by_missing)
-3 of 8 steps (38%) done
-Select jobs to execute...
-Execute 1 jobs...
-
-[Mon Jun 29 14:19:18 2026]
-localrule filter_to_SNPs:
-    input: /home/vanwper/nobackup/autodelete/neomex/analysis/graft-final.bcf
-    output: /home/vanwper/nobackup/autodelete/neomex/analysis/graft-final-SNPs.bcf
-    jobid: 94
-    reason: Input files updated by another job: /home/vanwper/nobackup/autodelete/neomex/analysis/graft-final.bcf
-    wildcards: xeng=graft
-    resources: tmpdir=/tmp
-Activating conda environment: ../../.conda/envs/bcftools
-[Mon Jun 29 14:19:38 2026]
-Finished jobid: 94 (Rule: filter_to_SNPs)
-4 of 8 steps (50%) done
-Select jobs to execute...
-Execute 1 jobs...
-
-[Mon Jun 29 14:19:38 2026]
-localrule bcf_to_vcf:
-    input: /home/vanwper/nobackup/autodelete/neomex/analysis/graft-final-SNPs.bcf
-    output: /home/vanwper/nobackup/autodelete/neomex/analysis/graft-final-SNPs.vcf.gz
-    jobid: 93
-    reason: Input files updated by another job: /home/vanwper/nobackup/autodelete/neomex/analysis/graft-final-SNPs.bcf
-    wildcards: xeng=graft
-    resources: tmpdir=/tmp
-Activating conda environment: ../../.conda/envs/bcftools
-[Mon Jun 29 14:20:11 2026]
-Finished jobid: 93 (Rule: bcf_to_vcf)
-5 of 8 steps (62%) done
-Select jobs to execute...
-Execute 1 jobs...
-
-[Mon Jun 29 14:20:11 2026]
-localrule bcf_to_fasta:
-    input: /home/vanwper/nobackup/autodelete/neomex/analysis/graft-final-SNPs.vcf.gz
-    output: /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/graft-SNPs.min4.fasta
-    jobid: 92
-    reason: Input files updated by another job: /home/vanwper/nobackup/autodelete/neomex/analysis/graft-final-SNPs.vcf.gz
-    wildcards: xeng=graft
-    resources: tmpdir=/tmp
-Activating conda environment: ../../.conda/envs/python
-[Mon Jun 29 14:21:20 2026]
-Finished jobid: 92 (Rule: bcf_to_fasta)
-6 of 8 steps (75%) done
-Select jobs to execute...
-Execute 1 jobs...
-
-[Mon Jun 29 14:21:20 2026]
-localrule generate_phylogeny:
-    input: /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/graft-SNPs.min4.fasta
-    output: /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/graft-snps_tree.treefile, /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/graft-snps_tree.iqtree
-    jobid: 91
-    reason: Input files updated by another job: /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/graft-SNPs.min4.fasta
-    wildcards: xeng=graft
-    resources: tmpdir=/tmp
-Activating conda environment: ../../.conda/envs/pacbioProcessing
-[Mon Jun 29 14:31:04 2026]
-Finished jobid: 91 (Rule: generate_phylogeny)
-7 of 8 steps (88%) done
-Select jobs to execute...
-Execute 1 jobs...
-
-[Mon Jun 29 14:31:04 2026]
+[Tue Jun 30 21:07:40 2026]
 localrule all:
-    input: /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/host-snps_tree.treefile, /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/host-snps_tree.iqtree, /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/graft-snps_tree.treefile, /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/graft-snps_tree.iqtree
+    input: /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/merged-snps_tree.treefile, /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/merged-snps_tree.iqtree
     jobid: 0
-    reason: Input files updated by another job: /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/graft-snps_tree.iqtree, /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/host-snps_tree.iqtree, /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/graft-snps_tree.treefile, /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/host-snps_tree.treefile
+    reason: Input files updated by another job: /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/merged-snps_tree.treefile, /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/merged-snps_tree.iqtree
     resources: tmpdir=/tmp
-[Mon Jun 29 14:31:04 2026]
+[Tue Jun 30 21:07:40 2026]
 Finished jobid: 0 (Rule: all)
-8 of 8 steps (100%) done
-Complete log(s): /home/vanwper/projects/neomexicanus_dispersal_genomics/.snakemake/log/2026-06-29T135026.632677.snakemake.log
+2 of 2 steps (100%) done
+Complete log(s): /home/vanwper/projects/neomexicanus_dispersal_genomics/.snakemake/log/2026-06-30T204130.344674.snakemake.log
