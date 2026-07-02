@@ -53,3 +53,6 @@ June 24, 2026
 
 June 25, 2026
 	- grabbed .treefiles locally to make nice graphed versions using interactive tree of life.
+
+July 2, 2026
+	- Perry completed the inclusion of the Navajo individual, and re-generated the PCA and phylogenies. Here is the info on who is "host" and who is "graft" in these: Host: arizonae, Graft: marmoratus
