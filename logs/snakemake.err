@@ -6,43 +6,55 @@ Using shell: /usr/local/bin/bash
 Provided cores: 8
 Rules claiming more threads will be scaled down.
 Job stats:
-job           count
-----------  -------
-plot_upset        2
-all               1
-total             3
+job                count
+---------------  -------
+generate_tsv           1
+generate_matrix        1
+plot_upset             1
+all                    1
+total                  4
 
 Select jobs to execute...
 Execute 1 jobs...
 
-[Sat Jul  4 14:05:40 2026]
-localrule plot_upset:
-    input: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/graft-SNPs.csv
-    output: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/graft.upset.pdf
-    jobid: 91
-    reason: Missing output files: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/graft.upset.pdf
-    wildcards: xeng=graft
+[Sat Jul  4 14:14:17 2026]
+localrule generate_tsv:
+    input: /home/vanwper/nobackup/autodelete/neomex/analysis/merged-final-SNPs.bcf
+    output: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/merged-SNPs.gt.tsv
+    jobid: 3
+    reason: Code has changed since last execution
+    wildcards: xeng=merged
     resources: tmpdir=/tmp
-Activating conda environment: ../../.conda/envs/Rscripts
+Activating conda environment: ../../.conda/envs/bcftools
+[Sat Jul  4 14:14:38 2026]
+Finished jobid: 3 (Rule: generate_tsv)
+1 of 4 steps (25%) done
 Select jobs to execute...
-Warning message:
-Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
-ℹ Please use `linewidth` instead.
-ℹ The deprecated feature was likely used in the ComplexUpset package.
-  Please report the issue at
-  <https://github.com/krassowski/complex-upset/issues>. 
-[Sat Jul  4 14:06:02 2026]
-Finished jobid: 91 (Rule: plot_upset)
-1 of 3 steps (33%) done
 Execute 1 jobs...
 
-[Sat Jul  4 14:06:02 2026]
+[Sat Jul  4 14:14:38 2026]
+localrule generate_matrix:
+    input: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/merged-SNPs.gt.tsv
+    output: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/merged-SNPs.csv
+    jobid: 2
+    reason: Input files updated by another job: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/merged-SNPs.gt.tsv
+    wildcards: xeng=merged
+    resources: tmpdir=/tmp
+Activating conda environment: ../../.conda/envs/python
+Activating conda environment: ../../.conda/envs/python
+[Sat Jul  4 14:15:29 2026]
+Finished jobid: 2 (Rule: generate_matrix)
+2 of 4 steps (50%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Sat Jul  4 14:15:29 2026]
 localrule plot_upset:
-    input: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/host-SNPs.csv
-    output: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/host.upset.pdf
+    input: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/merged-SNPs.csv
+    output: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/merged.upset.pdf
     jobid: 1
-    reason: Missing output files: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/host.upset.pdf
-    wildcards: xeng=host
+    reason: Missing output files: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/merged.upset.pdf; Input files updated by another job: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/merged-SNPs.csv
+    wildcards: xeng=merged
     resources: tmpdir=/tmp
 Activating conda environment: ../../.conda/envs/Rscripts
 Warning message:
@@ -51,19 +63,19 @@ Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
 ℹ The deprecated feature was likely used in the ComplexUpset package.
   Please report the issue at
   <https://github.com/krassowski/complex-upset/issues>. 
-[Sat Jul  4 14:06:27 2026]
+[Sat Jul  4 14:16:03 2026]
 Finished jobid: 1 (Rule: plot_upset)
-2 of 3 steps (67%) done
+3 of 4 steps (75%) done
 Select jobs to execute...
 Execute 1 jobs...
 
-[Sat Jul  4 14:06:27 2026]
+[Sat Jul  4 14:16:03 2026]
 localrule all:
-    input: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/host.upset.pdf, /home/vanwper/nobackup/autodelete/neomex/analysis/upset/graft.upset.pdf
+    input: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/merged.upset.pdf, /home/vanwper/nobackup/autodelete/neomex/analysis/upset/host.upset.pdf, /home/vanwper/nobackup/autodelete/neomex/analysis/upset/graft.upset.pdf
     jobid: 0
-    reason: Input files updated by another job: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/host.upset.pdf, /home/vanwper/nobackup/autodelete/neomex/analysis/upset/graft.upset.pdf
+    reason: Input files updated by another job: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/merged.upset.pdf
     resources: tmpdir=/tmp
-[Sat Jul  4 14:06:27 2026]
+[Sat Jul  4 14:16:03 2026]
 Finished jobid: 0 (Rule: all)
-3 of 3 steps (100%) done
-Complete log(s): /home/vanwper/projects/neomexicanus_dispersal_genomics/.snakemake/log/2026-07-04T140537.408790.snakemake.log
+4 of 4 steps (100%) done
+Complete log(s): /home/vanwper/projects/neomexicanus_dispersal_genomics/.snakemake/log/2026-07-04T141414.301710.snakemake.log
