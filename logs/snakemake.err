@@ -4,97 +4,27 @@ Unlocked working directory.
 /home/vanwper/projects/neomexicanus_dispersal_genomics/Snakefile:1569: SyntaxWarning: invalid escape sequence '\T'
 /home/vanwper/projects/neomexicanus_dispersal_genomics/Snakefile:1580: SyntaxWarning: invalid escape sequence '\T'
 Assuming unrestricted shared filesystem usage.
-host: m8-18-13
+host: m8-17-1
 Building DAG of jobs...
 Using shell: /usr/local/bin/bash
 Provided cores: 8
 Rules claiming more threads will be scaled down.
 Job stats:
-job                count
----------------  -------
-generate_matrix        3
-plot_upset             3
-all                    1
-total                  7
+job           count
+----------  -------
+plot_upset        2
+all               1
+total             3
 
 Select jobs to execute...
 Execute 1 jobs...
 
-[Sat Jul  4 13:04:56 2026]
-localrule generate_matrix:
-    input: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/graft-SNPs.gt.tsv
-    output: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/graft-SNPs.csv
-    jobid: 182
-    reason: Code has changed since last execution
-    wildcards: xeng=graft
-    resources: tmpdir=/tmp
-Activating conda environment: ../../.conda/envs/python
-Select jobs to execute...
-Activating conda environment: ../../.conda/envs/python
-[Sat Jul  4 13:05:24 2026]
-Finished jobid: 182 (Rule: generate_matrix)
-1 of 7 steps (14%) done
-Execute 1 jobs...
-
-[Sat Jul  4 13:05:24 2026]
-localrule generate_matrix:
-    input: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/host-SNPs.gt.tsv
-    output: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/host-SNPs.csv
-    jobid: 179
-    reason: Code has changed since last execution
-    wildcards: xeng=host
-    resources: tmpdir=/tmp
-Select jobs to execute...
-Activating conda environment: ../../.conda/envs/python
-Activating conda environment: ../../.conda/envs/python
-[Sat Jul  4 13:05:55 2026]
-Finished jobid: 179 (Rule: generate_matrix)
-2 of 7 steps (29%) done
-Execute 1 jobs...
-
-[Sat Jul  4 13:05:55 2026]
-localrule plot_upset:
-    input: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/host-SNPs.csv
-    output: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/host.upset.pdf
-    jobid: 178
-    reason: Missing output files: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/host.upset.pdf; Input files updated by another job: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/host-SNPs.csv
-    wildcards: xeng=host
-    resources: tmpdir=/tmp
-Activating conda environment: ../../.conda/envs/Rscripts
-Select jobs to execute...
-Warning message:
-Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
-ℹ Please use `linewidth` instead.
-ℹ The deprecated feature was likely used in the ComplexUpset package.
-  Please report the issue at
-  <https://github.com/krassowski/complex-upset/issues>. 
-[Sat Jul  4 13:08:23 2026]
-Finished jobid: 178 (Rule: plot_upset)
-3 of 7 steps (43%) done
-Execute 1 jobs...
-
-[Sat Jul  4 13:08:23 2026]
-localrule generate_matrix:
-    input: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/merged-SNPs.gt.tsv
-    output: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/merged-SNPs.csv
-    jobid: 2
-    reason: Updated input files: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/merged-SNPs.gt.tsv
-    wildcards: xeng=merged
-    resources: tmpdir=/tmp
-Select jobs to execute...
-Activating conda environment: ../../.conda/envs/python
-Activating conda environment: ../../.conda/envs/python
-[Sat Jul  4 13:09:08 2026]
-Finished jobid: 2 (Rule: generate_matrix)
-4 of 7 steps (57%) done
-Execute 1 jobs...
-
-[Sat Jul  4 13:09:09 2026]
+[Sat Jul  4 13:26:01 2026]
 localrule plot_upset:
     input: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/graft-SNPs.csv
     output: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/graft.upset.pdf
-    jobid: 181
-    reason: Input files updated by another job: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/graft-SNPs.csv
+    jobid: 91
+    reason: Missing output files: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/graft.upset.pdf
     wildcards: xeng=graft
     resources: tmpdir=/tmp
 Activating conda environment: ../../.conda/envs/Rscripts
@@ -105,54 +35,39 @@ Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
 ℹ The deprecated feature was likely used in the ComplexUpset package.
   Please report the issue at
   <https://github.com/krassowski/complex-upset/issues>. 
-[Sat Jul  4 13:10:12 2026]
-Finished jobid: 181 (Rule: plot_upset)
-5 of 7 steps (71%) done
+[Sat Jul  4 13:26:25 2026]
+Finished jobid: 91 (Rule: plot_upset)
+1 of 3 steps (33%) done
 Execute 1 jobs...
 
-[Sat Jul  4 13:10:12 2026]
+[Sat Jul  4 13:26:25 2026]
 localrule plot_upset:
-    input: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/merged-SNPs.csv
-    output: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/merged.upset.pdf
+    input: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/host-SNPs.csv
+    output: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/host.upset.pdf
     jobid: 1
-    reason: Input files updated by another job: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/merged-SNPs.csv
-    wildcards: xeng=merged
+    reason: Missing output files: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/host.upset.pdf
+    wildcards: xeng=host
     resources: tmpdir=/tmp
 Activating conda environment: ../../.conda/envs/Rscripts
-Error in read.table(file = file, header = header, sep = sep, quote = quote,  : 
-  duplicate 'row.names' are not allowed
-Calls: read.csv -> read.table
-Execution halted
-RuleException:
-CalledProcessError in file "/home/vanwper/projects/neomexicanus_dispersal_genomics/Snakefile", line 732:
-Command 'source /vapps/rhel9/x86_64/miniforge3/25.3.1-0/bin/activate '/home/vanwper/.conda/envs/Rscripts'; set -euo pipefail;  
-    Rscript plot_upset.R       /home/vanwper/nobackup/autodelete/neomex/analysis/upset/merged-SNPs.csv       /home/vanwper/nobackup/autodelete/neomex/analysis/upset/merged.upset.pdf' returned non-zero exit status 1.
-[Sat Jul  4 13:10:19 2026]
-Error in rule plot_upset:
-    message: None
-    jobid: 1
-    input: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/merged-SNPs.csv
-    output: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/merged.upset.pdf
-    conda-env: /home/vanwper/.conda/envs/Rscripts
-    shell:
-        
-    Rscript plot_upset.R       /home/vanwper/nobackup/autodelete/neomex/analysis/upset/merged-SNPs.csv       /home/vanwper/nobackup/autodelete/neomex/analysis/upset/merged.upset.pdf
-    
-        (command exited with non-zero exit code)
-Shutting down, this might take some time.
-Exiting because a job execution failed. Look below for error messages
-[Sat Jul  4 13:10:19 2026]
-Error in rule plot_upset:
-    message: None
-    jobid: 1
-    input: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/merged-SNPs.csv
-    output: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/merged.upset.pdf
-    conda-env: /home/vanwper/.conda/envs/Rscripts
-    shell:
-        
-    Rscript plot_upset.R       /home/vanwper/nobackup/autodelete/neomex/analysis/upset/merged-SNPs.csv       /home/vanwper/nobackup/autodelete/neomex/analysis/upset/merged.upset.pdf
-    
-        (command exited with non-zero exit code)
-Complete log(s): /home/vanwper/projects/neomexicanus_dispersal_genomics/.snakemake/log/2026-07-04T130453.938273.snakemake.log
-WorkflowError:
-At least one job did not complete successfully.
+Warning message:
+Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+ℹ Please use `linewidth` instead.
+ℹ The deprecated feature was likely used in the ComplexUpset package.
+  Please report the issue at
+  <https://github.com/krassowski/complex-upset/issues>. 
+[Sat Jul  4 13:26:56 2026]
+Finished jobid: 1 (Rule: plot_upset)
+2 of 3 steps (67%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Sat Jul  4 13:26:56 2026]
+localrule all:
+    input: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/host.upset.pdf, /home/vanwper/nobackup/autodelete/neomex/analysis/upset/graft.upset.pdf
+    jobid: 0
+    reason: Input files updated by another job: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/graft.upset.pdf, /home/vanwper/nobackup/autodelete/neomex/analysis/upset/host.upset.pdf
+    resources: tmpdir=/tmp
+[Sat Jul  4 13:26:56 2026]
+Finished jobid: 0 (Rule: all)
+3 of 3 steps (100%) done
+Complete log(s): /home/vanwper/projects/neomexicanus_dispersal_genomics/.snakemake/log/2026-07-04T132557.874341.snakemake.log

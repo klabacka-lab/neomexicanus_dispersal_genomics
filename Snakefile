@@ -18,7 +18,7 @@ KMER = [20, 23, 25, 28, 30]
 
 rule all:
   input:
-    f"{WORKDIR}/analysis/upset/merged.upset.pdf",
+    #f"{WORKDIR}/analysis/upset/merged.upset.pdf",
     f"{WORKDIR}/analysis/upset/host.upset.pdf",
     f"{WORKDIR}/analysis/upset/graft.upset.pdf"
 

@@ -9,7 +9,7 @@ output <- args[2]
 df <- read.csv(input, check.names = FALSE)
 rownames(df) <- NULL
 
-sample_cols <- setdiff(colnames(df), c("CHROM","POS"))
+sample_cols <- colnames(df)[-1]
 
 pdf(output, width=10, height=6)
 
@@ -17,7 +17,9 @@ upset(
       df,
       intersect = sample_cols,
       name = "Individuals",
-      width_ratio = 0.25
+      width_ratio = 0.25,
+      n_intersections = 30,
+      sort_intersections_by = "cardinality"
 )
 
 dev.off()
