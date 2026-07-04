@@ -18,9 +18,9 @@ KMER = [20, 23, 25, 28, 30]
 
 rule all:
   input:
-    f"{WORKDIR}/analysis/PCA/merged.pca.png",
-    f"{WORKDIR}/analysis/PCA/host.pca.png",
-    f"{WORKDIR}/analysis/PCA/graft.pca.png"
+    f"{WORKDIR}/analysis/upset/merged.upset.pdf",
+    f"{WORKDIR}/analysis/upset/host.upset.pdf",
+    f"{WORKDIR}/analysis/upset/graft.upset.pdf"
 
 rule xengsort_index:
   input:
@@ -695,3 +695,42 @@ rule plot_merged_pca:
     "/home/vanwper/.conda/envs/python"
   script:
     "plot_merged_pca.py"
+
+rule generate_tsv:
+  input:
+    bcf=f"{WORKDIR}/analysis/{{xeng}}-final-SNPs.bcf"
+  output:
+    tsv=f"{WORKDIR}/analysis/upset/{{xeng}}-SNPs.gt.tsv"
+  conda:
+    "/home/vanwper/.conda/envs/bcftools"
+  shell:
+    """
+    (
+    echo -e "CHROM\tPOS\T$(bcftools query -l {input.bcf} | tr '\n' '\t' | sed 's/\t$//')"
+    bcftools query -f '%CHROM\t%POS[\t%GT]\n' {input.bcf}
+    ) > {output.tsv}
+    """
+
+rule generate_matrix:
+  input:
+    tsv=f"{WORKDIR}/analysis/upset/{{xeng}}-SNPs.gt.tsv"
+  output:
+    matrix=f"{WORKDIR}/analysis/upset/{{xeng}}-SNPs.csv"
+  conda:
+    "/home/vanwper/.conda/envs/python"
+  script:
+    "bcf_to_matrix.py"
+
+rule plot_upset:
+  input:
+    matrix=f"{WORKDIR}/analysis/upset/{{xeng}}-SNPs.csv"
+  output:
+    pdf=f"{WORKDIR}/analysis/upset/{{xeng}}.upset.pdf"
+  conda:
+    "/home/vanwper/.conda/envs/Rscripts"
+  shell:
+    """
+    Rscript plot_upset.R \
+      {input.matrix} \
+      {output.pdf}
+    """

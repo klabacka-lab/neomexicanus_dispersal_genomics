@@ -1,6 +1,10 @@
+/home/vanwper/projects/neomexicanus_dispersal_genomics/Snakefile:1569: SyntaxWarning: invalid escape sequence '\T'
+/home/vanwper/projects/neomexicanus_dispersal_genomics/Snakefile:1580: SyntaxWarning: invalid escape sequence '\T'
 Unlocked working directory.
+/home/vanwper/projects/neomexicanus_dispersal_genomics/Snakefile:1569: SyntaxWarning: invalid escape sequence '\T'
+/home/vanwper/projects/neomexicanus_dispersal_genomics/Snakefile:1580: SyntaxWarning: invalid escape sequence '\T'
 Assuming unrestricted shared filesystem usage.
-host: m12-1-4
+host: m8-18-13
 Building DAG of jobs...
 Using shell: /usr/local/bin/bash
 Provided cores: 8
@@ -8,117 +12,147 @@ Rules claiming more threads will be scaled down.
 Job stats:
 job                count
 ---------------  -------
-plink                  1
-plot_merged_pca        1
-plot_pca               2
-ld_pruning             1
-pca                    1
+generate_matrix        3
+plot_upset             3
 all                    1
 total                  7
 
 Select jobs to execute...
 Execute 1 jobs...
 
-[Wed Jul  1 17:26:31 2026]
-localrule plot_merged_pca:
-    input: /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/merged.pca.eigenvec, /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/merged.pca.eigenval
-    output: /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/merged.pca.png
-    jobid: 1
-    reason: Missing output files: /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/merged.pca.png; Code has changed since last execution
+[Sat Jul  4 13:04:56 2026]
+localrule generate_matrix:
+    input: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/graft-SNPs.gt.tsv
+    output: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/graft-SNPs.csv
+    jobid: 182
+    reason: Code has changed since last execution
+    wildcards: xeng=graft
     resources: tmpdir=/tmp
 Activating conda environment: ../../.conda/envs/python
 Select jobs to execute...
 Activating conda environment: ../../.conda/envs/python
-[Wed Jul  1 17:26:49 2026]
-Finished jobid: 1 (Rule: plot_merged_pca)
+[Sat Jul  4 13:05:24 2026]
+Finished jobid: 182 (Rule: generate_matrix)
 1 of 7 steps (14%) done
 Execute 1 jobs...
 
-[Wed Jul  1 17:26:49 2026]
-localrule plot_pca:
-    input: /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/graft.pca.eigenvec, /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/graft.pca.eigenval
-    output: /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/graft.pca.png
-    jobid: 183
-    reason: Updated input files: /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/graft.pca.eigenvec, /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/graft.pca.eigenval
-    wildcards: xeng=graft
+[Sat Jul  4 13:05:24 2026]
+localrule generate_matrix:
+    input: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/host-SNPs.gt.tsv
+    output: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/host-SNPs.csv
+    jobid: 179
+    reason: Code has changed since last execution
+    wildcards: xeng=host
     resources: tmpdir=/tmp
 Select jobs to execute...
 Activating conda environment: ../../.conda/envs/python
 Activating conda environment: ../../.conda/envs/python
-[Wed Jul  1 17:27:01 2026]
-Finished jobid: 183 (Rule: plot_pca)
+[Sat Jul  4 13:05:55 2026]
+Finished jobid: 179 (Rule: generate_matrix)
 2 of 7 steps (29%) done
 Execute 1 jobs...
 
-[Wed Jul  1 17:27:02 2026]
-localrule plink:
-    input: /home/vanwper/nobackup/autodelete/neomex/analysis/host-final-SNPs.bcf
-    output: /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/host.bed, /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/host.bim, /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/host.fam
-    jobid: 181
-    reason: Updated input files: /home/vanwper/nobackup/autodelete/neomex/analysis/host-final-SNPs.bcf
+[Sat Jul  4 13:05:55 2026]
+localrule plot_upset:
+    input: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/host-SNPs.csv
+    output: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/host.upset.pdf
+    jobid: 178
+    reason: Missing output files: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/host.upset.pdf; Input files updated by another job: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/host-SNPs.csv
     wildcards: xeng=host
     resources: tmpdir=/tmp
-Activating conda environment: ../../.conda/envs/pacbioProcessing
-[Wed Jul  1 17:27:15 2026]
-Finished jobid: 181 (Rule: plink)
+Activating conda environment: ../../.conda/envs/Rscripts
+Select jobs to execute...
+Warning message:
+Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+ℹ Please use `linewidth` instead.
+ℹ The deprecated feature was likely used in the ComplexUpset package.
+  Please report the issue at
+  <https://github.com/krassowski/complex-upset/issues>. 
+[Sat Jul  4 13:08:23 2026]
+Finished jobid: 178 (Rule: plot_upset)
 3 of 7 steps (43%) done
-Select jobs to execute...
 Execute 1 jobs...
 
-[Wed Jul  1 17:27:15 2026]
-localrule ld_pruning:
-    input: /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/host.bed, /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/host.bim, /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/host.fam
-    output: /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/host.prune.in, /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/host.prune.out
-    jobid: 182
-    reason: Input files updated by another job: /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/host.bim, /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/host.fam, /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/host.bed
-    wildcards: xeng=host
+[Sat Jul  4 13:08:23 2026]
+localrule generate_matrix:
+    input: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/merged-SNPs.gt.tsv
+    output: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/merged-SNPs.csv
+    jobid: 2
+    reason: Updated input files: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/merged-SNPs.gt.tsv
+    wildcards: xeng=merged
     resources: tmpdir=/tmp
-Activating conda environment: ../../.conda/envs/pacbioProcessing
-[Wed Jul  1 17:27:21 2026]
-Finished jobid: 182 (Rule: ld_pruning)
+Select jobs to execute...
+Activating conda environment: ../../.conda/envs/python
+Activating conda environment: ../../.conda/envs/python
+[Sat Jul  4 13:09:08 2026]
+Finished jobid: 2 (Rule: generate_matrix)
 4 of 7 steps (57%) done
-Select jobs to execute...
 Execute 1 jobs...
 
-[Wed Jul  1 17:27:21 2026]
-localrule pca:
-    input: /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/host.bed, /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/host.bim, /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/host.fam, /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/host.prune.in
-    output: /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/host.pca.eigenvec, /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/host.pca.eigenval
-    jobid: 180
-    reason: Input files updated by another job: /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/host.bim, /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/host.prune.in, /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/host.fam, /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/host.bed
-    wildcards: xeng=host
+[Sat Jul  4 13:09:09 2026]
+localrule plot_upset:
+    input: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/graft-SNPs.csv
+    output: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/graft.upset.pdf
+    jobid: 181
+    reason: Input files updated by another job: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/graft-SNPs.csv
+    wildcards: xeng=graft
     resources: tmpdir=/tmp
-Activating conda environment: ../../.conda/envs/pacbioProcessing
-Warning: calculating 9 PCs, since there are only 9 samples.
-[Wed Jul  1 17:27:25 2026]
-Finished jobid: 180 (Rule: pca)
+Activating conda environment: ../../.conda/envs/Rscripts
+Select jobs to execute...
+Warning message:
+Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+ℹ Please use `linewidth` instead.
+ℹ The deprecated feature was likely used in the ComplexUpset package.
+  Please report the issue at
+  <https://github.com/krassowski/complex-upset/issues>. 
+[Sat Jul  4 13:10:12 2026]
+Finished jobid: 181 (Rule: plot_upset)
 5 of 7 steps (71%) done
-Select jobs to execute...
 Execute 1 jobs...
 
-[Wed Jul  1 17:27:25 2026]
-localrule plot_pca:
-    input: /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/host.pca.eigenvec, /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/host.pca.eigenval
-    output: /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/host.pca.png
-    jobid: 179
-    reason: Input files updated by another job: /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/host.pca.eigenvec, /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/host.pca.eigenval
-    wildcards: xeng=host
+[Sat Jul  4 13:10:12 2026]
+localrule plot_upset:
+    input: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/merged-SNPs.csv
+    output: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/merged.upset.pdf
+    jobid: 1
+    reason: Input files updated by another job: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/merged-SNPs.csv
+    wildcards: xeng=merged
     resources: tmpdir=/tmp
-Activating conda environment: ../../.conda/envs/python
-Activating conda environment: ../../.conda/envs/python
-[Wed Jul  1 17:27:35 2026]
-Finished jobid: 179 (Rule: plot_pca)
-6 of 7 steps (86%) done
-Select jobs to execute...
-Execute 1 jobs...
-
-[Wed Jul  1 17:27:35 2026]
-localrule all:
-    input: /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/merged.pca.png, /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/host.pca.png, /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/graft.pca.png
-    jobid: 0
-    reason: Input files updated by another job: /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/host.pca.png, /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/graft.pca.png, /home/vanwper/nobackup/autodelete/neomex/analysis/PCA/merged.pca.png
-    resources: tmpdir=/tmp
-[Wed Jul  1 17:27:36 2026]
-Finished jobid: 0 (Rule: all)
-7 of 7 steps (100%) done
-Complete log(s): /home/vanwper/projects/neomexicanus_dispersal_genomics/.snakemake/log/2026-07-01T172627.814997.snakemake.log
+Activating conda environment: ../../.conda/envs/Rscripts
+Error in read.table(file = file, header = header, sep = sep, quote = quote,  : 
+  duplicate 'row.names' are not allowed
+Calls: read.csv -> read.table
+Execution halted
+RuleException:
+CalledProcessError in file "/home/vanwper/projects/neomexicanus_dispersal_genomics/Snakefile", line 732:
+Command 'source /vapps/rhel9/x86_64/miniforge3/25.3.1-0/bin/activate '/home/vanwper/.conda/envs/Rscripts'; set -euo pipefail;  
+    Rscript plot_upset.R       /home/vanwper/nobackup/autodelete/neomex/analysis/upset/merged-SNPs.csv       /home/vanwper/nobackup/autodelete/neomex/analysis/upset/merged.upset.pdf' returned non-zero exit status 1.
+[Sat Jul  4 13:10:19 2026]
+Error in rule plot_upset:
+    message: None
+    jobid: 1
+    input: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/merged-SNPs.csv
+    output: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/merged.upset.pdf
+    conda-env: /home/vanwper/.conda/envs/Rscripts
+    shell:
+        
+    Rscript plot_upset.R       /home/vanwper/nobackup/autodelete/neomex/analysis/upset/merged-SNPs.csv       /home/vanwper/nobackup/autodelete/neomex/analysis/upset/merged.upset.pdf
+    
+        (command exited with non-zero exit code)
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look below for error messages
+[Sat Jul  4 13:10:19 2026]
+Error in rule plot_upset:
+    message: None
+    jobid: 1
+    input: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/merged-SNPs.csv
+    output: /home/vanwper/nobackup/autodelete/neomex/analysis/upset/merged.upset.pdf
+    conda-env: /home/vanwper/.conda/envs/Rscripts
+    shell:
+        
+    Rscript plot_upset.R       /home/vanwper/nobackup/autodelete/neomex/analysis/upset/merged-SNPs.csv       /home/vanwper/nobackup/autodelete/neomex/analysis/upset/merged.upset.pdf
+    
+        (command exited with non-zero exit code)
+Complete log(s): /home/vanwper/projects/neomexicanus_dispersal_genomics/.snakemake/log/2026-07-04T130453.938273.snakemake.log
+WorkflowError:
+At least one job did not complete successfully.
