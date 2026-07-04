@@ -706,7 +706,7 @@ rule generate_tsv:
   shell:
     """
     (
-    echo -e "CHROM\tPOS\T$(bcftools query -l {input.bcf} | tr '\n' '\t' | sed 's/\t$//')"
+    echo -e "CHROM\tPOS\t$(bcftools query -l {input.bcf} | tr '\n' '\t' | sed 's/\t$//')"
     bcftools query -f '%CHROM\t%POS[\t%GT]\n' {input.bcf}
     ) > {output.tsv}
     """

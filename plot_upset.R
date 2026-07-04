@@ -19,6 +19,7 @@ upset(
       name = "Individuals",
       width_ratio = 0.25,
       n_intersections = 30,
+      min_degree = 2,
       sort_intersections_by = "cardinality"
 )
 
