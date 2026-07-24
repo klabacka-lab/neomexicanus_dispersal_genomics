@@ -1,0 +1,67 @@
+
+Converting file '/home/vanwper/nobackup/autodelete/neomex//analysis/graft-final-SNPs.vcf.gz':
+
+Number of samples in VCF: 9
+500000 genotypes processed.
+1000000 genotypes processed.
+1500000 genotypes processed.
+2000000 genotypes processed.
+2500000 genotypes processed.
+3000000 genotypes processed.
+Total of genotypes processed: 3496118
+Genotypes excluded because they exceeded the amount of missing data allowed: 0
+Genotypes that passed missing data filter but were excluded for being MNPs: 124
+SNPs that passed the filters: 3495994
+Used sites saved to: '/home/vanwper/nobackup/autodelete/neomex/misc/graft-SNPs.min4.used_sites.tsv'
+
+Sample 1 of 9, '7888', added to the nucleotide matrix(ces).
+Sample 2 of 9, '7890', added to the nucleotide matrix(ces).
+Sample 3 of 9, '7891', added to the nucleotide matrix(ces).
+Sample 4 of 9, '7892', added to the nucleotide matrix(ces).
+Sample 5 of 9, '7893', added to the nucleotide matrix(ces).
+Sample 6 of 9, '7894', added to the nucleotide matrix(ces).
+Sample 7 of 9, '7895', added to the nucleotide matrix(ces).
+Sample 8 of 9, '7896', added to the nucleotide matrix(ces).
+Sample 9 of 9, '7897', added to the nucleotide matrix(ces).
+
+PHYLIP matrix saved to: /home/vanwper/nobackup/autodelete/neomex/misc/graft-SNPs.min4.phy
+FASTA matrix saved to: /home/vanwper/nobackup/autodelete/neomex/misc/graft-SNPs.min4.fasta
+
+Done!
+
+
+Converting file '/home/vanwper/nobackup/autodelete/neomex//analysis/host-final-SNPs.vcf.gz':
+
+Number of samples in VCF: 9
+500000 genotypes processed.
+1000000 genotypes processed.
+1500000 genotypes processed.
+2000000 genotypes processed.
+2500000 genotypes processed.
+3000000 genotypes processed.
+3500000 genotypes processed.
+4000000 genotypes processed.
+4500000 genotypes processed.
+5000000 genotypes processed.
+5500000 genotypes processed.
+Total of genotypes processed: 5604342
+Genotypes excluded because they exceeded the amount of missing data allowed: 0
+Genotypes that passed missing data filter but were excluded for being MNPs: 172
+SNPs that passed the filters: 5604170
+Used sites saved to: '/home/vanwper/nobackup/autodelete/neomex/misc/host-SNPs.min4.used_sites.tsv'
+
+Sample 1 of 9, '7888', added to the nucleotide matrix(ces).
+Sample 2 of 9, '7890', added to the nucleotide matrix(ces).
+Sample 3 of 9, '7891', added to the nucleotide matrix(ces).
+Sample 4 of 9, '7892', added to the nucleotide matrix(ces).
+Sample 5 of 9, '7893', added to the nucleotide matrix(ces).
+Sample 6 of 9, '7894', added to the nucleotide matrix(ces).
+Sample 7 of 9, '7895', added to the nucleotide matrix(ces).
+Sample 8 of 9, '7896', added to the nucleotide matrix(ces).
+Sample 9 of 9, '7897', added to the nucleotide matrix(ces).
+
+PHYLIP matrix saved to: /home/vanwper/nobackup/autodelete/neomex/misc/host-SNPs.min4.phy
+FASTA matrix saved to: /home/vanwper/nobackup/autodelete/neomex/misc/host-SNPs.min4.fasta
+
+Done!
+

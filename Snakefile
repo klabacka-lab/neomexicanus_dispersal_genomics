@@ -18,9 +18,10 @@ KMER = [20, 23, 25, 28, 30]
 
 rule all:
   input:
-    f"{WORKDIR}/analysis/upset/merged.upset.pdf",
-    f"{WORKDIR}/analysis/upset/host.upset.pdf",
-    f"{WORKDIR}/analysis/upset/graft.upset.pdf"
+    f"{WORKDIR}/analysis/phylogeny/rooted_host.treefile",
+    f"{WORKDIR}/analysis/phylogeny/rooted_host.iqtree",
+    f"{WORKDIR}/analysis/phylogeny/rooted_graft.treefile",
+    f"{WORKDIR}/analysis/phylogeny/rooted_graft.iqtree"
 
 rule xengsort_index:
   input:
@@ -733,4 +734,93 @@ rule plot_upset:
     Rscript plot_upset.R \
       {input.matrix} \
       {output.pdf}
+    """
+
+rule generate_phylo_bed:
+  input:
+    sites=f"{WORKDIR}/misc/{{xeng}}-SNPs.min4.used_sites.tsv"
+  output:
+    bed=f"{WORKDIR}/analysis/{{xeng}}-phylo.bed"
+  shell:
+    """
+    awk 'BEGIN{{OFS="\\t"}} NR>1 {{print $1, $2-1, $2}}' {input.sites} \
+      | sort -k1,1 -k2,2n \
+      > {output.bed}
+    """
+
+rule rooted_fastas:
+  input:
+    host_ref=f"{WORKDIR}/reference/BaumannLab/a_arizonae_AspAri2.0.fasta",
+    host_bed=f"{WORKDIR}/analysis/host-phylo.bed",
+    host_snps=f"{WORKDIR}/analysis/phylogeny/host-SNPs.min4.fasta",
+    graft_ref=f"{WORKDIR}/reference/BaumannLab/a_marmoratus_AspMarm2.0.fasta",
+    graft_bed=f"{WORKDIR}/analysis/graft-phylo.bed",
+    graft_snps=f"{WORKDIR}/analysis/phylogeny/graft-SNPs.min4.fasta"
+  output:
+    host_ref_snps=f"{WORKDIR}/analysis/a_arizonae_snps.fasta",
+    graft_ref_snps=f"{WORKDIR}/analysis/a_marmoratus_snps.fasta",
+    host_fasta=f"{WORKDIR}/analysis/phylogeny/rooted_host.fasta",
+    graft_fasta=f"{WORKDIR}/analysis/phylogeny/rooted_graft.fasta"
+  conda:
+    "/home/vanwper/.conda/envs/pacbioProcessing"
+  shell:
+    """
+    echo ">a_arizonae" > {output.host_ref_snps}
+    bedtools getfasta -fi {input.host_ref} -bed {input.host_bed} -tab \
+      | cut -f2 \
+      | tr -d '\\n' \
+      | fold -w 60 >> {output.host_ref_snps}
+    echo "" >> {output.host_ref_snps}
+
+    echo ">a_marmoratus" > {output.graft_ref_snps}
+    bedtools getfasta -fi {input.graft_ref} -bed {input.graft_bed} -tab \
+      | cut -f2 \
+      | tr -d '\\n' \
+      | fold -w 60 >> {output.graft_ref_snps}
+    echo "" >> {output.graft_ref_snps}
+    
+    cat {input.host_snps} {output.host_ref_snps} > {output.host_fasta}
+    cat {input.graft_snps} {output.graft_ref_snps} > {output.graft_fasta}
+    """
+
+rule generate_graft_rooted_phylogeny:
+  input:
+    fasta=f"{WORKDIR}/analysis/phylogeny/rooted_graft.fasta"
+  output:
+    tree=f"{WORKDIR}/analysis/phylogeny/rooted_graft.treefile",
+    report=f"{WORKDIR}/analysis/phylogeny/rooted_graft.iqtree"
+  conda:
+    "/home/vanwper/.conda/envs/pacbioProcessing"
+  shell:
+    """
+    iqtree3 \
+      -s {input.fasta} \
+      -m MFP \
+      -bb 1000 \
+      -bnni \
+      -T AUTO \
+      --redo \
+      -o "a_marmoratus" \
+      -pre "{WORKDIR}/analysis/phylogeny/rooted_graft"
+    """
+
+rule generate_host_rooted_phylogeny:
+  input:
+    fasta=f"{WORKDIR}/analysis/phylogeny/rooted_host.fasta"
+  output:
+    tree=f"{WORKDIR}/analysis/phylogeny/rooted_host.treefile",
+    report=f"{WORKDIR}/analysis/phylogeny/rooted_host.iqtree"
+  conda:
+    "/home/vanwper/.conda/envs/pacbioProcessing"
+  shell:
+    """
+    iqtree3 \
+      -s {input.fasta} \
+      -m MFP \
+      -bb 1000 \
+      -bnni \
+      -T AUTO \
+      --redo \
+      -o "a_arizonae" \
+      -pre "{WORKDIR}/analysis/phylogeny/rooted_host"
     """
