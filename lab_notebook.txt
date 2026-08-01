@@ -56,3 +56,6 @@ June 25, 2026
 
 July 2, 2026
 	- Perry completed the inclusion of the Navajo individual, and re-generated the PCA and phylogenies. Here is the info on who is "host" and who is "graft" in these: Host: arizonae, Graft: marmoratus
+
+July 24, 2026
+	- Perry presented an awesome poster at JMIH, and we came up with some good ideas. First, we decided we can use the reference genomes to root the trees. Perry did this (by adding the reference sequences to the fasta and re-estimating trees). Interestingly, the long branches from the unrooted trees got placed at the base of the tree, forming a polytomy. This is likely due to long-branch attraction, and we decided that we should still root the previous trees (that we had unrooted on the poster) at the node that is sister to the rest of the other neomexicanus samples (in other words, we are just ignoring the polytomy due to the likely lba). The next step Perry is taking will be to re-filter the VCFs so that there are no sites with any individuals missing a genotype. This next step is based on the fact that in both the marm and ariz trees, the long branches are associated with fewer SNPs. Perry is just going to estimate new trees with this strict filtration, and after seeing what it looks like we will decide if it is necessary to regenerate the PCA and upset plots.
