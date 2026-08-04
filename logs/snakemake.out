@@ -791,3 +791,125 @@ Refining ufboot trees with NNI 1 branch...
 200 samples done
 300 samples done
 400 samples done
+500 samples done
+600 samples done
+700 samples done
+800 samples done
+900 samples done
+1000 samples done
+Total 0 ufboot trees refined
+TREE SEARCH COMPLETED AFTER 102 ITERATIONS / Time: 0h:27m:9s
+
+--------------------------------------------------------------------
+|                    FINALIZING TREE SEARCH                        |
+--------------------------------------------------------------------
+Performs final model parameters optimization
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -16289252.563
+2. Current log-likelihood: -16289252.269
+3. Current log-likelihood: -16289252.020
+4. Current log-likelihood: -16289251.740
+5. Current log-likelihood: -16289251.563
+6. Current log-likelihood: -16289251.370
+7. Current log-likelihood: -16289251.199
+8. Current log-likelihood: -16289251.043
+9. Current log-likelihood: -16289250.879
+10. Current log-likelihood: -16289250.686
+11. Current log-likelihood: -16289250.509
+12. Current log-likelihood: -16289250.255
+13. Current log-likelihood: -16289250.119
+14. Current log-likelihood: -16289249.963
+15. Current log-likelihood: -16289249.799
+16. Current log-likelihood: -16289249.583
+17. Current log-likelihood: -16289249.428
+18. Current log-likelihood: -16289249.266
+19. Current log-likelihood: -16289249.050
+20. Current log-likelihood: -16289248.899
+21. Current log-likelihood: -16289248.708
+22. Current log-likelihood: -16289248.515
+23. Current log-likelihood: -16289248.360
+24. Current log-likelihood: -16289248.198
+25. Current log-likelihood: -16289247.984
+26. Current log-likelihood: -16289247.829
+27. Current log-likelihood: -16289247.669
+28. Current log-likelihood: -16289247.455
+29. Current log-likelihood: -16289247.301
+30. Current log-likelihood: -16289247.143
+31. Current log-likelihood: -16289246.951
+32. Current log-likelihood: -16289246.815
+33. Current log-likelihood: -16289246.596
+34. Current log-likelihood: -16289246.422
+35. Current log-likelihood: -16289246.283
+36. Current log-likelihood: -16289246.089
+37. Current log-likelihood: -16289245.898
+38. Current log-likelihood: -16289245.761
+39. Current log-likelihood: -16289245.569
+40. Current log-likelihood: -16289245.455
+41. Current log-likelihood: -16289245.330
+42. Current log-likelihood: -16289245.120
+43. Current log-likelihood: -16289245.058
+44. Current log-likelihood: -16289244.927
+45. Current log-likelihood: -16289244.745
+46. Current log-likelihood: -16289244.508
+47. Current log-likelihood: -16289244.277
+48. Current log-likelihood: -16289243.999
+49. Current log-likelihood: -16289243.810
+50. Current log-likelihood: -16289243.674
+51. Current log-likelihood: -16289243.484
+52. Current log-likelihood: -16289243.295
+53. Current log-likelihood: -16289243.159
+54. Current log-likelihood: -16289242.970
+55. Current log-likelihood: -16289242.782
+56. Current log-likelihood: -16289242.649
+57. Current log-likelihood: -16289242.461
+58. Current log-likelihood: -16289242.347
+59. Current log-likelihood: -16289242.216
+60. Current log-likelihood: -16289241.948
+61. Current log-likelihood: -16289241.760
+62. Current log-likelihood: -16289241.627
+63. Current log-likelihood: -16289241.440
+64. Current log-likelihood: -16289241.253
+65. Current log-likelihood: -16289241.119
+66. Current log-likelihood: -16289240.934
+67. Current log-likelihood: -16289240.747
+68. Current log-likelihood: -16289240.614
+69. Current log-likelihood: -16289240.429
+70. Current log-likelihood: -16289240.243
+71. Current log-likelihood: -16289240.133
+72. Current log-likelihood: -16289240.050
+Optimal log-likelihood: -16289240.039
+Rate parameters:  A-C: 1.00655  A-G: 11.60434  A-T: 1.31844  C-G: 0.77067  C-T: 11.60428  G-T: 1.00000
+Base frequencies:  A: 0.254  C: 0.246  G: 0.246  T: 0.254
+Site proportion and rates:  (0.109,0.398) (0.133,0.398) (0.104,0.398) (0.104,0.398) (0.108,0.398) (0.106,0.398) (0.121,0.398) (0.107,0.398) (0.106,0.398) (0.001,410.820)
+Parameters optimization took 72 rounds (6.493 sec)
+BEST SCORE FOUND : -16289240.039
+Creating bootstrap support values...
+Split supports printed to NEXUS file /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/rooted_host.splits.nex
+Total tree length: 9.597
+
+Total number of iterations: 102
+CPU time used for tree search: 3758.013 sec (1h:2m:38s)
+Wall-clock time used for tree search: 1310.491 sec (0h:21m:50s)
+Total CPU time used: 6211.714 sec (1h:43m:31s)
+Total wall-clock time used: 1635.653 sec (0h:27m:15s)
+UFBoot trees printed to /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/rooted_host.ufboot
+
+Computing bootstrap consensus tree...
+Reading input file /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/rooted_host.splits.nex...
+10 taxa and 17 splits.
+Consensus tree written to /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/rooted_host.contree
+Reading input trees file /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/rooted_host.contree
+Log-likelihood of consensus tree: -16289240.046
+
+Analysis results written to: 
+  IQ-TREE report:                /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/rooted_host.iqtree
+  Maximum-likelihood tree:       /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/rooted_host.treefile
+  Likelihood distances:          /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/rooted_host.mldist
+
+Ultrafast bootstrap approximation results written to:
+  Split support values:          /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/rooted_host.splits.nex
+  Consensus tree:                /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/rooted_host.contree
+  UFBoot trees:                  /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/rooted_host.ufboot
+  Screen log file:               /home/vanwper/nobackup/autodelete/neomex/analysis/phylogeny/rooted_host.log
+
+Date and Time: Fri Jul 24 08:41:54 2026
