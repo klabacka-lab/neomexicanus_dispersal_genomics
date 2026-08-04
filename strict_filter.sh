@@ -30,7 +30,7 @@ bcftools view \
     -Ob \
     -o "$WORKDIR/strict_filters/host-final.bcf"
 
-bcftools index -f $WORKDIR/strict_filters/host-final.bcf
+bcftools index -f "$WORKDIR/strict_filters/host-final.bcf"
 echo "Missingness filtration complete"
 
 
@@ -56,10 +56,10 @@ echo "SNP filter complete"
 
 
 #CONVERT TO VCF
-bcftools view -Oz -o "$WORKDIR/strict_filters/graft-final-SNPs.vcf" "$WORKDIR/strict_filters/graft-final-SNPs.bcf"
+bcftools view -Ov -o "$WORKDIR/strict_filters/graft-final-SNPs.vcf" "$WORKDIR/strict_filters/graft-final-SNPs.bcf"
 bcftools index -t "$WORKDIR/strict_filters/graft-final-SNPs.vcf"
 
-bcftools view -Oz -o "$WORKDIR/strict_filters/host-final-SNPs.vcf" "$WORKDIR/strict_filters/host-final-SNPs.bcf"
+bcftools view -Ov -o "$WORKDIR/strict_filters/host-final-SNPs.vcf" "$WORKDIR/strict_filters/host-final-SNPs.bcf"
 bcftools index -t "$WORKDIR/strict_filters/host-final-SNPs.vcf"
 echo "BCFs converted to VCFs"
 
@@ -83,7 +83,7 @@ echo "FASTAs generated"
 #GENERATE PHYLOGENY
 mamba activate pacbioProcessing
 iqtree3 \
-    -s $WORKDIR/strict_filters/phylogeny/graft-SNPs.min4.fasta" \
+    -s "$WORKDIR/strict_filters/phylogeny/graft-SNPs.min4.fasta" \
     -m MFP \
     -bb 1000 \
     -bnni \
@@ -92,7 +92,7 @@ iqtree3 \
     -pre "$WORKDIR/strict_filters/phylogeny/graft-snps_tree"
 
 iqtree3 \
-    -s $WORKDIR/strict_filters/phylogeny/host-SNPs.min4.fasta" \
+    -s "$WORKDIR/strict_filters/phylogeny/host-SNPs.min4.fasta" \
     -m MFP \
     -bb 1000 \
     -bnni \
